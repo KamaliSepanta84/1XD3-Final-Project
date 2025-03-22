@@ -1,41 +1,67 @@
-<!doctype html>
-<!--
-TODO: This is a comment. Change this header comment to describe the 
-web page and include your name as author.
--->
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Sepanta Kamali</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body id="login-body">
-    <div id="login-section">
-        <div class="login-container">
-            <div class="login-header">
-                <h1>Login to MacNotes</h1>
-                <p>Continue your journey</p>
-            </div>
-            <div class="login-box">
-                <input id = "email-login-entry-box" class = "email-pw-entry" type="email" placeholder="Enter your McMaster email" required autofocus>
-                <input id = "password-login-entry-box" class = "email-pw-entry" type="password" placeholder="Enter your password" required>
-                <div class= "signup-login-btn-container">
-                    <input id = "login-btn" class = "signup-login-btn" type="submit" value="Sign In">
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Login | MacNotes</title>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div id="title-container" class="title-primary">
+        <h1>MacNotes</h1>
+      </div>
+      <div class="form-container signup-container">
+        <form>
+          <h1>Create Account</h1>
+          <div class="form-group">
+            <input type="text" placeholder="Enter your full name" />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Enter your McMaster email" />
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Enter your password" />
+          </div>
+          <button>SIGN UP</button>
+        </form>
+      </div>
+      <div class="form-container signin-container">
+        <form>
+          <h1>Sign In</h1>
+          <div class="form-group">
+            <input type="email" placeholder="Enter your McMaster email" />
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Enter your password" />
+          </div>
+          <a href="#" class="forgot-password">Forgot your password?</a>
+          <button>SIGN IN</button>
+        </form>
+      </div>
+      <div class="overlay-container" id="overlayContainer">
+        <div class="overlay-wrapper">
+          <div class="overlay-panel overlay-panel-left">
+            <h1>Welcome Back!</h1>
+            <p>
+              To keep connected with us please login with your McMaster info
+            </p>
+            <button>SIGN IN</button>
+          </div>
+          <div class="overlay-panel overlay-panel-right">
+            <h1>Hello, Classmate!</h1>
+            <p>Enter your McMaster info and start journey with us</p>
+            <button>SIGN UP</button>
+          </div>
         </div>
+        <button id="overlayBtn"></button>
+      </div>
     </div>
-    <div id="side-section">
-        <h1>New here?</h1>
-        <p>Sign up and get access to a lot of resources for your courses
-            and ace your exams!
-        </p>
-        <input style = "background-color: #704264; color: white;" type="button" value="Sign Up" class="signup-login-btn">
-    </div>
-    <footer class="signup-login-footer">
-    </footer>
-</body>
 
+    <script src="js/login.js"></script>
+  </body>
 </html>
