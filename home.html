@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Your Classes</title>
+    <link rel="stylesheet" href="css/homeStyle.css" />
+    <script defer src="js/homePage.js"></script>
+  </head>
+  <body>
+    <!-- Overlay for sidebar -->
+    <div id="overlay" class="overlay" onclick="closeDropdown()"></div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <button class="menu-btn" id="menu-btn">☰</button>
+      <div class="logo">MacHub</div>
+      <a href="profile.html">
+        <img src="images/pfp.png" alt="User Profile" class="profile-icon" />
+      </a>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div id="dropdown-menu" class="dropdown-menu">
+      <a href="#">Page 1</a>
+      <a href="#">Page 2</a>
+      <a href="#">Page 3</a>
+      <a href="help.html">Help</a>
+    </div>
+
+    <!-- Page Title -->
+    <div class="title">Your Classes</div>
+
+    <!-- Class Container -->
+    <div class="class-container">
+      <a href="math.html" class="class-card">
+        <div class="class-title">CompSci 1XD3</div>
+        <div class="class-desc">Introduction to fullstack developing</div>
+      </a>
+
+      <a href="science.html" class="class-card">
+        <div class="class-title">Class</div>
+        <div class="class-desc">Text</div>
+      </a>
+
+      <a href="history.html" class="class-card">
+        <div class="class-title">Class</div>
+        <div class="class-desc">Text</div>
+      </a>
+
+      <a href="english.html" class="class-card">
+        <div class="class-title">Class</div>
+        <div class="class-desc">Text</div>
+      </a>
+
+      <a href="cs.html" class="class-card">
+        <div class="class-title">Class</div>
+        <div class="class-desc">Text</div>
+      </a>
+    </div>
+
+    <!-- Floating Help Icon -->
+    <a href="help.html" class="help-icon">❓</a>
+  </body>
+</html>

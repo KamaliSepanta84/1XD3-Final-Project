@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warning</title>
+    <style>
+        /* Background Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://source.unsplash.com/1600x900/?abstract,light') no-repeat center center/cover;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Centered Warning Box */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        /* Title */
+        h1 {
+            color: #800000;
+            font-size: 2.2em;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* Description */
+        p {
+            font-size: 1.1em;
+            color: #444;
+            font-family: 'Nunito', sans-serif;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* Button */
+        .btn {
+            background: #800000;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(128, 0, 0, 0.3);
+        }
+
+        /* Button Hover */
+        .btn:hover {
+            background: #a52a2a;
+            transform: scale(1.05);
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hold Up!</h1>
+        <p>Content found on MacHub should not be used to replace classes</p>
+        <button class="btn" onclick="proceed()">Proceed</button>
+    </div>
+
+    <script>
+        function proceed() {
+            document.body.style.transition = "opacity 0.5s";
+            document.body.style.opacity = "0";
+            setTimeout(() => window.location.href = "home.html", 500);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+/* Color Variables */
+:root {
+    --primary-color: #205781;
+    --text-dark: #0f172a;
+    --text-light: #205781;
+    --extra-light: #f8fafc;
+    --white: #ffffff;
+}
+
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--extra-light);
+    color: var(--text-dark);
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu Button */
+.menu-btn {
+    background: none;
+    color: var(--white);
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.4em;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+/* Profile Icon */
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+/* Sidebar Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+/* Sliding Dropdown Menu */
+.dropdown-content {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: var(--white);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    transition: left 0.3s ease-in-out;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+
+.dropdown-content a {
+    color: var(--text-dark);
+    padding: 15px 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+    background: #d4e3f2;
+}
+
+/* Active Sidebar */
+.dropdown-content.show {
+    left: 0;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.overlay.show {
+    display: block;
+}
+
+/* Title */
+.title {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Class Container */
+.class-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Class Card */
+.class-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.class-card::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-color);
+    bottom: 0;
+    left: -100%;
+    transition: left 0.3s ease-in-out;
+}
+
+.class-card:hover::before {
+    left: 0;
+}
+
+.class-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-light);
+}
+
+.class-desc {
+    font-size: 1em;
+    color: var(--text-dark);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Help Icon */
+.help-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 2em;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+    animation: float 1.5s infinite ease-in-out;
+}
+
+.help-icon:hover {
+    transform: scale(1.2);
+}
+
+.ripple {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleEffect 0.6s ease-out;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
