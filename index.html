@@ -1,7 +1,7 @@
-<!-- 
-* Login Page
+<!--
+* Welcome Page
 *
-* First page users encounter where they can either login or sign up with their McMaster emails
+* Welcome page for new users, first page upon opening the website
 -->
 
 <!DOCTYPE html>
@@ -9,68 +9,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Login | MacNotes</title>
+    <title>University Note-Sharing Platform</title>
+    <link rel="stylesheet" href="css/welcomePageStyle.css" />
+    <script src="js/welcome.js" defer></script>
   </head>
-
   <body>
-    <div class="container" id="container">
-      <div id="title-container" class="title-primary">
-        <h1>MacNotes</h1>
-      </div>
-      <div class="form-container signup-container">
-        <form>
-          <h1>Create Account</h1>
-          <div class="form-group">
-            <input type="text" placeholder="Enter your full name" />
-          </div>
-          <div class="form-group">
-            <input type="email" placeholder="Enter your McMaster email" />
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Enter your password" />
-          </div>
-          <button>SIGN UP</button>
-        </form>
-      </div>
-      <div class="form-container signin-container">
-        <form>
-          <h1>Log in</h1>
-          <div class="form-group">
-            <input type="email" placeholder="Enter your McMaster email" />
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Enter your password" />
-          </div>
-          <a href="#" class="forgot-password">Forgot your password?</a>
-          <button>LOG IN</button>
-        </form>
-      </div>
-      <div class="overlay-container" id="overlayContainer">
-        <div class="overlay-wrapper">
-          <div class="overlay-panel overlay-panel-left">
-            <h1>Welcome Back!</h1>
-            <p>
-              To keep connected with us please login with your McMaster info
-            </p>
-          </div>
-          <div>
-            <button>LOG IN</button>
-          </div>
-          <div class="overlay-panel overlay-panel-right">
-            <h1>Hello, Classmate!</h1>
-            <p>Enter your McMaster info and start journey with us</p>
-            <button value="SIGN UP"></button>
-          </div>
-        </div>
-        <button id="overlayBtn"></button>
-      </div>
-    </div>
+    <header>
+      <nav>
+        <div class="logo">MacHub</div>
+        <ul>
+          <li><a href="#features">Why Us?</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="login.html" class="btn">Get Started</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <script src="js/login.js"></script>
+    <section class="hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Access & Share University Notes Seamlessly</h1>
+        <p>
+          Join thousands of students in simplifying learning through
+          collaboration.
+        </p>
+        <a href="login.html" class="btn">Get Started</a>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <h2>Why Use This Platform?</h2>
+      <div class="feature-grid">
+        <div class="feature-item">📚 Easy Access to Notes</div>
+        <div class="feature-item">🤝 Connect with Peers</div>
+        <div class="feature-item">🔍 Advanced Search</div>
+        <div class="feature-item">📈 Track Your Learning</div>
+      </div>
+    </section>
+
+    <section id="courses" class="courses">
+      <h2>Popular Courses & Resources</h2>
+      <div class="carousel">
+        <button class="prev">&#10094;</button>
+        <div class="carousel-container">
+          <div class="carousel-item">Math 101 Notes</div>
+          <div class="carousel-item">Physics Study Guides</div>
+          <div class="carousel-item">Chemistry Lab Reports</div>
+        </div>
+        <button class="next">&#10095;</button>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <h2>What Our Users Say</h2>
+      <div class="testimonial">
+        "This platform has transformed my study habits!" - Student A
+      </div>
+      <div class="testimonial">
+        "A must-have for every university student." - Student B
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 MacHub. All rights reserved.</p>
+      <ul>
+        <li>
+          <a href="https://cs1xd3.cas.mcmaster.ca/~kamals19/team/index.html"
+            >About Us</a
+          >
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="github.com">Git Hub</a></li>
+      </ul>
+    </footer>
   </body>
 </html>

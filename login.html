@@ -1,0 +1,76 @@
+<!-- 
+* Login Page
+*
+* First page users encounter where they can either login or sign up with their McMaster emails
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Login | MacHub</title>
+  </head>
+
+  <body>
+    <div class="container" id="container">
+      <div id="title-container" class="title-primary">
+        <h1>MacHub</h1>
+      </div>
+      <div class="form-container signup-container">
+        <form>
+          <h1>Create Account</h1>
+          <div class="form-group">
+            <input type="text" placeholder="Enter your full name" />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Enter your McMaster email" />
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Enter your password" />
+          </div>
+          <button>SIGN UP</button>
+        </form>
+      </div>
+      <div class="form-container signin-container">
+        <form>
+          <h1>Log in</h1>
+          <div class="form-group">
+            <input type="email" placeholder="Enter your McMaster email" />
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Enter your password" />
+          </div>
+          <a href="#" class="forgot-password">Forgot your password?</a>
+          <button>LOG IN</button>
+        </form>
+      </div>
+      <div class="overlay-container" id="overlayContainer">
+        <div class="overlay-wrapper">
+          <div class="overlay-panel overlay-panel-left">
+            <h1>Welcome Back!</h1>
+            <p>
+              To keep connected with us please login with your McMaster info
+            </p>
+          </div>
+          <div>
+            <button>LOG IN</button>
+          </div>
+          <div class="overlay-panel overlay-panel-right">
+            <h1>Hello, Classmate!</h1>
+            <p>Enter your McMaster info and start journey with us</p>
+            <button value="SIGN UP"></button>
+          </div>
+        </div>
+        <button id="overlayBtn"></button>
+      </div>
+    </div>
+
+    <script src="js/login.js"></script>
+  </body>
+</html>
