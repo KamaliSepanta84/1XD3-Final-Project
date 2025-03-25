@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warning</title>
     <style>
+        /* Color Variables */
+        :root {
+            --primary-color: #205781;
+            --text-dark: #0f172a;
+            --text-light: #205781;
+            --extra-light: #f8fafc;
+            --white: #ffffff;
+        }
+
         /* Background Styling */
         body {
             margin: 0;
@@ -29,7 +38,7 @@
 
         /* Title */
         h1 {
-            color: #800000;
+            color: var(--primary-color);
             font-size: 2.2em;
             font-family: 'Poppins', sans-serif;
             font-weight: bold;
@@ -40,7 +49,7 @@
         /* Description */
         p {
             font-size: 1.1em;
-            color: #444;
+            color: var(--text-dark);
             font-family: 'Nunito', sans-serif;
             margin-bottom: 25px;
             line-height: 1.5;
@@ -48,8 +57,8 @@
 
         /* Button */
         .btn {
-            background: #800000;
-            color: white;
+            background: var(--primary-color);
+            color: var(--white);
             padding: 12px 28px;
             border: none;
             font-size: 1.1em;
@@ -58,12 +67,12 @@
             transition: all 0.3s ease-in-out;
             font-weight: bold;
             text-transform: uppercase;
-            box-shadow: 0 4px 12px rgba(128, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(32, 87, 129, 0.3);
         }
 
         /* Button Hover */
         .btn:hover {
-            background: #a52a2a;
+            background: #0f172a;
             transform: scale(1.05);
         }
 
