@@ -3,37 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/loginPage.css" />
-    <title>MacNotes | Login Page</title>
+    <title>Login | MacNotes</title>
   </head>
   <body>
     <div class="container" id="container">
-      <div id="login-signup-title-container" class="title-primary">
-        <h1>MacNotes&copy;</h1>
+      <div id="title-container" class="title-primary">
+        <h1>MacNotes</h1>
       </div>
       <div class="form-container signup-container">
         <form>
           <h1>Create Account</h1>
           <div class="form-group">
-            <input type="text" placeholder="Name" />
+            <input type="text" placeholder="Enter your full name" />
           </div>
           <div class="form-group">
-            <input type="email" placeholder="Email" />
+            <input type="email" placeholder="Enter your McMaster email" />
           </div>
           <div class="form-group">
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Enter your password" />
           </div>
           <button>SIGN UP</button>
         </form>
       </div>
       <div class="form-container signin-container">
         <form>
-          <h1>Sign in</h1>
+          <h1>Sign In</h1>
           <div class="form-group">
-            <input type="email" placeholder="Email" />
+            <input type="email" placeholder="Enter your McMaster email" />
           </div>
           <div class="form-group">
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Enter your password" />
           </div>
           <a href="#" class="forgot-password">Forgot your password?</a>
           <button>SIGN IN</button>
@@ -44,20 +48,20 @@
           <div class="overlay-panel overlay-panel-left">
             <h1>Welcome Back!</h1>
             <p>
-              To keep connected with us please login with your personal info
+              To keep connected with us please login with your McMaster info
             </p>
-            <button>SIGN IN</button>
-          </div>
+            <button id="overlay-btn-signin">SIGN IN</button>
+          </div> 
           <div class="overlay-panel overlay-panel-right">
-            <h1>Hello, Friend!</h1>
-            <p>Enter your personal details and start journey with us</p>
-            <button>SIGN UP</button>
+            <h1>Hello, Classmate!</h1>
+            <p>Enter your McMaster info and start journey with us</p>
+            <button id="overlay-btn-signup">SIGN UP</button>
           </div>
         </div>
-        <button id="overlayBtn"></button>
+        <!-- <button id="overlayBtn"></button> -->
       </div>
     </div>
-  
-  <script src="js/login.js"></script>
+
+    <script src="js/login.js"></script>
   </body>
 </html>

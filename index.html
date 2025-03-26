@@ -1,87 +1,140 @@
-<!--
-* Welcome Page
-*
-* Welcome page for new users, first page upon opening the website
--->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>University Note-Sharing Platform</title>
-    <link rel="stylesheet" href="css/welcomePageStyle.css" />
-    <script src="js/welcome.js" defer></script>
+    <title>MacNotes | Homepage</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/homestyle.css" />
   </head>
   <body>
-    <header>
-      <nav>
-        <div class="logo">MacNotes</div>
-        <ul>
-          <li><a href="#features">Why Us?</a></li>
-          <li><a href="#courses">Courses</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="login.html" class="btn">Get Started</a></li>
-        </ul>
+    <!-- Navigation/Header -->
+    <header class="header">
+      <div class="logo">
+        <h1>MacNotes</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="login.html" class="btn-login">Login / Sign Up</a>
       </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-      <div class="overlay"></div>
-      <div class="hero-content">
-        <h1>Access & Share University Notes Seamlessly</h1>
-        <p>
-          Join thousands of students in simplifying learning through
-          collaboration.
-        </p>
-        <a href="login.html" class="btn">Get Started</a>
+      <div class="hero-overlay">
+        <div class="hero-content">
+            <section class="macnotes-title">
+                <h1 class="main-text">MACNOTES</h1>
+            </section>
+            <div class="button-overlay">
+                <a href="login.html" class="btn btn-primary">Get Started</a>
+            </div>
       </div>
     </section>
 
-    <section id="features" class="features">
-      <h2>Why Use This Platform?</h2>
-      <div class="feature-grid">
-        <div class="feature-item">📚 Easy Access to Notes</div>
-        <div class="feature-item">🤝 Connect with Peers</div>
-        <div class="feature-item">🔍 Advanced Search</div>
-        <div class="feature-item">📈 Track Your Learning</div>
-      </div>
-    </section>
-
-    <section id="courses" class="courses">
-      <h2>Popular Courses & Resources</h2>
-      <div class="carousel">
-        <button class="prev">&#10094;</button>
-        <div class="carousel-container">
-          <div class="carousel-item">Math 101 Notes</div>
-          <div class="carousel-item">Physics Study Guides</div>
-          <div class="carousel-item">Chemistry Lab Reports</div>
+    <!-- Why Use This Platform? (Features) -->
+    <section class="features-section">
+      <h2>Why Use MacNotes?</h2>
+      <div class="features-container">
+        <!-- Feature 1 -->
+        <div class="feature-box">
+          <i class="ri-file-list-3-line"></i>
+          <h3>Organized Resources</h3>
+          <p>Access a wide range of student-shared notes, assignments, and study guides.</p>
         </div>
-        <button class="next">&#10095;</button>
+        <!-- Feature 2 -->
+        <div class="feature-box">
+          <i class="ri-star-line"></i>
+          <h3>Rating System</h3>
+          <p>Easily find the highest-rated notes to speed up your learning process.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="feature-box">
+          <i class="ri-user-smile-line"></i>
+          <h3>Community Driven</h3>
+          <p>Share your own notes and help classmates succeed while building your reputation.</p>
+        </div>
       </div>
     </section>
 
-    <section id="testimonials" class="testimonials">
-      <h2>What Our Users Say</h2>
-      <div class="testimonial">
-        "This platform has transformed my study habits!" - Student A
+    <!-- Popular Courses & Resources (Carousel Placeholder) -->
+    <section class="popular-courses">
+        <input type="radio" name="position" />
+        <input type="radio" name="position" />
+        <input type="radio" name="position"  checked />
+        <input type="radio" name="position" />
+        <input type="radio" name="position" />
+        <main id="carousel">
+            <div class="item"></div>
+                <h3 class="carosel-text">Course 1</h3>
+                <p class="carosel-description">hi</p>
+            <div class="item"></div>
+                <h3 class="carosel-text">Course 2</h3>
+                <p class="carosel-description">hi</p>
+            <div class="item"></div>
+                <h3 class="carosel-text">Course 3</h3>
+                <p class="carosel-description">hi</p>
+            <div class="item"></div>
+                <h3 class="carosel-text">Course 4</h3>
+                <p class="carosel-description">hi</p>
+            <div class="item"></div> 
+                <h3 class="carosel-text">Course 5</h3>
+                <p class="carosel-description">hi</p>
+        </main>
+        
+    </section>
+
+    <!-- Testimonials & Statistics -->
+    <section class="testimonials-stats">
+      <h2>What Our Classmates Say</h2>
+      <div class="testimonials-container">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-box">
+          <p>
+            “MacNotes saved me hours of studying! The rating system helped me
+            find the best resources in seconds.”
+          </p>
+          <span>- Student A</span>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="testimonial-box">
+          <p>
+            “Sharing my notes has been rewarding. I love seeing how many people
+            found them helpful!”
+          </p>
+          <span>- Student B</span>
+        </div>
       </div>
-      <div class="testimonial">
-        "A must-have for every university student." - Student B
+
+      <div class="stats-container">
+        <div class="stat-box">
+          <h3>10k+</h3>
+          <p>Downloads</p>
+        </div>
+        <div class="stat-box">
+          <h3>5k+</h3>
+          <p>Uploaded Notes</p>
+        </div>
+        <div class="stat-box">
+          <h3>500+</h3>
+          <p>Active Courses</p>
+        </div>
       </div>
     </section>
 
-    <footer>
-      <p>&copy; 2025 MacHub. All rights reserved.</p>
-      <ul>
-        <li>
-          <a href="https://cs1xd3.cas.mcmaster.ca/~kamals19/team/index.html"
-            >About Us</a
-          >
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="github.com">Git Hub</a></li>
-      </ul>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      <p>&copy; 2025 MacNotes. All rights reserved.</p>
     </footer>
+
+    <!-- Optional JS for Interactivity (e.g., Carousel) -->
+    <script src="js/home.js"></script>
   </body>
 </html>
