@@ -1,0 +1,131 @@
+/* My Files Page Styles */
+/* Main content styles*/
+.myfiles-page {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  background-color: var(--extra-light);
+}
+
+.file-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.file-controls input[type="text"] {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 2rem;
+  font-size: 1rem;
+  outline: none;
+  margin-right: 1rem;
+}
+
+.file-controls select {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 2rem;
+  font-size: 1rem;
+  outline: none;
+  background-color: var(--white);
+}
+
+.downloaded-controls input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 2rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.files-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.files-section {
+  flex: 1;
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.files-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.file-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.file-card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.file-info .rating,
+.file-info .downloads {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.file-info i {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.view-btn,
+.download-again-btn {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.view-btn:hover,
+.download-again-btn:hover {
+  transform: translateY(-2px);
+  background-color: var(--primary-color-dark);
+}
+
+.no-results {
+  display: none;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--primary-color-dark);
+  margin-top: 1rem;
+}
+
+.no-results.visible {
+  display: block;
+}
+
+.metadata-form button[type="submit"][disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

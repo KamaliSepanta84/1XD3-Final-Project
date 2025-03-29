@@ -1,34 +1,33 @@
-
-/* Global Styles */
+/*Home Page Styles*/
+/* Global Styles (For all Pages)*/
 :root {
-    --primary-color: #205781;
-    --text-dark: #0f172a;
-    --text-light: #205781;
-    --extra-light: #f8fafc;
-    --white: #ffffff;
-    --primary-color-dark: #1C4E70; 
-    --primary-color-light: #2A6FA3; 
-  }
+  --primary-color: #205781;
+  --text-dark: #0f172a;
+  --text-light: #205781;
+  --extra-light: #f8fafc;
+  --white: #ffffff;
+  --primary-color-dark: #1C4E70;
+  --primary-color-light: #2A6FA3;
+}
 
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Poppins", sans-serif;
-  }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-/*Header*/
+body {
+  font-family: "Poppins", sans-serif;
+}
 
-  .header {
+/*Header (For all Pages)*/
+.header {
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--white);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo h1 {
@@ -57,13 +56,13 @@
 
 .hero {
   position: relative;
-  height: 80vh; 
+  height: 80vh;
   background: url("../images/DALL·E\ 2025-03-25\ 22.54.12\ -\ A\ digital\ wallpaper\ for\ a\ note-sharing\ app\ in\ landscape\ format.\ Centerpiece\ shows\ a\ stylized\ open\ notebook\ interface\ with\ animated\ arrows\ connecting\ i.webp") center/cover no-repeat;
 }
 
 .hero-overlay {
   height: 100%;
-  background-color: rgba(32, 87, 129, 0.3); 
+  background-color: rgba(32, 87, 129, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,7 +80,8 @@
   border-radius: 2rem;
   cursor: pointer;
   font-size: 1rem;
-  text-decoration: none;;
+  text-decoration: none;
+  ;
 }
 
 .btn-primary {
@@ -91,7 +91,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #144b6a; 
+  background-color: #144b6a;
 }
 
 .macnotes-title {
@@ -143,9 +143,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -166,7 +168,7 @@
   text-decoration: none;
   display: inline-block;
   transition: all 0.3s ease;
-  border: 2px solid var(--primary-color); /* Added border */
+  border: 2px solid var(--primary-color);
 }
 
 .btn-primary:hover {
@@ -201,7 +203,7 @@
   border-radius: 8px;
   padding: 2rem;
   width: 250px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .feature-box i {
@@ -230,92 +232,83 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Popular Courses & Resources */
+/* Carosel */
+.featured-trending {
+  margin-bottom: 2rem;
+}
 
-.popular-courses {
-  padding: 3rem 2rem;
+.featured-trending h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.carousel {
+  position: relative;
+  max-width: 600px;
+  margin: 40px auto;
+  overflow: hidden;
+  background: var(--extra-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.carousel-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+  padding: 20px;
   text-align: center;
 }
 
-.popular-courses h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: var(--primary-color);
-}
-
-.carousel-container {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.course-item {
-  background-color: var(--extra-light);
-  padding: 2rem;
-  min-width: 200px;
+.card {
+  border: 1px solid var(--primary-color-light);
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  font-weight: 500;
+  padding: 20px;
+  background-color: var(--white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 24px;
+  font-weight: bold;
   color: var(--text-dark);
 }
 
-.course-item {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.course-item:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.carousel-wrapper {
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  max-width: 1000px; /* Adjust as needed */
-}
-
-.carousel-container {
-  display: flex;
-  gap: 1rem;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-  padding: 1rem;
-  /* Hide scrollbar on Webkit browsers */
-  -webkit-overflow-scrolling: touch;
-}
-
-.carousel-container::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel-button {
+.prev,
+.next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background-color: var(--primary-color);
   color: var(--white);
   border: none;
-  padding: 0.5rem 1rem;
-  font-size: 2rem;
+  padding: 10px;
   cursor: pointer;
+  font-size: 18px;
   border-radius: 50%;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-  z-index: 2;
+  width: 40px;
+  height: 40px;
 }
 
-.carousel-button:hover {
-  opacity: 1;
+.prev {
+  left: 10px;
 }
 
-.carousel-button.prev {
-  left: 0.5rem;
+.next {
+  right: 10px;
 }
 
-.carousel-button.next {
-  right: 0.5rem;
+.prev:hover,
+.next:hover {
+  background-color: var(--primary-color-dark);
 }
 
 /* Testimonials & Stats */
@@ -345,7 +338,7 @@
   border-radius: 8px;
   padding: 1.5rem;
   width: 300px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-box p {
@@ -379,7 +372,7 @@
   border-radius: 8px;
   padding: 1.5rem;
   width: 150px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .stat-box h3 {
@@ -401,7 +394,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Footer */
+/* Footer (For all Pages)*/
 
 .footer {
   background-color: var(--extra-light);
@@ -424,5 +417,3 @@
   font-size: 0.9rem;
   color: var(--text-dark);
 }
-
-

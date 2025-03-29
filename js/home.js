@@ -1,36 +1,28 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const items = document.querySelectorAll('.carousel-item');
-    const prevButton = document.querySelector('.carousel-controls .prev');
-    const nextButton = document.querySelector('.carousel-controls .next');
-    
+//HOME PAGE JS
+document.addEventListener("DOMContentLoaded", () => {
+    // CAROSEL CODE
+    //Set DOM elements and variables
+    let slides = document.querySelector('.slides');
+    let slideElements = document.querySelectorAll('.slide');
+    let totalSlides = slideElements.length;
     let currentIndex = 0;
-    const totalItems = items.length;
-    const intervalTime = 5000; // Auto-rotate every 5 seconds
-    
-    function showItem(index) {
-      items.forEach((item, i) => {
-        if (i === index) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
+    // Set the width of the slides container
+    function updateCarousel() {
+      slides.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
     }
-    
-    prevButton.addEventListener('click', function() {
-      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-      showItem(currentIndex);
+    // Next button
+    document.querySelector('.next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
     });
-    
-    nextButton.addEventListener('click', function() {
-      currentIndex = (currentIndex + 1) % totalItems;
-      showItem(currentIndex);
+    // Prev button
+    document.querySelector('.prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateCarousel();
     });
-    
-    // Auto-rotate the carousel
-    setInterval(function() {
-      currentIndex = (currentIndex + 1) % totalItems;
-      showItem(currentIndex);
-    }, intervalTime);
+    // Auto-play
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    }, 4000);
   });
-  

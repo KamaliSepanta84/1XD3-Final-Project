@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MacNotes | Upload</title>
+  <!--Icon Pack Link-->
+  <!-- Note that all elements <i> are icon elements-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+  <!--Stylesheet + Scipts-->
+  <link rel="stylesheet" href="css/homestyle.css" />
+  <link rel="stylesheet" href="css/upload.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="js/upload.js"></script>
+  <script src="js/settings.js"></script>
+</head>
+
+<body>
+  <!--Header-->
+  <header class="header">
+    <div class="logo">
+      <h1>MacNotes</h1>
+    </div>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">
+          <i class="ri-settings-3-line"></i>
+        </button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="help.html">Help/FAQ</a>
+          <a href="admin.html">Admin Login</a>
+          <a href="#">Other Settings</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!--Containter-->
+  <section class="upload-page">
+    <!--Sidebar-->
+    <aside class="sidebar">
+      <ul>
+        <li>
+          <a href="dashboard.html">
+            <i class="ri-dashboard-line"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="upload.html" class="active">
+            <i class="ri-upload-cloud-2-line"></i> Upload
+          </a>
+        </li>
+        <li>
+          <a href="myfiles.html">
+            <i class="ri-folder-line"></i> My Files
+          </a>
+        </li>
+        <li>
+          <a href="searchpage.html">
+            <i class="ri-search-line"></i> Search
+          </a>
+        </li>
+        <li>
+          <a href="logout.html">
+            <i class="ri-logout-box-r-line"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <!--Main Content-->
+    <div class="upload-content">
+      <h2>Upload Your Notes & Resources</h2>
+      <div class="drag-drop-area" id="dragDropArea">
+        <p>Drag & Drop your file here, or <span>browse</span></p>
+        <input type="file" id="fileInput" hidden />
+      </div>
+      <div class="upload-progress" id="uploadProgress">
+        <div class="progress-bar" id="progressBar" style="width: 0;"></div>
+      </div>
+      <form class="metadata-form" id="metadataForm">
+        <div class="form-group">
+          <label for="titleInput">Title</label>
+          <input type="text" id="titleInput" placeholder="Enter title" required />
+          <div id="titleFeedback" class="feedback-message"></div>
+        </div>
+        <div class="form-group">
+          <label for="descriptionInput">Description</label>
+          <textarea id="descriptionInput" rows="3" placeholder="Short description..."></textarea>
+          <div id="descFeedback" class="feedback-message"></div>
+        </div>
+        <div class="form-group">
+          <label for="tagsInput">Tags</label>
+          <input type="text" id="tagsInput" placeholder="e.g., Math, Lecture Notes" />
+          <div id="tagsFeedback" class="feedback-message"></div>
+        </div>
+        <div class="form-group">
+          <label for="subjectInput">Subject</label>
+          <input type="text" id="subjectInput" placeholder="e.g., Calculus" />
+          <div id="subjectFeedback" class="feedback-message"></div>
+        </div>
+        <div class="form-group">
+          <label for="courseInput">Course Code</label>
+          <input type="text" id="courseInput" placeholder="e.g., MATH 101" />
+          <div id="courseFeedback" class="feedback-message"></div>
+        </div>
+        <button class="btn btn-primary" type="submit">Upload</button>
+      </form>
+    </div>
+  </section>
+  <!--Footer-->
+  <footer class="footer" style="background-color: var(--primary-color-dark);">
+    <div class="footer-links">
+      <a href="#" style="color: var(--white);">About Us</a>
+      <a href="#" style="color: var(--white);">Contact</a>
+      <a href="#" style="color: var(--white);">Privacy Policy</a>
+    </div>
+    <p style="color: var(--white);">&copy; 2025 MacNotes. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

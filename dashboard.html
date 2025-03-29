@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>MacNotes | Dashboard</title>
+  <!--Icon Pack Link-->
+  <!-- Note that all elements <i> are icon elements-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+  <!--Stylesheet + Scipts-->
+  <link rel="stylesheet" href="css/homestyle.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="js/dashboard.js"></script>
+  <script src="js/settings.js"></script>
+</head>
+
+<body>
+  <!--Header-->
+  <header class="header">
+    <div class="logo">
+      <h1>MacNotes</h1>
+    </div>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">
+          <i class="ri-settings-3-line"></i>
+        </button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="help.html">Help/FAQ</a>
+          <a href="admin.html">Admin Login</a>
+          <a href="#">Other Settings</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!--Containter-->
+  <div class="dashboard-container">
+    <!--Sidebar-->
+    <aside class="sidebar">
+      <ul>
+        <li>
+          <a href="dashboard.html" class="active">
+            <i class="ri-dashboard-line"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="upload.html">
+            <i class="ri-upload-cloud-2-line"></i> Upload
+          </a>
+        </li>
+        <li>
+          <a href="myfiles.html">
+            <i class="ri-folder-line"></i> My Files
+          </a>
+        </li>
+        <li>
+          <a href="searchpage.html">
+            <i class="ri-search-line"></i> Search
+          </a>
+        </li>
+        <li>
+          <a href="index.html">
+            <i class="ri-logout-box-r-line"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <!--Main Content-->
+    <main class="main-content">
+      <section class="welcome-section">
+        <h2>Welcome, [Username]!</h2>
+        <p>Here’s a quick overview of your recent activity and available resources.</p>
+      </section>
+
+      <section class="dashboard-overview">
+        <h3>Dashboard Overview</h3>
+        <div class="overview-cards">
+          <div class="overview-card">
+            <i class="ri-upload-cloud-2-line overview-icon"></i>
+            <h4>Total Uploads</h4>
+            <p>15</p>
+          </div>
+          <div class="overview-card">
+            <i class="ri-download-cloud-2-line overview-icon"></i>
+            <h4>Total Downloads</h4>
+            <p>32</p>
+          </div>
+          <div class="overview-card">
+            <i class="ri-star-line overview-icon"></i>
+            <h4>Reputation</h4>
+            <p>120</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-bar">
+        <input type="text" placeholder="Search for courses, notes..." />
+        <button class="btn btn-primary">
+          <i class="ri-search-line"></i> Search
+        </button>
+      </section>
+
+      <section class="featured-trending">
+        <h3>Featured & Trending Resources</h3>
+        <div class="carousel multi-item-carousel">
+          <div class="slides">
+            <div class="slide">
+              <div class="card">Resource 1</div>
+            </div>
+            <div class="slide">
+              <div class="card">Resource 2</div>
+            </div>
+            <div class="slide">
+              <div class="card">Resource 3</div>
+            </div>
+            <div class="slide">
+              <div class="card">Resource 4</div>
+            </div>
+            <div class="slide">
+              <div class="card">Resource 5</div>
+            </div>
+            <div class="slide">
+              <div class="card">Resource 6</div>
+            </div>
+            <div class="slide">
+              <div class="card">Resource 7</div>
+            </div>
+            <div class="slide">
+              <div class="card">Resource 8</div>
+            </div>
+            <div class="slide">
+              <div class="card">Resource 9</div>
+            </div>
+          </div>
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
+        </div>
+      </section>
+
+      <div class="dropdown-band">
+        <button class="toggle-panel" data-target="notifications">
+          <i class="ri-notification-line"></i>
+          <span>Notifications</span>
+        </button>
+        <button class="toggle-panel" data-target="activity">
+          <i class="ri-timer-flash-line"></i>
+          <span>Live Activity</span>
+        </button>
+      </div>
+
+      <div class="dropdown-panels">
+        <div class="dropdown-panel notifications">
+          <h3>Notifications</h3>
+          <ul>
+            <li>New note uploaded by Student A</li>
+            <li>New rating on your note</li>
+            <li>Student B commented on your upload</li>
+          </ul>
+        </div>
+        <div class="dropdown-panel activity">
+          <h3>Live Activity</h3>
+          <ul>
+            <li>Student C just uploaded a note</li>
+            <li>New file downloaded: Math 101</li>
+            <li>Student D commented on a resource</li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <!--Footer-->
+  <footer class="footer" style="background-color: var(--primary-color-dark);"">
+            <div class=" footer-links">
+    <a href="#" style="color: var(--white)">About Us</a>
+    <a href="#" style="color: var(--white)">Contact</a>
+    <a href="#" style="color: var(--white)">Privacy Policy</a>
+    </div>
+    <p style="color: var(--white)">&copy; 2025 MacNotes. All rights reserved.</p>
+  </footer>
+  </main>
+  </div>
+</body>
+
+</html>

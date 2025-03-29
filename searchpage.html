@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MacNotes | Browse & Search</title>
+  <!--Icon Pack Link-->
+  <!-- Note that all elements <i> are icon elements-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+  <!--Stylesheet + Scipts-->
+  <link rel="stylesheet" href="css/homestyle.css" />
+  <link rel="stylesheet" href="css/search.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="js/search.js"></script>
+  <script src="js/settings.js"></script>
+</head>
+
+<body>
+  <!--Header-->
+  <header class="header">
+    <div class="logo">
+      <h1>MacNotes</h1>
+    </div>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">
+          <i class="ri-settings-3-line"></i>
+        </button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="help.html">Help/FAQ</a>
+          <a href="admin.html">Admin Login</a>
+          <a href="#">Other Settings</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!--Containter-->
+  <section class="search-page">
+    <!--Sidebar-->
+    <aside class="sidebar">
+      <ul>
+        <li>
+          <a href="dashboard.html">
+            <i class="ri-dashboard-line"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="upload.html">
+            <i class="ri-upload-cloud-2-line"></i> Upload
+          </a>
+        </li>
+        <li>
+          <a href="myfiles.html">
+            <i class="ri-folder-line"></i> My Files
+          </a>
+        </li>
+        <li>
+          <a href="searchpage.html" class="active">
+            <i class="ri-search-line"></i> Search
+          </a>
+        </li>
+        <li>
+          <a href="logout.html">
+            <i class="ri-logout-box-r-line"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <!--Search Sidebar-->
+    <aside class="search-sidebar">
+      <h2><i class="ri-filter-3-line"></i> Filters</h2>
+      <div class="filter-group">
+        <label for="sortSelect">
+          <i class="ri-sort-asc"></i> Sort By:
+        </label>
+        <select id="sortSelect">
+          <option value="most-downloaded">Most Downloaded</option>
+          <option value="newest">Newest</option>
+          <option value="highest-rated">Highest Rated</option>
+          <option value="add-more">Add More</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>
+          <i class="ri-list-check"></i> Category:
+        </label>
+        <ul class="filter-list">
+          <li>
+            <input type="checkbox" id="notes" />
+            <label for="notes">Notes</label>
+          </li>
+          <li>
+            <input type="checkbox" id="assignments" />
+            <label for="assignments">Assignments</label>
+          </li>
+          <li>
+            <input type="checkbox" id="exams" />
+            <label for="exams">Exams</label>
+          </li>
+          <li>
+            <input type="checkbox" id="another" />
+            <label for="another">Add More</label>
+          </li>
+        </ul>
+      </div>
+      <div class="filter-group">
+        <label for="courseInput">
+          <i class="ri-book-2-line"></i> Course Code:
+        </label>
+        <input type="text" id="courseInput" placeholder="e.g., MATH 101" />
+      </div>
+      <button class="btn btn-primary apply-filters">Apply Filters</button>
+    </aside>
+    <!--Main Content-->
+    <div class="search-content">
+      <section class="search-bar">
+        <input type="text" class="search-input" placeholder="Search for courses, notes..." />
+        <button class="btn btn-primary search-btn">
+          <i class="ri-search-line"></i> Search
+        </button>
+      </section>
+
+      <div class="view-controls">
+        <button class="view-toggle active" id="gridView">
+          <i class="ri-grid-fill"></i> Grid
+        </button>
+        <button class="view-toggle" id="listView">
+          <i class="ri-list-check"></i> List
+        </button>
+      </div>
+      <!--Results Container + List (Add more as you pls for search results)-->
+      <div class="results-container grid-view">
+        <div class="result-card">
+          <h3>Course Title / Note Name</h3>
+          <p>
+            Brief description about the note or resource. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <div class="result-info">
+            <span class="rating">
+              <i class="ri-star-fill"></i> 4.5
+            </span>
+            <span class="downloads">
+              <i class="ri-download-2-line"></i> (1,234)
+            </span>
+          </div>
+          <button class="btn btn-primary">Download</button>
+        </div>
+        <div class="result-card">
+          <h3>Course Title / Note Name</h3>
+          <p>
+            Brief description about the note or resource. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <div class="result-info">
+            <span class="rating">
+              <i class="ri-star-fill"></i> 4.5
+            </span>
+            <span class="downloads">
+              <i class="ri-download-2-line"></i> (1,234)
+            </span>
+          </div>
+          <button class="btn btn-primary">Download</button>
+        </div>
+        <!-- More result cards as needed -->
+      </div>
+    </div>
+  </section>
+  <!--Footer-->
+  <footer class="footer" style="background-color: var(--primary-color-dark); color: var(--white);">
+    <div class="footer-links">
+      <a href="#" style="color: var(--white);">About Us</a>
+      <a href="#" style="color: var(--white);">Contact</a>
+      <a href="#" style="color: var(--white);">Privacy Policy</a>
+    </div>
+    <p style="color: var(--white);">&copy; 2025 MacNotes. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
