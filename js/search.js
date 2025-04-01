@@ -32,10 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then((response) => response.json()) // Parse the JSON response
       .then((data) => {
+        console.log(data);
         for (let row of data) {
           // data is a list of objects and each objecrt is a row from the database
           let testDiv = document.createElement("div");
-          testDiv.innerHTML = row.firstname;
+          testDiv.innerHTML = row;
           resultsContainer.appendChild(testDiv);
           // example of formatting to put on the div,
         }

@@ -2,7 +2,7 @@
 include "connect.php";
 
 // Grab the search query safely
-$query = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_STRING);
+$query = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
 
 // Check if query is valid
 if ($query === false || $query === null) {
@@ -12,7 +12,7 @@ if ($query === false || $query === null) {
 
 try {
     // Prepare the SQL command with proper LIKE syntax
-    $cmd = "SELECT * FROM grades WHERE firstname LIKE ?";
+    $cmd = "SELECT * FROM mfiles WHERE filename LIKE ?";
     $stmt = $dbh->prepare($cmd);
 
     // Bind the query with wildcard characters for pattern matching
@@ -30,6 +30,6 @@ try {
     // Return JSON response
     echo json_encode($results);
 } catch (Exception $e) {
-    echo json_encode(["error" => "Something went wrong"]);
+    echo json_encode(["error" => "Something went wrong!"]);
 }
 ?>
