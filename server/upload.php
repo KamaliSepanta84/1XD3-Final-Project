@@ -1,6 +1,6 @@
 <?php
 // Include the separate database connection file
-include 'connect.php'; 
+include './connect.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if a file was uploaded without errors

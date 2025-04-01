@@ -1,6 +1,6 @@
 <?php
 // Include the database connection file
-include "connect.php";
+include "./connect.php";
 
 // Fetch the uploaded files from the database using PDO
 $command = "SELECT * FROM mfiles";
