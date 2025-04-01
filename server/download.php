@@ -38,7 +38,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 // Display the uploaded files and download links
                 if (count($result) > 0) {
                     foreach ($result as $row) {
-                        $file_path = "uploads/" . $row['filename'];
+                        $file_path = "./server/uploads/" . $row['filename'];
                         ?>
                         <tr>
                             <td><?php echo htmlspecialchars($row['filename']); ?></td>
