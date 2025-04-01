@@ -1,0 +1,73 @@
+let c = document.getElementById("testCanvas");
+let ctx = c.getContext("2d");
+
+Colors:
+    ctx.fillStyle = "red";
+        - makes any fill attribute red
+        - can be any css color
+    ctx.strokeStyle = "black";
+        - makes any strok attribute red
+        - can be any css color
+    ctx.fill();
+        - fills the shape
+    ctx.stroke():
+        - fills the border
+Drawings:
+    Rectangle:
+        ctx.fillRect(x,y,w,h);
+            - draws a rectangle x units right from top left, y units down from top right, w and h
+        ctx.strokeRect(0, 0, 200, 50);
+            - draws a rectangle x units right from top left, y units down from top right, w and h
+        ctx.clearRect(x, y, w, h);
+            - erases an area x units right from the top left, y units down from the top right, w and h
+    Polygon:
+        1. before drawing, call ctx.beginPath();
+        2. figure where you want to start the polygon from using ctx.moveTo(x, y);
+        3. place the next vertex with ctx.lineTo(x, y);
+        4. call ctx.closePath() but only after you placed three or more vertexes
+        5. call ctx.stroke() or ctx.fill() to draw the shape
+Text:
+    ctx.font = "FONT_SIZE FONT";
+        - sets font of text 
+        - e.g ctx.font = "24px monospace";
+Circles:
+    ctx.arc(x,y,r,starting angle, ending angle)
+        - angles start at 0 and run clockwise
+        - radians (use Math.PI)
+        - calling ctx.fill after fills the cirlce by connecting the two rays of the angle and filling 
+          in the area, so its like filling in the chord 
+        - to make arc shape, do this: 
+            1. ctx.beginPath();
+            2. ctx.arc(x, y, r, starting angle, ending angle); // makes outline
+            3. ctx.lineTo(x,y); // makes line from ending angle to center
+            4. ctx.lineTo(x + r, y); // makes line from centre to starting angle, making sector 
+               (might have to change to (x, y+r) or (x+r,y+r))
+            5. ctx.closePath();
+            6. ctx.fill();
+Canvas Mouse Input:
+    - information on where the mouse was when the event happened is contained in the event object
+      that is passed to the event listener
+    - event.pageX and event.pageY outputs exact location of mouse click on webpage with (0,0) on top left
+    - this.offsetLeft and this.offsetTop outputs location of canvas with respect to webpage
+    - subtract to get click location on canvas (might have to subtract border width value)
+
+    c.addEventListener("click", function(event) {
+    let x = event.pageX - this.offsetLeft;
+    let y = event.pageY - this.offsetTop;
+    console.log(x+","+y);
+    })
+    - event.ctrlKey, event.altKey, and event.shiftKey will be true if the ctrl, alt, or shift keys 
+      (respectively) were held down when the mouse event happened. Otherwise they will be false.
+Keyboard focus:
+    - "keydown" event fires when key is pressed
+    - "keyup" event fires when key is lifted
+    - keyboard events only triggered on HTML elements that have focus
+    - alternatively, add the event listeners to window object 
+      (inside window.addEventListener("load", function () {})) 
+      because windo object always has focus
+    event.keyCode:
+        - prints ASCII value of key
+    event.key:
+        - prints key
+
+    
