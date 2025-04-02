@@ -1,48 +1,52 @@
 <?php
-// Include the separate database connection file
+header('Content-Type: application/json'); 
 include './connect.php'; 
 
+$response = ["success" => false, "message" => ""];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if a file was uploaded without errors
     if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
-        $target_dir = "uploads/"; // Directory for uploaded files
+        $target_dir = "uploads/";
         $target_file = $target_dir . basename($_FILES["file"]["name"]);
         $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        // Allowed file types
         $allowed_types = ["jpg", "jpeg", "png", "gif", "pdf", "pptx", "zip", "mp3", "docx", "txt"];
         if (!in_array($file_type, $allowed_types)) {
-            echo "Sorry, only specific file types are allowed.";
+            $response["message"] = "Sorry, only specific file types are allowed.";
         } else {
-            // Move the uploaded file to the specified directory
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-                // File upload success, now store information in the database
                 $filename = $_FILES["file"]["name"];
                 $filesize = $_FILES["file"]["size"];
                 $filetype = $_FILES["file"]["type"];
+                $filetitle = $_POST["filetitle"] ?? "";
+                $coursecode = $_POST["coursecode"] ?? "";
+                $description = $_POST["description"] ?? "";
+                $upload_time = date("Y-m-d H:i:s"); 
+
 
                 try {
-                    // Use prepared statements for security
-                    $command = "INSERT INTO mfiles (filename, filesize, filetype) VALUES (:filename, :filesize, :filetype)";
+                    $command = "INSERT INTO mfiles (filename, filetitle, coursecode, filesize, filetype, description, upload_time) VALUES (?, ?, ?, ?, ?, ?, ?)";
                     $stmt = $dbh->prepare($command);
-                    $stmt->bindParam(':filename', $filename);
-                    $stmt->bindParam(':filesize', $filesize);
-                    $stmt->bindParam(':filetype', $filetype);
+                    $args = [$filename, $filetitle, $coursecode, $filesize, $filetype, $description, $upload_time];
+                    $success = $stmt->execute($args);
                     
-                    if ($stmt->execute()) {
-                        echo "The file " . htmlspecialchars(basename($filename)) . " has been uploaded and stored in the database.";
+                    if ($success) {
+                        $response["success"] = true;
+                        $response["message"] = "The file " . htmlspecialchars($filename) . " has been uploaded and stored.";
                     } else {
-                        echo "Sorry, there was an error storing file information in the database.";
+                        $response["message"] = "Database error while storing file information! Please try again later.";
                     }
                 } catch (Exception $e) {
-                    echo "Database error: " . $e->getMessage();
+                    $response["message"] = "Database error: " . $e->getMessage();
                 }
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                $response["message"] = "Error uploading your file.";
             }
         }
     } else {
-        echo "No file was uploaded.";
+        $response["message"] = "No file was uploaded.";
     }
 }
+
+echo json_encode($response);
 ?>

@@ -17,6 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <script src="js/settings.js"></script>
+  <script src="js/upload.js"></script>
 </head>
 
 <body>
@@ -74,48 +75,38 @@
     <div class="upload-content">
       <h2>Upload Your Notes & Resources</h2>
       <div class="drag-drop-area" id="dragDropArea">
-        <div class="container mt-5">
-          <h2>Upload a file</h2>
-          <form action="./server/upload.php" method="POST" enctype="multipart/form-data">
+          <div class="container mt-5">
+            <h2>Upload a file</h2>
             <div class="mb-3">
-              <label for="file" class="form-label">Select file</label>
-              <input type="file" class="form-control" name="file" id = "file">
+                <label for="file" class="form-label">Select file</label>
+                <input type="file" class="form-control" id="file">
             </div>
-            <button type="submit" class="btn btn-primary">Upload file</button>
-          </form>
-        </div>
+          </div>        
       </div>
       <div class="upload-progress" id="uploadProgress">
         <div class="progress-bar" id="progressBar" style="width: 0;"></div>
       </div>
-      <form class="metadata-form" id="metadataForm">
+      <div class="metadata-form">
         <div class="form-group">
           <label for="titleInput">Title</label>
-          <input type="text" id="titleInput" placeholder="Enter title" required />
+          <input type="text" id="titleInput" placeholder="Enter title (max 200 characters)" required />
           <div id="titleFeedback" class="feedback-message"></div>
         </div>
         <div class="form-group">
           <label for="descriptionInput">Description</label>
-          <textarea id="descriptionInput" rows="3" placeholder="Short description..."></textarea>
+          <textarea id="descriptionInput" rows="3" placeholder="Short description... (max 200 characters)"></textarea>
           <div id="descFeedback" class="feedback-message"></div>
         </div>
         <div class="form-group">
-          <label for="tagsInput">Tags</label>
-          <input type="text" id="tagsInput" placeholder="e.g., Math, Lecture Notes" />
-          <div id="tagsFeedback" class="feedback-message"></div>
-        </div>
-        <div class="form-group">
-          <label for="subjectInput">Subject</label>
-          <input type="text" id="subjectInput" placeholder="e.g., Calculus" />
-          <div id="subjectFeedback" class="feedback-message"></div>
-        </div>
-        <div class="form-group">
           <label for="courseInput">Course Code</label>
-          <input type="text" id="courseInput" placeholder="e.g., MATH 101" />
+          <input type="text" id="courseInput" placeholder="e.g., 1MD3 (max 5 characters)" />
           <div id="courseFeedback" class="feedback-message"></div>
         </div>
-        <button class="btn btn-primary" type="submit">Upload</button>
-      </form>
+        <div class="upload-and-result-container">
+          <button id="uploadButton" class="btn btn-primary">Upload file</button>
+          <p id="uploadMessage" style="display: none; font-weight: bold;"></p>
+        </div>
+      </div>
     </div>
   </section>
   <!--Footer-->

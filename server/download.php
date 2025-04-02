@@ -28,9 +28,11 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <thead>
                 <tr>
                     <th>File Name</th>
+                    <th>File Title</th>
+                    <th>Course Code</th>
+                    <th>Description</th>
                     <th>File Size</th>
                     <th>File Type</th>
-                    <th>Download</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,10 +40,13 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 // Display the uploaded files and download links
                 if (count($result) > 0) {
                     foreach ($result as $row) {
-                        $file_path = "./server/uploads/" . $row['filename'];
+                        $file_path = "./uploads/" . $row['filename'];
                         ?>
                         <tr>
                             <td><?php echo htmlspecialchars($row['filename']); ?></td>
+                            <td><?php echo htmlspecialchars($row['filetitle']); ?></td>
+                            <td><?php echo htmlspecialchars($row['coursecode']); ?></td>
+                            <td><?php echo htmlspecialchars($row['description']); ?></td>
                             <td><?php echo htmlspecialchars($row['filesize']); ?> bytes</td>
                             <td><?php echo htmlspecialchars($row['filetype']); ?></td>
                             <td><a href="<?php echo htmlspecialchars($file_path); ?>" class="btn btn-primary" download>Download</a></td>
