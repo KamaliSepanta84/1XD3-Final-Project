@@ -28,7 +28,7 @@ try {
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Return JSON response
-    echo json_encode($results);
+    echo json_encode(["error" => "", "result" => $results]);
 } catch (Exception $e) {
     echo json_encode(["error" => "Something went wrong!"]);
 }
