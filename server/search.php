@@ -12,27 +12,54 @@
  */
 
 //example $cmd:"SELECT * FROM mfiles WHERE filetitle LIKE ? AND coursecode = '1XC3'"
-getResults("SELECT * FROM mfiles WHERE filetitle LIKE ?");
+//1KB = 1024 bytes
+// SELECT * FROM mfiles 
+// WHERE filetitle LIKE ? 
+// AND filesize BETWEEN 0 AND 512000;
 
-function getResults($cmd)
+decideQuery();
+function decideQuery()
+{
+    $defaultcmd = "SELECT * FROM mfiles WHERE filetitle LIKE ?";
+    $filesizefiltercmd = "";
+    $coursecodefiltercmd = "";
+    include "connect.php";
+    $filesizefilter = filter_input(INPUT_POST, 'filesizefilter', FILTER_SANITIZE_SPECIAL_CHARS);
+    $filesizefilter = html_entity_decode($filesizefilter);  // Decode HTML entities
+    // When the filesizefilter object was stringified and sent in the request, any double quotes (") around the property 
+    // names or values in the JSON object were automatically converted into &#34; (the HTML entity for the double quote 
+    // character). This is a common behavior in HTML to ensure special characters are safely represented in a way that 
+    // won't break the structure of the document. but when PHP tried to json_decode() this string, it failed to parse correctly, 
+    // leading to the issue where the min and max values ended up as 0.
+    $query = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
+   // $coursecodefilter = filter_input(INPUT_POST, 'coursecodefilter', FILTER_SANITIZE_SPECIAL_CHARS);
+   // $coursecodefilter = html_entity_decode($coursecodefilter);  // Decode HTML entities
+
+
+
+    if ($query == null || $query == false) {
+        echo json_encode(value: ["error" => "No file name given"]);
+        exit;
+    }
+    if (($filesizefilter == null || $filesizefilter == false) && ($coursecodefilter == null || $coursecodefilter == false)) { // no filter, in this case select all 
+        $filesizefiltercmd = "";
+        $coursecodefiltercmd = "";
+        //"SELECT * FROM mfiles WHERE filetitle LIKE ? AND filesize BETWEEN $min AND $max"
+    }
+    if (!($filesizefilter == null || $filesizefilter == false)) {
+        $min = json_decode($filesizefilter)->min * 1024;
+        $max = json_decode($filesizefilter)->max * 1024;
+        $filesizefiltercmd = "AND filesize BETWEEN $min AND $max";
+    }
+
+    getResults($defaultcmd . $filesizefiltercmd . $coursecodefiltercmd, $query);
+
+}
+
+function getResults($cmd, $query)
 {
     include "connect.php";
-
-    $query = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
-    /*
-    $filter = filter_input(INPUT_POST, 'filter', FILTER_SANITIZE_SPECIAL_CHARS);
-    if($filter === null || $filter === false){
-        echo json_encode(value: ["error" => "No filters applied"]);
-        exit;
-    }
-        */
-
-
     // Check if query is valid
-    if ($query === false || $query === null) {
-        echo json_encode(value: ["error" => "Invalid search query"]);
-        exit;
-    }
 
     try {
         // Prepare the SQL command with proper LIKE syntax

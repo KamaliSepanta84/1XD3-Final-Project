@@ -1,5 +1,6 @@
 /*Search Page Styles*/
 /*Main content styles*/
+
 .search-page {
   display: flex;
   min-height: 80vh;
@@ -19,7 +20,7 @@
 }
 
 .filter-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 6rem;
 }
 
 .filter-group label {

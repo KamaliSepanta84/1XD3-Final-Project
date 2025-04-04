@@ -24,53 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // SEARCH FUNCTIONALITY
   let search_bar = document.getElementById("search_bar");
   let results = [];
-  let formData = new FormData();
-
-  document
-    .getElementById("size_filter")
-    .addEventListener("click", function (event) {
-      formData.append("query", search_bar.value);
-      formData.append("filter", "size");
-      fetch("server/search.php", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json()) // Parse the JSON response
-        // DATA IS OF THE FORM [ERROR: ERROR_MESSAGE, RESULT: ROWS]
-        .then((data) => {
-          if (data["error"] === "") {
-            displayResults(data.result);
-          } else {
-            console.log(data["error"]);
-          }
-        });
-      console.log("size clicked");
-    });
-
-  search_bar.addEventListener("input", function (event) {
-    formData.append("query", search_bar.value);
-    console.log(formData);
-
-    fetch("server/search.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json()) // Parse the JSON response
-      // DATA IS OF THE FORM [ERROR: ERROR_MESSAGE, RESULT: ROWS]
-      .then((data) => {
-        if (data["error"] === "") {
-          displayResults(data.result);
-        } else {
-          console.log(data["error"]);
-        }
-      });
-  });
+  let formData;
+  let min_size_slider = document.getElementById("min_size_slider");
+  let max_size_slider = document.getElementById("max_size_slider");
+  let coursecodes = [];
+  let applyfilters = document.getElementById("applyfilters");
 
   function displayResults(rows) {
     results = rows;
 
     resultsContainer.innerHTML = "";
-    console.log("results: ", results);
     if (results.length === 0) {
       console.log("Nothing to show");
       resultsContainer.innerHTML = "No Results";
@@ -120,9 +83,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // adding container div to result container
         resultsContainer.appendChild(containerDiv);
-        console.log(row);
         // example of formatting to put on the div,
       }
     }
+  }
+
+  async function searchDatabase() {
+    const response = await fetch("server/search.php", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json(); // Wait for JSON parsing
+
+    // DATA IS OF THE FORM [ERROR: ERROR_MESSAGE, RESULT: ROWS]
+    if (data.error === "") {
+      displayResults(data.result);
+    } else {
+      console.log(data.error);
+    }
+  }
+
+  function submitForm(filename, filesizerange, coursecodes) {
+    formData = new FormData();
+    formData.append("query", filename);
+    formData.append("filesizefilter", JSON.stringify(filesizerange)); //formData object does not support objects, so i make it into string
+    formData.append("coursecodefilter", JSON.stringify(coursecodes));
+    searchDatabase();
+  }
+
+  applyfilters.addEventListener("click", function (event) {
+    if (max_size_slider.value > min_size_slider.value) {
+      submitForm(
+        search_bar.value,
+        { max: max_size_slider.value, min: min_size_slider.value },
+        coursecodes
+      );
+    }
+  });
+
+  search_bar.addEventListener("input", function (event) {});
+
+  
+  for (let coursecodecheckbox of document.getElementsByClassName("coursecodecheckboxes")) {
+    coursecodecheckbox.addEventListener("click", function (event) {
+      if (this.checked) {
+        coursecodes.push(this.value);
+      } else {
+        let copy = [];
+        for (let c of coursecodes) {
+          if (c != this.value) {
+            copy.push(c);
+          }
+        }
+        coursecodes = copy;
+      }
+      console.log(coursecodes);
+    });
   }
 });
