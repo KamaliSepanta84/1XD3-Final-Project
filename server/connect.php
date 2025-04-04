@@ -5,6 +5,7 @@ try {
         "mysql:host=localhost;dbname=quresu9_db", 
         "root",
         ""
+        // ;>VdLnYe
     );
 } catch (Exception $e) {
     die("ERROR: Couldn't connect. {$e->getMessage()}");
