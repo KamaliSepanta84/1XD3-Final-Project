@@ -2,7 +2,7 @@
 // create a connection to the database
 try {
     $dbh = new PDO(
-        "mysql:host=localhost;dbname=quresu9_db", 
+        "mysql:host=localhost;dbname=kamals19_db", 
         "root",
         ""
         // ;>VdLnYe
