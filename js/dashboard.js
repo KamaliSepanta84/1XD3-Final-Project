@@ -1,5 +1,5 @@
 //Dashboard JS
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", function(event) {
   // CAROSEL CODE
   //Set DOM elements and variables
   let slidesContainer = document.querySelector('.multi-item-carousel .slides');
@@ -63,5 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  let userWelcomeHeader = document.getElementById("user-welcome-header");
+  let username = localStorage.getItem("username");
+  userWelcomeHeader.innerHTML = "Hello, " + username;
   
 });

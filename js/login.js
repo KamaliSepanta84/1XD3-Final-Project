@@ -4,6 +4,7 @@ window.addEventListener("load", function(event) {
     const overlayBtnSignIn = document.getElementById("overlay-btn-signin");
     const companyName = document.getElementById("title-container");
     const signUpResultContainer = document.getElementById("signup-result");
+    const signInResultContainer = document.getElementById("signin-result");
 
     overlayBtnSignUp.addEventListener("click", () => {
         container.classList.toggle("right-panel-active");
@@ -42,7 +43,7 @@ window.addEventListener("load", function(event) {
             body: params
         };
 
-        fetch("./server/login.php", config)
+        fetch("./server/signup.php", config)
             .then(response => response.json())
             .then(data => {
                 // Handle the response here
@@ -52,11 +53,56 @@ window.addEventListener("load", function(event) {
                 if (data.status === "success") {
                     // If signup is successful, redirect to dashboard
                     window.location.href = "dashboard.html";
+                    localStorage.setItem("username", username); // save the username in local storage
                 }
             })
             .catch(error => {
                 signUpResultContainer.innerHTML = "An error occurred. Please try again.";
                 signUpResultContainer.style.color = "red";
+                console.error("Error:", error);
+            });
+    });
+
+    let signInEmailEntryBox = document.getElementById("signin-email");
+    let signInPasswordEntryBox = document.getElementById("signin-password");
+    let signInBtn = document.getElementById("signin-btn");
+
+    signInBtn.addEventListener("click", function(event){
+        event.preventDefault();
+
+        let userEmail = signInEmailEntryBox.value.trim();
+        let userPassword = signInPasswordEntryBox.value.trim();
+
+        if (userEmail === "" || userPassword === "") {
+            signInResultContainer.textContent = "All fields are required!";
+            signInResultContainer.style.color = "red";
+            return;
+        }
+
+        let params = "email=" + userEmail + "&password=" + userPassword;
+        let config = {
+            method: 'POST',
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: params
+        };
+
+        fetch("./server/signin.php", config)
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response here
+                signInResultContainer.innerHTML = "<p>" + data.message + "</p>";
+                signInResultContainer.style.color = data.status === "success" ? "green" : "red";
+                console.log("SIGN IN RESPONSE:", data);
+
+                if (data.status === "success") {
+                    // If signin is successful, redirect to dashboard
+                    window.location.href = "dashboard.html";
+                    localStorage.setItem("username", data.username); // save the username in local storage
+                }
+            })
+            .catch(error => {
+                signInResultContainer.innerHTML = "An error occurred. Please try again.";
+                signInResultContainer.style.color = "red";
                 console.error("Error:", error);
             });
     });
