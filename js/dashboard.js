@@ -66,5 +66,4 @@ window.addEventListener("load", function(event) {
   let userWelcomeHeader = document.getElementById("user-welcome-header");
   let username = localStorage.getItem("username");
   userWelcomeHeader.innerHTML = "Hello, " + username;
-  
 });
