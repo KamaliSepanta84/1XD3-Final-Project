@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // adding container div to result container
         resultsContainer.appendChild(containerDiv);
-        // example of formatting to put on the div,
       }
     }
   }
@@ -117,15 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
       submitForm(
         search_bar.value,
         { max: max_size_slider.value, min: min_size_slider.value },
-        coursecodes
+        {coursecodes: coursecodes}
       );
     }
   });
 
   search_bar.addEventListener("input", function (event) {});
 
-  
-  for (let coursecodecheckbox of document.getElementsByClassName("coursecodecheckboxes")) {
+  for (let coursecodecheckbox of document.getElementsByClassName(
+    "coursecodecheckboxes"
+  )) {
     coursecodecheckbox.addEventListener("click", function (event) {
       if (this.checked) {
         coursecodes.push(this.value);

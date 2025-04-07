@@ -18,12 +18,14 @@
 // AND filesize BETWEEN 0 AND 512000;
 
 decideQuery();
+
 function decideQuery()
 {
+    include "connect.php";
+
     $defaultcmd = "SELECT * FROM mfiles WHERE filetitle LIKE ?";
     $filesizefiltercmd = "";
     $coursecodefiltercmd = "";
-    include "connect.php";
     $filesizefilter = filter_input(INPUT_POST, 'filesizefilter', FILTER_SANITIZE_SPECIAL_CHARS);
     $filesizefilter = html_entity_decode($filesizefilter);  // Decode HTML entities
     // When the filesizefilter object was stringified and sent in the request, any double quotes (") around the property 
@@ -32,28 +34,36 @@ function decideQuery()
     // won't break the structure of the document. but when PHP tried to json_decode() this string, it failed to parse correctly, 
     // leading to the issue where the min and max values ended up as 0.
     $query = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
-   // $coursecodefilter = filter_input(INPUT_POST, 'coursecodefilter', FILTER_SANITIZE_SPECIAL_CHARS);
-   // $coursecodefilter = html_entity_decode($coursecodefilter);  // Decode HTML entities
-
-
+    $coursecodefilter = filter_input(INPUT_POST, 'coursecodefilter', FILTER_SANITIZE_SPECIAL_CHARS);
+    $coursecodefilter = html_entity_decode($coursecodefilter);  // Decode HTML entities
 
     if ($query == null || $query == false) {
         echo json_encode(value: ["error" => "No file name given"]);
         exit;
     }
-    if (($filesizefilter == null || $filesizefilter == false) && ($coursecodefilter == null || $coursecodefilter == false)) { // no filter, in this case select all 
-        $filesizefiltercmd = "";
+    $min = json_decode($filesizefilter)->min * 1024;
+    $max = json_decode($filesizefilter)->max * 1024;
+    $filesizefiltercmd = " AND filesize BETWEEN ? AND ?";
+
+    if (!(json_decode($coursecodefilter) == null || json_decode($coursecodefilter) == false)) {
+        //  AND coursecode IN (?, ?, ..., ?)
+        $coursecodes = json_decode($coursecodefilter);
+        $coursecodefiltercmd = " AND coursecode IN (";
+        for ($i = 0; $i < count($coursecodes); $i++) {
+            if ($i == count($coursecodes) - 1) {
+                $coursecodefiltercmd .= "?";
+            } else {
+                $coursecodefiltercmd .= "?,";
+            }
+        }
+        $coursecodefiltercmd .= ")";
+    } else {
         $coursecodefiltercmd = "";
-        //"SELECT * FROM mfiles WHERE filetitle LIKE ? AND filesize BETWEEN $min AND $max"
-    }
-    if (!($filesizefilter == null || $filesizefilter == false)) {
-        $min = json_decode($filesizefilter)->min * 1024;
-        $max = json_decode($filesizefilter)->max * 1024;
-        $filesizefiltercmd = "AND filesize BETWEEN $min AND $max";
     }
 
-    getResults($defaultcmd . $filesizefiltercmd . $coursecodefiltercmd, $query);
-
+    $fullcmd = $defaultcmd . $filesizefiltercmd . $coursecodefiltercmd;
+    $parameters = array_merge(["%" . $query . "%", $min, $max], json_decode($coursecodefilter));
+    getResults($fullcmd, $parameters);
 }
 
 function getResults($cmd, $query)
@@ -66,7 +76,7 @@ function getResults($cmd, $query)
         $stmt = $dbh->prepare($cmd);
 
         // Bind the query with wildcard characters for pattern matching
-        $success = $stmt->execute(["%$query%"]);
+        $success = $stmt->execute($query);
 
         if (!$success) {
             echo json_encode(["error" => "Database query failed"]);
