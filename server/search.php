@@ -23,6 +23,8 @@ function decideQuery()
 {
     include "connect.php";
 
+
+
     $defaultcmd = "SELECT * FROM mfiles WHERE filetitle LIKE ?";
     $filesizefiltercmd = "";
     $coursecodefiltercmd = "";
@@ -37,6 +39,8 @@ function decideQuery()
     $coursecodefilter = filter_input(INPUT_POST, 'coursecodefilter', FILTER_SANITIZE_SPECIAL_CHARS);
     $coursecodefilter = html_entity_decode($coursecodefilter);  // Decode HTML entities
 
+
+
     if ($query == null || $query == false) {
         echo json_encode(value: ["error" => "No file name given"]);
         exit;
@@ -45,9 +49,11 @@ function decideQuery()
     $max = json_decode($filesizefilter)->max * 1024;
     $filesizefiltercmd = " AND filesize BETWEEN ? AND ?";
 
-    if (!(json_decode($coursecodefilter) == null || json_decode($coursecodefilter) == false)) {
+
+    $coursecodes = json_decode($coursecodefilter)->coursecodes;
+    $parameters = array_merge(["%" . $query . "%", $min, $max], $coursecodes);
+    if (!(count($coursecodes) == 0)) {
         //  AND coursecode IN (?, ?, ..., ?)
-        $coursecodes = json_decode($coursecodefilter);
         $coursecodefiltercmd = " AND coursecode IN (";
         for ($i = 0; $i < count($coursecodes); $i++) {
             if ($i == count($coursecodes) - 1) {
@@ -59,10 +65,10 @@ function decideQuery()
         $coursecodefiltercmd .= ")";
     } else {
         $coursecodefiltercmd = "";
+        $parameters = array_merge(["%" . $query . "%", $min, $max]);
     }
 
     $fullcmd = $defaultcmd . $filesizefiltercmd . $coursecodefiltercmd;
-    $parameters = array_merge(["%" . $query . "%", $min, $max], json_decode($coursecodefilter));
     getResults($fullcmd, $parameters);
 }
 

@@ -121,7 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  search_bar.addEventListener("input", function (event) {});
+  search_bar.addEventListener("input", function (event) {
+  });
 
   for (let coursecodecheckbox of document.getElementsByClassName(
     "coursecodecheckboxes"
