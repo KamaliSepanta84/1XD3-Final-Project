@@ -111,18 +111,28 @@ document.addEventListener("DOMContentLoaded", () => {
     searchDatabase();
   }
 
-  applyfilters.addEventListener("click", function (event) {
+  function getNotes() {
     if (max_size_slider.value > min_size_slider.value) {
       submitForm(
         search_bar.value,
         { max: max_size_slider.value, min: min_size_slider.value },
-        {coursecodes: coursecodes}
+        { coursecodes: coursecodes }
       );
+    } else {
+      resultsContainer.innerHTML =
+        "Max file size is smaller than Min file size!!";
     }
-  });
+  }
 
   search_bar.addEventListener("input", function (event) {
+    getNotes();
   });
+
+  min_size_slider.addEventListener("input", function (event) {
+    getNotes();
+  });
+
+  // max_size_slider.addEventListener();
 
   for (let coursecodecheckbox of document.getElementsByClassName(
     "coursecodecheckboxes"
@@ -139,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         coursecodes = copy;
       }
-      console.log(coursecodes);
+      getNotes();
     });
   }
 });
