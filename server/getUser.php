@@ -1,0 +1,16 @@
+<?php
+// This file gets the username from the session key and passes to other files \
+// when users log in.
+
+// start the session
+session_start();
+
+header('Content-Type: application/json');
+
+$access = isset($_SESSION["username"]);
+
+echo json_encode([
+    "access" => $access,
+    "username" => $_SESSION["username"] ?? null
+]);
+?>

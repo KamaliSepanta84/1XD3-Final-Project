@@ -1,4 +1,7 @@
 <?php
+    // start a session
+    session_start();
+
     header('Content-Type: application/json');
     include "connect.php";
 
@@ -37,6 +40,7 @@
                 if ($success){
                     $response["status"] = "success";
                     $response["message"] = "user added successfully!";
+                    $_SESSION["username"] = $username;
                 }
 
                 else{

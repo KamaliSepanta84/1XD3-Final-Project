@@ -1,4 +1,7 @@
 <?php
+    // start a session
+    session_start();
+
     header('Content-Type: application/json');
     include "connect.php";
 
@@ -26,6 +29,7 @@
                     $response["status"] = "success";
                     $response["message"] = "Logged in successfully";
                     $response["username"] = $row["username"]; // we add this when login is successful
+                    $_SESSION["username"] = $row["username"];
                 } else {
                     $response["message"] = "Wrong password!";
                 }

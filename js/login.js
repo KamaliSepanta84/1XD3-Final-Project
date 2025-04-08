@@ -53,7 +53,6 @@ window.addEventListener("load", function(event) {
                 if (data.status === "success") {
                     // If signup is successful, redirect to dashboard
                     window.location.href = "dashboard.html";
-                    localStorage.setItem("username", username); // save the username in local storage
                 }
             })
             .catch(error => {
@@ -97,7 +96,6 @@ window.addEventListener("load", function(event) {
                 if (data.status === "success") {
                     // If signin is successful, redirect to dashboard
                     window.location.href = "dashboard.html";
-                    localStorage.setItem("username", data.username); // save the username in local storage
                 }
             })
             .catch(error => {
