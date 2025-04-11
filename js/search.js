@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let min_size_slider = document.getElementById("min_size_slider");
   let max_size_slider = document.getElementById("max_size_slider");
   let coursecodes = [];
-  let applyfilters = document.getElementById("applyfilters");
+  let orderbyoption = "`download-number`";
 
   function displayResults(rows) {
     results = rows;
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ratingSpan.appendChild(starSymbol);
         let ratingNumber = document.createElement("span");
         ratingNumber.setAttribute("id", "ratingNumber");
-        ratingNumber.innerHTML = "ADD RATE FIELD TO NOTES TABLE";
+        ratingNumber.innerHTML = row.rating;
         ratingSpan.appendChild(ratingNumber);
 
         let downloadSpan = document.createElement("span");
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         downloadSpan.appendChild(downloadSymbol);
         let downloadNumber = document.createElement("span");
         downloadNumber.setAttribute("id", "downloadNumber");
-        downloadNumber.innerHTML = "ADD DOWNLOAD NUM FIELD TO NOTES TABLE";
+        downloadNumber.innerHTML = row["download-number"];
         downloadSpan.appendChild(downloadNumber);
 
         resultInfoDiv.appendChild(ratingSpan);
@@ -98,29 +98,34 @@ document.addEventListener("DOMContentLoaded", () => {
     // DATA IS OF THE FORM [ERROR: ERROR_MESSAGE, RESULT: ROWS]
     if (data.error === "") {
       displayResults(data.result);
+      console.log(data.result);
     } else {
       console.log(data.error);
     }
   }
 
-  function submitForm(filename, filesizerange, coursecodes) {
+  function submitForm(filename, filesizerange, coursecodes, orderbyoption) {
     formData = new FormData();
     formData.append("query", filename);
     formData.append("filesizefilter", JSON.stringify(filesizerange)); //formData object does not support objects, so i make it into string
     formData.append("coursecodefilter", JSON.stringify(coursecodes));
+    formData.append("orderbyoption", orderbyoption);
     searchDatabase();
   }
 
   function getNotes() {
-    if (max_size_slider.value > min_size_slider.value) {
+    if (Number(max_size_slider.value) > Number(min_size_slider.value)) {
       submitForm(
         search_bar.value,
         { max: max_size_slider.value, min: min_size_slider.value },
-        { coursecodes: coursecodes }
+        { coursecodes: coursecodes },
+        orderbyoption
       );
     } else {
       resultsContainer.innerHTML =
         "Max file size is smaller than Min file size!!";
+      console.log("Max: ", max_size_slider.value);
+      console.log("Min: ", min_size_slider.value);
     }
   }
 
@@ -132,7 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
     getNotes();
   });
 
-  // max_size_slider.addEventListener();
+  max_size_slider.addEventListener("input", function (event) {
+    getNotes();
+  });
 
   for (let coursecodecheckbox of document.getElementsByClassName(
     "coursecodecheckboxes"
@@ -152,4 +159,16 @@ document.addEventListener("DOMContentLoaded", () => {
       getNotes();
     });
   }
+
+  document.getElementById("sortSelect").addEventListener("change", function () {
+    selectedValue = this.value;
+    if (selectedValue === "Highest Rated") {
+      orderbyoption = "rating";
+    } else if (selectedValue === "Most Downloaded") {
+      orderbyoption = "`download-number`";
+    } else if (selectedValue === "Newest") {
+      orderbyoption = "upload_time";
+    }
+    getNotes();
+  });
 });

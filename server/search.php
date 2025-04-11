@@ -38,7 +38,7 @@ function decideQuery()
     $query = filter_input(INPUT_POST, 'query', FILTER_SANITIZE_SPECIAL_CHARS);
     $coursecodefilter = filter_input(INPUT_POST, 'coursecodefilter', FILTER_SANITIZE_SPECIAL_CHARS);
     $coursecodefilter = html_entity_decode($coursecodefilter);  // Decode HTML entities
-
+    $orderbyoption = filter_input(INPUT_POST, 'orderbyoption', FILTER_SANITIZE_SPECIAL_CHARS);
 
 
     if ($query == null || $query == false) {
@@ -51,7 +51,8 @@ function decideQuery()
 
 
     $coursecodes = json_decode($coursecodefilter)->coursecodes;
-    $parameters = array_merge(["%" . $query . "%", $min, $max], $coursecodes);
+    $parameters = ["%" . $query . "%", $min, $max];
+
     if (!(count($coursecodes) == 0)) {
         //  AND coursecode IN (?, ?, ..., ?)
         $coursecodefiltercmd = " AND coursecode IN (";
@@ -61,14 +62,18 @@ function decideQuery()
             } else {
                 $coursecodefiltercmd .= "?,";
             }
+            array_push($parameters, $coursecodes[$i]);
         }
         $coursecodefiltercmd .= ")";
+
     } else {
         $coursecodefiltercmd = "";
-        $parameters = array_merge(["%" . $query . "%", $min, $max]);
     }
 
-    $fullcmd = $defaultcmd . $filesizefiltercmd . $coursecodefiltercmd;
+
+    $fullcmd = $defaultcmd . $filesizefiltercmd . $coursecodefiltercmd . " ORDER BY " . $orderbyoption . " DESC";
+    //Parameters are only allowed for values, not SQL identifiers like column names or table names, hence why I put orderbyoption in the string.
+
     getResults($fullcmd, $parameters);
 }
 
@@ -95,7 +100,7 @@ function getResults($cmd, $query)
         // Return JSON response
         echo json_encode(["error" => "", "result" => $results]);
     } catch (Exception $e) {
-        echo json_encode(["error" => "Something went wrong!"]);
+        echo json_encode(["error" => $e->getMessage()]);
     }
 }
 
