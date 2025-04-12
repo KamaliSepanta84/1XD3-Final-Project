@@ -151,3 +151,12 @@
   color: var(--primary-color);
   font-size: 1.1rem;
 }
+
+.download-btn{
+  cursor: pointer;
+  width: 20px;
+  background-color: #205781;
+  padding: 10px 8px;
+  border-radius: 20px;
+  color: white;
+}

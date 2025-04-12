@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         containerDiv.classList.add("result-card");
         let courseTitleAndNoteName = document.createElement("h3");
-        courseTitleAndNoteName.innerHTML =
+        courseTitleAndNoteName.innerHTML = 
           row.coursecode + ": " + row.filetitle;
         let courseDescription = document.createElement("p");
         courseDescription.innerHTML = row.description;
@@ -80,6 +80,16 @@ document.addEventListener("DOMContentLoaded", () => {
         containerDiv.appendChild(courseTitleAndNoteName);
         containerDiv.appendChild(courseDescription);
         containerDiv.appendChild(resultInfoDiv);
+
+      // Create download button
+      let downloadButton = document.createElement("a");
+      downloadButton.href = "uploads/" + encodeURIComponent(row.filename); // we assume filename is like "notes.pdf"
+      downloadButton.classList.add("download-btn");
+      downloadButton.textContent = "Download";
+      downloadButton.setAttribute("download", row.filename); // triggers browser download
+
+      containerDiv.appendChild(downloadButton); // adds to the card
+
 
         // adding container div to result container
         resultsContainer.appendChild(containerDiv);
