@@ -46,13 +46,23 @@ window.addEventListener("load", function(event) {
         fetch("./server/signup.php", config)
             .then(response => response.json())
             .then(data => {
-                // Handle the response here
-                signUpResultContainer.innerHTML = "<p>" + data.message + "</p>";
-                signUpResultContainer.style.color = data.status === "success" ? "green" : "red";
 
-                if (data.status === "success") {
-                    // If signup is successful, redirect to dashboard
-                    window.location.href = "dashboard.html";
+                // check if the password is weak
+                if (data.status == "InvPass") {
+                    signUpResultContainer.innerHTML = "<p>" + data.message + "</p>";
+                    signUpResultContainer.style.color = "red";
+                    return;
+                }
+                // if the password is strong
+                else{
+                    // Handle the response here
+                    signUpResultContainer.innerHTML = "<p>" + data.message + "</p>";
+                    signUpResultContainer.style.color = data.status === "success" ? "green" : "red";
+
+                    if (data.status === "success") {
+                        // If signup is successful, redirect to dashboard
+                        window.location.href = "dashboard.html";
+                    }
                 }
             })
             .catch(error => {
