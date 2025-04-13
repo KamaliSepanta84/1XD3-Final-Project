@@ -74,6 +74,8 @@ function decideQuery()
     $fullcmd = $defaultcmd . $filesizefiltercmd . $coursecodefiltercmd . " ORDER BY " . $orderbyoption . " DESC";
     //Parameters are only allowed for values, not SQL identifiers like column names or table names, hence why I put orderbyoption in the string.
 
+
+
     getResults($fullcmd, $parameters);
 }
 
