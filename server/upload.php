@@ -10,7 +10,7 @@ $macID = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
-        $target_dir = "uploads/";
+        $target_dir = "../uploads/";
         $target_file = $target_dir . basename($_FILES["file"]["name"]);
         $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 

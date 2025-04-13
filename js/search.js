@@ -83,13 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Create download button
       let downloadButton = document.createElement("a");
-      downloadButton.href = "uploads/" + encodeURIComponent(row.filename); // we assume filename is like "notes.pdf"
+      downloadButton.href = "uploads/" + encodeURIComponent(row.filename); // Now correctly points to 'uploads/'
       downloadButton.classList.add("download-btn");
       downloadButton.textContent = "Download";
       downloadButton.setAttribute("download", row.filename); // triggers browser download
-
+      
       containerDiv.appendChild(downloadButton); // adds to the card
-
 
         // adding container div to result container
         resultsContainer.appendChild(containerDiv);
