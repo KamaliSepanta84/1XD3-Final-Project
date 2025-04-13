@@ -1,8 +1,12 @@
 <?php
+
+session_start();
+
 header('Content-Type: application/json');
 include './connect.php';
 
 $response = ["success" => false, "message" => ""];
+$macID = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
@@ -22,10 +26,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $coursecode = $_POST["coursecode"] ?? "";
                 $description = $_POST["description"] ?? "";
                 $upload_time = date("Y-m-d H:i:s");
-                try { 
-                    $command = "INSERT INTO mfiles (filename, filetitle, coursecode, filesize, filetype, description, upload_time) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                try {
+                    // Prepare the SQL command with proper LIKE syntax
+                    $stmt = $dbh->prepare("SELECT macID from users WHERE username = ?");
+                    // Bind the query with wildcard characters for pattern matching
+                    $success = $stmt->execute([$_SESSION["username"]]);
+                    if (!$success) {
+                        $response["message"] = "Random error bro i couldnt even tell you";
+                    } else {
+                        $results = $stmt->fetch();
+                        $macID = $results["macID"];
+                    }
+                } catch (Exception $e) {
+                    $response["message"] = $e->getMessage();
+                }
+
+                try {
+                    $command = "INSERT INTO mfiles (macID, filename, filetitle, coursecode, filesize, filetype, description, upload_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                     $stmt = $dbh->prepare($command);
-                    $args = [$filename, $filetitle, $coursecode, $filesize, $filetype, $description, $upload_time];
+                    $args = [$macID, $filename, $filetitle, $coursecode, $filesize, $filetype, $description, $upload_time];
                     $success = $stmt->execute($args);
 
                     if ($success) {
