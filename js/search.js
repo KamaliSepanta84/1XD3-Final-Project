@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
         let formData = new FormData();
         formData.append('filename', filename);
-      
+        console.log(filename); // just for debugging
         fetch("server/download.php", {
           method: 'POST',
           body: formData

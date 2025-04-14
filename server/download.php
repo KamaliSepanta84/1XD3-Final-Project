@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 include "./connect.php";
 session_start();
@@ -9,7 +6,22 @@ session_start();
 if (isset($_SESSION["username"])) {
     // Get the username from session
     $username = $_SESSION["username"];
-    
+    $filename = filter_input(INPUT_POST, "filename", FILTER_SANITIZE_SPECIAL_CHARS);
+
+    if ($filename === "" || $filename === null) {
+        die("ERROR: Invalid parameters for filename");
+    }
+
+    else{
+        $mfilesCommand = "UPDATE mfiles SET `download-number` = `download-number` + 1 WHERE filename = ?";
+        $mfilesStmt = $dbh->prepare($mfilesCommand);
+        $mfilesArgs = [$filename];
+        $mfilesSuccess = $mfilesStmt->execute($mfilesArgs);
+
+        if (!$mfilesSuccess){
+            die("ERROR: failed to update number of downloads in the database!");
+        }
+    }
     // Prepare SQL to fetch macID
     $command = "SELECT macID FROM users WHERE username = ?";
     $stmt = $dbh->prepare($command);
