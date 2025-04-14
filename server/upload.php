@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $response["success"] = true;
                         $response["message"] = "The file " . htmlspecialchars($filename) . " has been uploaded and stored.";
 
-                        $updateDatabaseCommand = "UPDATE users SET `number-uploads` = `number-uploads` + 1 WHERE macID = ?";
+                        $updateDatabaseCommand = "UPDATE users SET `number_uploads` = `number_uploads` + 1 WHERE macID = ?";
                         $updateDatabaseStmt = $dbh -> prepare($updateDatabaseCommand);
                         $updateDatabaseArgs = [$macID];
                         $updateDatabaseSuccess = $updateDatabaseStmt->execute($updateDatabaseArgs);

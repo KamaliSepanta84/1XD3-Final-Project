@@ -74,10 +74,19 @@ window.addEventListener("load", function(event) {
     })
 
     let userTotalUploads = document.getElementById("user-total-uploads");
-    let userTotaldownloads = document.getElementById("user-total-downloads");
+    let userTotalDownloads = document.getElementById("user-total-downloads");
     let userTotalRatings = document.getElementById("user-total-ratings");
 
-    setInterval(function (){
+    setInterval(function () {
       fetch("./server/dashboard.php")
-    }, 100)
+        .then(response => response.json())
+        .then(data => {
+          userTotalUploads.innerHTML = data.numberOfUploads;
+          userTotalDownloads.innerHTML = data.numberOfDownloads;
+        })
+        .catch(error => {
+          console.error("Error fetching dashboard data:", error);
+        });
+    }, 100);
+    
 });
