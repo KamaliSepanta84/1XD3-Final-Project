@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $updateDatabaseStmt = $dbh -> prepare($updateDatabaseCommand);
                         $updateDatabaseArgs = [$macID];
                         $updateDatabaseSuccess = $updateDatabaseStmt->execute($updateDatabaseArgs);
+                        
                         if (!isset($_SESSION["users"])) {
                             $_SESSION["users"] = [];
                         }
