@@ -87,6 +87,31 @@ document.addEventListener("DOMContentLoaded", () => {
       downloadButton.classList.add("download-btn");
       downloadButton.textContent = "Download";
       downloadButton.setAttribute("download", row.filename); // triggers browser download
+
+      downloadButton.addEventListener('click', function(event) { 
+        event.preventDefault(); // it stops the browser's default behavior
+      
+        const filename = this.getAttribute('download');
+      
+        let formData = new FormData();
+        formData.append('filename', filename);
+      
+        fetch("server/download.php", {
+          method: 'POST',
+          body: formData
+        })
+        .then(() => {
+          // Now trigger the actual download
+          const a = document.createElement('a');
+          a.href = "uploads/" + encodeURIComponent(filename);
+          a.setAttribute('download', filename);
+          a.style.display = 'none';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        })
+        .catch(error => console.error('Error:', error));
+      });      
       
       containerDiv.appendChild(downloadButton); // adds to the card
 
@@ -180,4 +205,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     getNotes();
   });
+
 });

@@ -50,6 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if ($success) {
                         $response["success"] = true;
                         $response["message"] = "The file " . htmlspecialchars($filename) . " has been uploaded and stored.";
+
+                        $updateDatabaseCommand = "UPDATE users SET number_uploads = number_uploads + 1 WHERE macID = ?";
+                        $updateDatabaseStmt = $dbh -> prepare($updateDatabaseCommand);
+                        $updateDatabaseArgs = [$macID];
+                        $updateDatabaseSuccess = $updateDatabaseStmt->execute($updateDatabaseArgs);
                     } else {
                         $response["message"] = "Database error while storing file information! Please try again later.";
                     }
