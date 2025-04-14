@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2025 at 03:14 AM
+-- Generation Time: Apr 14, 2025 at 08:09 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,10 +33,18 @@ CREATE TABLE `users` (
   `email` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `role` enum('STUDENT','INSTRUCTOR','TA') NOT NULL DEFAULT 'STUDENT',
-  `number-uploads` int(11) DEFAULT NULL,
-  `num-downloads` int(11) DEFAULT NULL,
-  `average-rating` float DEFAULT NULL
+  `number_uploads` int(11) NOT NULL DEFAULT 0,
+  `num_downloads` int(11) NOT NULL DEFAULT 0,
+  `average_rating` float NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`macID`, `username`, `email`, `password`, `role`, `number_uploads`, `num_downloads`, `average_rating`) VALUES
+('kamals19', 'Sepanta Kamali', 'kamals19@mcmaster.ca', '$2y$10$QV6DRmICpIvRrz8UuhGkcOkteZKsW.Vu8XSxZfIiw9HntLzWNlRk2', 'STUDENT', 3, 8, 0),
+('pn', 'Pryce Newland', 'pn@mcmaster.ca', '$2y$10$ltTaZvQqwvxGSbZDMZQ4re1KV1EajMoHF9SY8lYqU7bpytXjdplF.', 'STUDENT', 1, 2, 0);
 
 --
 -- Indexes for dumped tables
