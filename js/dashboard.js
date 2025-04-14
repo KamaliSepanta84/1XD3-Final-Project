@@ -72,4 +72,12 @@ window.addEventListener("load", function(event) {
         userWelcomeHeader.innerHTML = `Hello, ${username}`;
       }
     })
+
+    let userTotalUploads = document.getElementById("user-total-uploads");
+    let userTotaldownloads = document.getElementById("user-total-downloads");
+    let userTotalRatings = document.getElementById("user-total-ratings");
+
+    setInterval(function (){
+      fetch("./server/dashboard.php")
+    }, 100)
 });
