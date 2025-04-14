@@ -69,8 +69,16 @@ function decideQuery()
         $coursecodefiltercmd = "";
     }
 
+    $orderbycmd = "";
 
-    $fullcmd = $defaultcmd . $filesizefiltercmd . $coursecodefiltercmd . " ORDER BY " . $orderbyoption . " DESC";
+    if ($orderbyoption === "filetitle") {
+        $orderbycmd = " ORDER BY " . $orderbyoption . " ASC";
+    } else {
+        $orderbycmd = " ORDER BY " . $orderbyoption . " DESC";
+    }
+
+
+    $fullcmd = $defaultcmd . $filesizefiltercmd . $coursecodefiltercmd . $orderbycmd;
     //Parameters are only allowed for values, not SQL identifiers like column names or table names, hence why I put orderbyoption in the string.
 
 

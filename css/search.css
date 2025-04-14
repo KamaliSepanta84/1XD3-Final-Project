@@ -161,3 +161,36 @@
   color: white;
   text-decoration: none;
 }
+
+
+.coursecodecheckboxes {
+  display: none;
+}
+
+.coursecodecheckboxes:checked + span {
+  background-color: #007bff;
+  color: white;
+}
+
+.checkbox-wrapper label {
+  color: black;
+  display: block;
+  cursor: pointer;
+  padding: 8px 12px;
+  margin: 4px 0;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.checkbox-wrapper label:hover {
+  background-color: #e0e0e0;
+}
+
+/* This targets the label when its child checkbox is checked */
+.checkbox-wrapper input[type="checkbox"]:checked + label {
+  background-color: #007bff;
+  color: white;
+}
+

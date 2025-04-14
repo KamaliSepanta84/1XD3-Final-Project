@@ -202,6 +202,8 @@ document.addEventListener("DOMContentLoaded", () => {
       orderbyoption = "`download-number`";
     } else if (selectedValue === "Newest") {
       orderbyoption = "upload_time";
+    } else if (selectedValue === "Name") {
+      orderbyoption = "filetitle";
     }
     getNotes();
   });
