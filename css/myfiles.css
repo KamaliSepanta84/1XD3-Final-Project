@@ -129,3 +129,44 @@
   cursor: not-allowed;
   opacity: 0.7;
 }
+
+#coursecode_filter{
+display: flex;
+gap: 5px;
+}
+
+.file-controls{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#search-and-sort-area{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.coursecodecheckboxes {
+  display: none;
+}
+
+#coursecode_filter label {
+  display: block;               /* Each label on a new line */
+  cursor: pointer;
+  padding: 8px 12px;
+  margin: 4px 0;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+#coursecode_filter label:hover {
+  background-color: #e0e0e0;
+}
+
+.coursecodecheckboxes:checked + label {
+  background-color: #007bff;
+  color: white;
+}

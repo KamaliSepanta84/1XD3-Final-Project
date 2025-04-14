@@ -29,7 +29,7 @@ try {
                 $response["message"] = "Random error 2 bro i couldnt even tell you styll";
             } else {
                 $useruploads = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                $response["message"] = $useruploads;
+                $response["message"] = [$useruploads, $macID];
             }
         } catch (Exception $e) {
             $response["message"] = $e->getMessage();

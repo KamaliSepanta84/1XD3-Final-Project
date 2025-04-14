@@ -74,12 +74,42 @@
         <div class="files-section uploaded-files" id="uploadedFiles">
           <h2>My Uploaded Files</h2>
           <div class="file-controls">
-            <input type="text" id="uploadedSearchInput" placeholder="Search uploaded files..." />
-            <select id="sortSelect">
-              <option value="name">Sort by Name</option>
-              <option value="rating">Sort by Rating</option>
-              <option value="downloads">Sort by Downloads</option>
-            </select>
+            <div id = "search-and-sort-area">
+              <input type="text" id="uploadedSearchInput" placeholder="Search uploaded files..." />
+              <select id="sortSelect">
+                <option value="Newest">Sort by Date</option>
+                <option value="Highest Rated">Sort by Rating</option>
+                <option value="Most Downloaded">Sort by Downloads</option>
+                <option value="Name">Sort Alphabetically</option>
+              </select>
+            </div>
+
+            <div id="coursecode_filter">
+              <input type="checkbox" id="1MD3" value="1MD3" class="coursecodecheckboxes" />
+              <label for="1MD3">1MD3</label>
+
+              <input type="checkbox" id="1JC3" value="1JC3" class="coursecodecheckboxes" />
+              <label for="1JC3">1JC3</label>
+
+              <input type="checkbox" id="1ZA3" value="1ZA3" class="coursecodecheckboxes" />
+              <label for="1ZA3">1ZA3</label>
+
+              <input type="checkbox" id="1B03" value="1B03" class="coursecodecheckboxes" />
+              <label for="1B03">1B03</label>
+
+              <input type="checkbox" id="1DM3" value="1DM3" class="coursecodecheckboxes" />
+              <label for="1DM3">1DM3</label>
+
+              <input type="checkbox" id="1XC3" value="1XC3" class="coursecodecheckboxes" />
+              <label for="1XC3">1XC3</label>
+
+              <input type="checkbox" id="1XD3" value="1XD3" class="coursecodecheckboxes" />
+              <label for="1XD3">1XD3</label>
+
+              <input type="checkbox" id="1ZB3" value="1ZB3" class="coursecodecheckboxes" />
+              <label for="1ZB3">1ZB3</label>
+            </div>
+            
           </div>
           <!-- Uploaded Files List-->
           <div id="files-list">
