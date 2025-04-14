@@ -27,7 +27,7 @@
   <!--Container-->
   <div class="filedetails-container">
     <div class="file-preview">
-      <iframe src="uploads/Quiz5.pdf" width="100%" height="100%" style="border: none;"></iframe>
+      <iframe id = "filedisplay" src="uploads/Quiz5.pdf" width="100%" height="100%" style="border: none;"></iframe>
     </div>
 
     <!-- Sidebar -->
@@ -35,11 +35,9 @@
       <section class="file-details">
         <h2>Document Details</h2>
         <ul>
-          <li><strong>Title:</strong> Sample File</li>
-          <li><strong>Tags:</strong> math, lecture, notes</li>
-          <li><strong>Description:</strong> A short description about this file.</li>
-          <li><strong>Subject:</strong> Calculus</li>
-          <li><strong>Course Code:</strong> MATH 101</li>
+          <li id = "filetitle"></li>
+          <li id = "filedescription" > </li>
+          <li id = "coursecode"></li>
         </ul>
       </section>
       <div class="download-section">

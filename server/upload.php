@@ -52,11 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $response["success"] = true;
                         $response["message"] = "The file " . htmlspecialchars($filename) . " has been uploaded and stored.";
 
-                        $updateDatabaseCommand = "UPDATE users SET number_uploads = number_uploads + 1 WHERE macID = ?";
+                        $updateDatabaseCommand = "UPDATE users SET `number-uploads` = `number-uploads` + 1 WHERE macID = ?";
                         $updateDatabaseStmt = $dbh -> prepare($updateDatabaseCommand);
                         $updateDatabaseArgs = [$macID];
                         $updateDatabaseSuccess = $updateDatabaseStmt->execute($updateDatabaseArgs);
-                        
+
                         if (!isset($_SESSION["users"])) {
                             $_SESSION["users"] = [];
                         }
@@ -69,7 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             "size" => $_FILES["file"]["size"],
                             "type" => $_FILES["file"]["type"],
                             "path" => "../uploads/" . basename($filename),
-                            "upload_time" => date("Y-m-d H:i:s")
+                            "upload_time" => date("Y-m-d H:i:s"),
+                            "is_currently_being_viewed" => false
                         ];
 
                         $_SESSION["users"][$macID][$filetitle] = $fileInfo;

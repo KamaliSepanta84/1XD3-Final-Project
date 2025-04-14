@@ -31,12 +31,27 @@ window.addEventListener("load", function (event) {
         file_info.appendChild(rating_display);
         file_info.appendChild(download_display);
 
-        //   <button class="btn btn-primary view-btn">View</button>
         let view_button = document.createElement("a");
         view_button.classList.add("btn", "btn-primary", "view-btn");
         view_button.setAttribute("href", "filedetails.html");
         view_button.setAttribute("target", "");
+        view_button.setAttribute("id", "view_button");
         view_button.innerHTML = "View";
+
+        view_button.addEventListener("click", async function (event) {
+          const formData = new FormData();
+          formData.append("clicked", "true");
+          formData.append("filetitle", row.filetitle);
+
+          const response = await fetch("server/selectfiletoview.php", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json(); // Wait for JSON parsing
+
+          console.log(data.message);
+        });
 
         file_card.appendChild(h3_file_title);
         file_card.appendChild(file_info);
@@ -46,6 +61,7 @@ window.addEventListener("load", function (event) {
       }
     }
   }
+
   async function searchDatabase() {
     const response = await fetch("server/myfiles.php", {
       method: "POST",
