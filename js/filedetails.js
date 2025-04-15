@@ -17,4 +17,5 @@ window.addEventListener("load", function (event) {
   }
 
   searchDatabase();
+  console.log(sessionStorage.filename, "Hello");
 });

@@ -5,16 +5,16 @@ window.addEventListener("load", async function (event) {
 
   let uploaded_files_display = document.getElementById("files-list");
   let filename = "";
-  let coursecodes = [];
+  let coursecodes = ["1XC3","1JC3","1MD3","1DM3","1B03","1XD3","1ZB3","1ZA3"];
   let orderbyoption = "`download-number`";
   let macID = "";
 
   function displayResults(rows) {
-    uploaded_files_display.innerHTML = "";
-    if (rows.length === 0) {
-      uploaded_files_display.innerHTML = "No uploaded files";
+    uploaded_files_display.innerHTML = "Doesn't Match Search Bar :/ ";
+    if (rows.length === 0 || rows == null || rows == false) {
       console.log("No uploaded files");
     } else {
+      uploaded_files_display.innerHTML = "";
       for (let row of rows) {
         let file_card = document.createElement("div");
         file_card.classList.add("file-card");

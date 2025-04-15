@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>MacNotes | File Details</title>
+  <!--Icon Pack Link-->
+  <!-- Note that all elements <i> are icon elements-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+  <!--Stylesheet + Scipts-->
+  <link rel="stylesheet" href="css/homestyle.css" />
+  <link rel="stylesheet" href="css/filedetails.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="js/searchfiledetails.js"></script>
+</head>
+
+<body>
+  <!--Header-->
+  <header class="header">
+    <div class="logo">
+      <h1>MacNotes</h1>
+    </div>
+    <nav class="nav-links">
+      <a href="dashboard.html" class="btn-login">Back</a>
+    </nav>
+  </header>
+  <!--Container-->
+  <div class="filedetails-container">
+    <div class="file-preview">
+      <iframe id = "filedisplay" src="uploads/Quiz5.pdf" width="100%" height="100%" style="border: none;"></iframe>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="file-info-sidebar">
+      <section class="file-details">
+        <h2>Document Details</h2>
+        <ul>
+          <li id = "filetitle"></li>
+          <li id = "filedescription" > </li>
+          <li id = "coursecode"></li>
+        </ul>
+      </section>
+      <div class="download-section">
+        <button class="btn btn-primary download-btn">
+          <i class="ri-download-2-line"></i> Download
+        </button>
+        <p class="download-count">Downloads: <span>123</span></p>
+      </div>
+      <section class="ratings-section">
+        <h2>Ratings</h2>
+        <div class="star-rating">
+          <i class="ri-star-fill"></i>
+          <i class="ri-star-fill"></i>
+          <i class="ri-star-fill"></i>
+          <i class="ri-star-half-fill"></i>
+          <i class="ri-star-line"></i>
+        </div>
+        <p class="average-rating">4.2 / 5.0 (Average)</p>
+
+        <button class="accordion-btn" id="accordionBtn">
+          Show Rating Distribution
+          <i class="ri-arrow-down-s-line"></i>
+        </button>
+        <div class="accordion-content" id="accordionContent">
+          <div class="rating-bar">
+            <span>5 Stars</span>
+            <div class="bar">
+              <div class="bar-fill" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="rating-bar">
+            <span>4 Stars</span>
+            <div class="bar">
+              <div class="bar-fill" style="width: 20%"></div>
+            </div>
+          </div>
+          <div class="rating-bar">
+            <span>3 Stars</span>
+            <div class="bar">
+              <div class="bar-fill" style="width: 5%"></div>
+            </div>
+          </div>
+          <div class="rating-bar">
+            <span>2 Stars</span>
+            <div class="bar">
+              <div class="bar-fill" style="width: 3%"></div>
+            </div>
+          </div>
+          <div class="rating-bar">
+            <span>1 Star</span>
+            <div class="bar">
+              <div class="bar-fill" style="width: 2%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <button class="btn btn-secondary report-btn">
+        <i class="ri-flag-2-line"></i> Report
+      </button>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" style="background-color: var(--primary-color-dark);">
+    <div class="footer-links">
+      <a href="#" style="color: var(--white);">About Us</a>
+      <a href="#" style="color: var(--white);">Contact</a>
+      <a href="#" style="color: var(--white);">Privacy Policy</a>
+    </div>
+    <p style="color: var(--white);">&copy; 2025 MacNotes. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

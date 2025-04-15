@@ -27,7 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let formData;
   let min_size_slider = document.getElementById("min_size_slider");
   let max_size_slider = document.getElementById("max_size_slider");
-  let coursecodes = [];
+  let coursecodes = [
+    "1XC3",
+    "1JC3",
+    "1MD3",
+    "1DM3",
+    "1B03",
+    "1XD3",
+    "1ZB3",
+    "1ZA3",
+  ];
   let orderbyoption = "`download-number`";
 
   function displayResults(rows) {
@@ -45,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         containerDiv.classList.add("result-card");
         let courseTitleAndNoteName = document.createElement("h3");
-        courseTitleAndNoteName.innerHTML = 
+        courseTitleAndNoteName.innerHTML =
           row.coursecode + ": " + row.filetitle;
         let courseDescription = document.createElement("p");
         courseDescription.innerHTML = row.description;
@@ -81,41 +90,57 @@ document.addEventListener("DOMContentLoaded", () => {
         containerDiv.appendChild(courseDescription);
         containerDiv.appendChild(resultInfoDiv);
 
-      // Create download button
-      let downloadButton = document.createElement("a");
-      downloadButton.href = "uploads/" + encodeURIComponent(row.filename); // Now correctly points to 'uploads/'
-      downloadButton.classList.add("download-btn");
-      downloadButton.textContent = "Download";
-      downloadButton.setAttribute("download", row.filename); // triggers browser download
-      containerDiv.appendChild(downloadButton);
+        // Create download button
+        let downloadButton = document.createElement("a");
+        downloadButton.href = "uploads/" + encodeURIComponent(row.filename); // Now correctly points to 'uploads/'
+        downloadButton.classList.add("download-btn");
+        downloadButton.textContent = "Download";
+        downloadButton.setAttribute("download", row.filename); // triggers browser download
+        containerDiv.appendChild(downloadButton);
 
-      downloadButton.addEventListener('click', function(event) { 
-        event.preventDefault(); // it stops the browser's default behavior
-      
-        const filename = this.getAttribute('download');
-      
-        let formData = new FormData();
-        formData.append('filename', filename);
-        console.log(filename); // just for debugging
-        fetch("server/download.php", {
-          method: 'POST',
-          body: formData
-        })
-        .then(() => {
-          // Now trigger the actual download
-          const a = document.createElement('a');
-          a.href = "uploads/" + encodeURIComponent(filename);
-          a.setAttribute('download', filename);
-          a.style.display = 'none';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        })
-        .catch(error => console.error('Error:', error));
-      });      
-      
-      // adding container div to result container
-      resultsContainer.appendChild(containerDiv);
+        let viewbutton = document.createElement("a");
+        viewbutton.innerHTML = "Preview";
+        viewbutton.classList.add("download-btn");
+        viewbutton.setAttribute(
+          "href",
+          `searchfiledetails.html?filename=${encodeURIComponent(
+            row.filename
+          )}&filetitle=${encodeURIComponent(
+            row.filetitle
+          )}&filedescription=${encodeURIComponent(
+            row.description
+          )}&coursecode=${encodeURIComponent(row.coursecode)}`
+        );
+        viewbutton.setAttribute("target", "");
+        containerDiv.appendChild(viewbutton);
+
+        downloadButton.addEventListener("click", function (event) {
+          event.preventDefault(); // it stops the browser's default behavior
+
+          const filename = this.getAttribute("download");
+
+          let formData = new FormData();
+          formData.append("filename", filename);
+          console.log(filename); // just for debugging
+          fetch("server/download.php", {
+            method: "POST",
+            body: formData,
+          })
+            .then(() => {
+              // Now trigger the actual download
+              const a = document.createElement("a");
+              a.href = "uploads/" + encodeURIComponent(filename);
+              a.setAttribute("download", filename);
+              a.style.display = "none";
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+
+        // adding container div to result container
+        resultsContainer.appendChild(containerDiv);
       }
     }
   }
@@ -206,5 +231,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     getNotes();
   });
-
 });
