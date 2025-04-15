@@ -154,14 +154,22 @@
 
 .download-btn{
   cursor: pointer;
-  width: 20px;
   background-color: #205781;
-  padding: 10px 8px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.view-btn{
+  cursor: pointer;
+  background-color: #205781;
+  padding: 10px 35px;
   border-radius: 20px;
   color: white;
   text-decoration: none;
 }
-
 
 .coursecodecheckboxes {
   display: none;

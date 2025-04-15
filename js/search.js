@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       downloadButton.classList.add("download-btn");
       downloadButton.textContent = "Download";
       downloadButton.setAttribute("download", row.filename); // triggers browser download
+      containerDiv.appendChild(downloadButton);
 
       downloadButton.addEventListener('click', function(event) { 
         event.preventDefault(); // it stops the browser's default behavior
@@ -113,10 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error('Error:', error));
       });      
       
-      containerDiv.appendChild(downloadButton); // adds to the card
-
-        // adding container div to result container
-        resultsContainer.appendChild(containerDiv);
+      // adding container div to result container
+      resultsContainer.appendChild(containerDiv);
       }
     }
   }
