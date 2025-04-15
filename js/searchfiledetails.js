@@ -11,6 +11,27 @@ window.addEventListener("load", function (event) {
     "Description: " + filedescription;
   document.getElementById("coursecode").innerHTML =
     "Course Code: " + coursecode;
+
+  setInterval(function(){
+    // we need to send a fetch request to the database to get the number of downloads
+    let formData = new FormData();
+    formData.append("filename", filename);
+
+    fetch("server/filePreview.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(data => {
+        // update the download count on the page
+        const count = data.download_count ?? 0; // set it to zero if any errors
+        document.getElementById("number-downloads-preview").innerHTML = count;
+      })
+      .catch(error => { // console error if faced any errors
+        console.error("Error fetching download count:", error);
+      });
+  }, 100);
+
 });
 
 
