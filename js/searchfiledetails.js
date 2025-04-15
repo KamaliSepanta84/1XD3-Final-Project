@@ -4,6 +4,7 @@ window.addEventListener("load", function (event) {
   const filetitle = params.get("filetitle");
   const filedescription = params.get("filedescription");
   const coursecode = params.get("coursecode");
+  const downloadBtn = document.getElementById("preview-download-btn");
 
   document.getElementById("filedisplay").src = "uploads/" + filename;
   document.getElementById("filetitle").innerHTML = "Title: " + filetitle;
@@ -32,6 +33,25 @@ window.addEventListener("load", function (event) {
       });
   }, 100);
 
+  downloadBtn.addEventListener("click", function(event){
+    // trigger the browser to download file
+    const a = document.createElement("a");
+    a.href = `uploads/${filename}`;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    // update the number of downloads in the databse
+    let newFromData = new FormData();
+    newFromData.append("filename", filename);
+
+    fetch("server/download.php", {
+      method: "POST",
+      body: newFromData,
+    })
+      .catch((error) => console.error("Error:", error));
+  })
 });
 
 
