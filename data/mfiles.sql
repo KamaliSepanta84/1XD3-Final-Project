@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 14, 2025 at 08:09 AM
+-- Generation Time: Apr 16, 2025 at 11:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `mfiles` (
-  `id` int(11) NOT NULL,
   `macID` varchar(100) NOT NULL,
   `filename` varchar(200) NOT NULL,
   `filetitle` varchar(200) NOT NULL,
@@ -36,20 +35,23 @@ CREATE TABLE `mfiles` (
   `filesize` int(11) NOT NULL,
   `filetype` varchar(100) NOT NULL,
   `description` varchar(200) NOT NULL,
-  `rating` float NOT NULL DEFAULT 0,
   `download-number` int(11) NOT NULL DEFAULT 0,
-  `upload_time` timestamp NOT NULL DEFAULT current_timestamp()
+  `upload_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `rating1` int(11) NOT NULL DEFAULT 0,
+  `rating2` int(11) NOT NULL DEFAULT 0,
+  `rating3` int(11) NOT NULL DEFAULT 0,
+  `rating4` int(11) NOT NULL DEFAULT 0,
+  `rating5` int(11) NOT NULL DEFAULT 0,
+  `count` int(11) NOT NULL DEFAULT 0,
+  `rating` float NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `mfiles`
 --
 
-INSERT INTO `mfiles` (`id`, `macID`, `filename`, `filetitle`, `coursecode`, `filesize`, `filetype`, `description`, `rating`, `download-number`, `upload_time`) VALUES
-(70, 'kamals19', 'A4.pdf', 'Assignment 4', '1XC3', 173763, 'application/pdf', 'This is my assignment 4 for 1XC3', 0, 2, '2025-04-14 07:03:20'),
-(71, 'pn', 'file1.txt', 'text file 1', '1P13', 3257, 'text/plain', 'thats my text file', 0, 6, '2025-04-14 10:58:17'),
-(72, 'kamals19', 'Discrete-Math-Assignment-5.pdf', 'Discrete Math Assignment 5', '1DM3', 4973645, 'application/pdf', 'This is my answers for the discrete math assignment 5', 0, 1, '2025-04-14 12:04:22'),
-(73, 'kamals19', 'Discrete-Math-Assignment-5.pdf', 'Discrete Math Assignment 5', '1DM3', 4973645, 'application/pdf', 'This is my answers for the discrete math assignment 5', 0, 1, '2025-04-14 12:06:35');
+INSERT INTO `mfiles` (`macID`, `filename`, `filetitle`, `coursecode`, `filesize`, `filetype`, `description`, `download-number`, `upload_time`, `rating1`, `rating2`, `rating3`, `rating4`, `rating5`, `count`, `rating`) VALUES
+('kamals19', 'Assignment-3-Discrete-Math.pdf', 'Assignment 3', '1DM3', 2349040, 'application/pdf', 'This is my assignment 3 for discrete math', 2, '2025-04-17 02:58:22', 0, 0, 1, 1, 0, 2, 3.5);
 
 --
 -- Indexes for dumped tables
@@ -59,18 +61,8 @@ INSERT INTO `mfiles` (`id`, `macID`, `filename`, `filetitle`, `coursecode`, `fil
 -- Indexes for table `mfiles`
 --
 ALTER TABLE `mfiles`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`filename`),
   ADD KEY `macID` (`macID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `mfiles`
---
-ALTER TABLE `mfiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

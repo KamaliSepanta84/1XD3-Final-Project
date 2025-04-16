@@ -109,8 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
             row.filetitle
           )}&filedescription=${encodeURIComponent(
             row.description
-          )}&coursecode=${encodeURIComponent(row.coursecode)}`
+          )}&coursecode=${encodeURIComponent(
+            row.coursecode
+          )}`
         );
+
         viewbutton.setAttribute("target", "");
         containerDiv.appendChild(viewbutton);
 

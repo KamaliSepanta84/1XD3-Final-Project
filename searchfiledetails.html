@@ -35,6 +35,7 @@
       <section class="file-details">
         <h2>Document Details</h2>
         <ul>
+          <li id="username"></li>
           <li id = "filetitle"></li>
           <li id = "filedescription" > </li>
           <li id = "coursecode"></li>
@@ -56,6 +57,19 @@
           <i class="ri-star-line"></i>
         </div>
         <p class="average-rating">4.2 / 5.0 (Average)</p>
+
+        <div id = "rating-section" class="ratings-sections">
+          <h3>Rate This File</h3>
+            <div class="star-rating">
+              <i id = "star1" class="ri-star-line"></i>
+              <i id = "star2" class="ri-star-line"></i>
+              <i id = "star3" class="ri-star-line"></i>
+              <i id = "star4" class="ri-star-line"></i>
+              <i id = "star5" class="ri-star-line"></i>
+            </div>
+            <input id = "submit-rating-btn" type="button" class="btn btn-primary" value="Submit Rating">
+        </div>
+        <p id="rating-submission-feedback"></p>
 
         <button class="accordion-btn" id="accordionBtn">
           Show Rating Distribution

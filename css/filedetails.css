@@ -35,6 +35,10 @@
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
+.ratings-section h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
 
 .star-rating {
   display: flex;

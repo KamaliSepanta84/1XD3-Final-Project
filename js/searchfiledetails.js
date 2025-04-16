@@ -4,7 +4,9 @@ window.addEventListener("load", function (event) {
   const filetitle = params.get("filetitle");
   const filedescription = params.get("filedescription");
   const coursecode = params.get("coursecode");
+  const macID = params.get("macID");
   const downloadBtn = document.getElementById("preview-download-btn");
+
 
   document.getElementById("filedisplay").src = "uploads/" + filename;
   document.getElementById("filetitle").innerHTML = "Title: " + filetitle;
@@ -52,6 +54,94 @@ window.addEventListener("load", function (event) {
     })
       .catch((error) => console.error("Error:", error));
   })
+
+  let filenameFormData = new FormData();
+  filenameFormData.append("filename", filename);
+
+  fetch("server/getUserFromFileName.php", {
+    method: "POST",
+    body: filenameFormData
+  })
+    .then(response => response.json())
+    .then(data => {
+      let username = data.user_name;
+      let usernameBox = document.getElementById("username");
+      usernameBox.innerHTML = `Username: ${username}`;
+    })
+    .catch((error) => console.error("Error:", error));
+
+
+  // -------------------------------------- Ratings---------------------------------------------
+
+  // first we need to check if the user has rated thh file before or not 
+  // if they have already rated this file before they won't see the rating section
+  // if they haven't, they can see the rating section and they can rate
+
+  let rateFormData = new FormData()
+  rateFormData.append("filename", filename);
+  
+  fetch("server/ratingHistory.php", {
+    method: "POST",
+    body: rateFormData,
+  })
+    .then(response => response.json())
+    .then(data => {
+      isRated = data.rated;
+  
+      // define the submit rating button 
+      const submitRatingBtn = document.getElementById("submit-rating-btn");
+      const submitRatingFeedback = document.getElementById("rating-submission-feedback");
+      const ratingSection = document.getElementById("rating-section");
+  
+      if (!isRated) {
+        let starClicked = 0;
+  
+        for (let i = 1; i <= 5; i++) {
+          let star = document.getElementById("star" + i);
+          star.addEventListener("click", function () {
+            starClicked = i;
+  
+            for (let j = 1; j <= 5; j++) {
+              let currentStar = document.getElementById("star" + j);
+  
+              if (j <= i) {
+                currentStar.classList.remove("ri-star-line");
+                currentStar.classList.add("ri-star-fill");
+              } else {
+                currentStar.classList.remove("ri-star-fill");
+                currentStar.classList.add("ri-star-line");
+              }
+            }
+          });
+        }
+  
+        submitRatingBtn.addEventListener("click", function (event) {
+          if (starClicked == 0) {
+            event.preventDefault();
+            submitRatingFeedback.style.color = "red";
+            submitRatingFeedback.innerHTML = "Please rate the document first!";
+          } else {
+            let ratingFormData = new FormData();
+            ratingFormData.append("rating", starClicked);
+            ratingFormData.append("filename", filename);
+  
+            fetch("server/updateRating.php", {
+              method: "POST",
+              body: ratingFormData,
+            })
+              .then((response) => response.text())
+              .then((data) => {
+                submitRatingFeedback.innerHTML = data;
+                submitRatingFeedback.style.color = "green";
+                ratingSection.style.display = "none";
+              })
+              .catch((error) => console.error("Error:", error));
+          }
+        });
+      } else {
+        ratingSection.style.display = "none";
+      }
+    });
 });
 
 
