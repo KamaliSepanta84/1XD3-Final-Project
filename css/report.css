@@ -1,0 +1,90 @@
+:root {
+  --primary-color: #205781;
+  --text-dark: #0f172a;
+  --text-light: #205781;
+  --extra-light: #f8fafc;
+  --white: #ffffff;
+  --primary-color-dark: #1C4E70; 
+  --primary-color-light: #2A6FA3;
+}
+
+body {
+    background-color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.report-container {
+    background-color: var(--extra-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(58, 12, 163, 0.2);
+    width: 90%;
+    max-width: 500px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    padding: 10px;
+    border: 2px solid var(--primary-color-dark);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--primary-color);
+    resize: none;
+}
+
+textarea::placeholder {
+    color: #aaa;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--primary-color-light);
+}
+
+#go-back-btn{
+    background-color: white;
+    color: #205781;
+    border-radius: 20px;
+    border: 2px solid #205781;
+}
+
+#go-back-btn:hover{
+    background-color: #205781;
+    color: white;
+}

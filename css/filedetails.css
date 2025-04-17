@@ -180,3 +180,13 @@
   font-size: 0.95rem;
   text-align: center;
 }
+
+#report-btn{
+  background-color: white;
+  color: #205781;
+}
+
+#report-btn:hover{
+  background-color: #205781;
+  color: white;
+}

@@ -70,6 +70,25 @@ window.addEventListener("load", function (event) {
     })
     .catch((error) => console.error("Error:", error));
 
+    // define the report button
+    const reportBtn = document.getElementById("report-btn");
+
+    // we add an event listener for when the report button is clicked
+    // it redirects the user to report.html and sends the search parameters
+
+    reportBtn.addEventListener("click", function(event){
+      const a = document.createElement("a");
+      a.href = `report.html?filename=${encodeURIComponent(
+            filename
+          )}&filetitle=${encodeURIComponent(
+            filetitle
+          )}&coursecode=${encodeURIComponent(
+            coursecode
+          )}`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
 
   // -------------------------------------- Ratings---------------------------------------------
 
