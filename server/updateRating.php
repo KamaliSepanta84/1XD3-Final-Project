@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 include "./connect.php";
 session_start(); 
 
@@ -74,5 +75,5 @@ if ($rating !== null && $rating !== false && $filename !== null && $filename !==
     exit();
 }
 
-echo "Rating submitted!";
+echo "Rating Submitted!";
 ?>

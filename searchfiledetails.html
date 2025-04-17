@@ -50,13 +50,13 @@
       <section class="ratings-section">
         <h2>Ratings</h2>
         <div class="star-rating">
-          <i class="ri-star-fill"></i>
-          <i class="ri-star-fill"></i>
-          <i class="ri-star-fill"></i>
-          <i class="ri-star-half-fill"></i>
-          <i class="ri-star-line"></i>
+          <i id = "sstar1" class="ri-star-fill"></i>
+          <i id = "sstar2" class="ri-star-fill"></i>
+          <i id = "sstar3" class="ri-star-fill"></i>
+          <i id = "sstar4" class="ri-star-half-fill"></i>
+          <i id = "sstar5" class="ri-star-line"></i>
         </div>
-        <p class="average-rating">4.2 / 5.0 (Average)</p>
+        <p class="average-rating"><span id="average-rate"> 0.0</span> / 5 (Average)</p>
 
         <div id = "rating-section" class="ratings-sections">
           <h3>Rate This File</h3>
@@ -71,10 +71,10 @@
         </div>
         <p id="rating-submission-feedback"></p>
 
-        <button class="accordion-btn" id="accordionBtn">
+        <!-- <button class="accordion-btn" id="accordionBtn">
           Show Rating Distribution
           <i class="ri-arrow-down-s-line"></i>
-        </button>
+        </button> -->
         <div class="accordion-content" id="accordionContent">
           <div class="rating-bar">
             <span>5 Stars</span>

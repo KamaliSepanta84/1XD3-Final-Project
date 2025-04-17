@@ -79,7 +79,7 @@ window.addEventListener("load", function (event) {
 
   let rateFormData = new FormData()
   rateFormData.append("filename", filename);
-  
+
   fetch("server/ratingHistory.php", {
     method: "POST",
     body: rateFormData,
@@ -133,6 +133,7 @@ window.addEventListener("load", function (event) {
               .then((data) => {
                 submitRatingFeedback.innerHTML = data;
                 submitRatingFeedback.style.color = "green";
+                submitRatingFeedback.style["margin-top"] = "10px";
                 ratingSection.style.display = "none";
               })
               .catch((error) => console.error("Error:", error));
@@ -142,6 +143,49 @@ window.addEventListener("load", function (event) {
         ratingSection.style.display = "none";
       }
     });
+
+    // define the average rating span
+    const averageRatingSpan = document.getElementById("average-rate");
+
+    // set interval to update the average rating constantly
+    setInterval(function(){
+      let getAveRateFormData = new FormData();
+      getAveRateFormData.append("filename", filename);
+
+      fetch("server/getAverageRating.php", {
+        method: "POST",
+        body: getAveRateFormData,
+      })
+        .then(response => response.json())
+        .then(data => {
+          let averageRating = data.rating;
+          averageRatingSpan.innerHTML = averageRating;
+
+          let floorAverageRating = Math.floor(averageRating);
+
+          for (let i = 1; i <= 5; i++){
+            let sstar = document.getElementById("sstar" + i);
+            if (i <= floorAverageRating){
+              sstar.classList.remove("ri-star-line");
+              sstar.classList.remove("ri-star-half-fill");
+              sstar.classList.add("ri-star-fill");
+            }
+
+            else if ((i - floorAverageRating  == 1) && (floorAverageRating < averageRating)){
+              sstar.classList.remove("ri-star-fill");
+              sstar.classList.remove("ri-star-line");
+              sstar.classList.add("ri-star-half-fill")
+            }
+
+            else{
+              sstar.classList.remove("ri-star-half-fill");
+              sstar.classList.remove("ri-star-fill");
+              sstar.classList.add("ri-star-line");
+            }
+          }
+        })
+        .catch((error) => console.error("Error:", error));
+    }, 100)
 });
 
 
