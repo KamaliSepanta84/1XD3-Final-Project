@@ -75,7 +75,7 @@ window.addEventListener("load", function(event) {
 
     let userTotalUploads = document.getElementById("user-total-uploads");
     let userTotalDownloads = document.getElementById("user-total-downloads");
-    let userTotalRatings = document.getElementById("user-total-ratings");
+    let userAverageRatings = document.getElementById("user-total-ratings");
 
     setInterval(function () {
       fetch("./server/dashboard.php")
@@ -83,6 +83,7 @@ window.addEventListener("load", function(event) {
         .then(data => {
           userTotalUploads.innerHTML = data.numberOfUploads;
           userTotalDownloads.innerHTML = data.numberOfDownloads;
+          userAverageRatings.innerHTML = data.userAverageRating;
         })
         .catch(error => {
           console.error("Error fetching dashboard data:", error);

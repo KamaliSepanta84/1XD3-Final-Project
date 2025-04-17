@@ -3,6 +3,8 @@
     include "./connect.php";
     session_start();
 
+    $response = ["numberOfUploads" => 0, "numberOfDownloads" =>0, "userAverageRating" => 0.0];
+
     if (isset($_SESSION["username"])) {
         // Get the username from session
         $username = $_SESSION["username"];
@@ -28,12 +30,25 @@
                     $numberOfUploads = $row['number_uploads'];
                     $numberOfDownloads = $row['num_downloads'];
                     
-                    echo json_encode([
-                        "numberOfUploads" => $numberOfUploads,
-                        "numberOfDownloads" => $numberOfDownloads
-                      ]);                      
+                    $response["numberOfUploads"] = $numberOfUploads;                      
+                    $response["numberOfDownloads"] = $numberOfDownloads;                   
                 } else {
                     die("ERROR: Failed to get download and upload numbers.");
+                }
+
+                $getAveRatingCommand = "SELECT ROUND(AVG(rating), 1) AS average_rating FROM mfiles WHERE macID = ?";
+                $getAveRatingStmt = $dbh->prepare($getAveRatingCommand);
+                $getAveRatingArgs = [$macID];
+                $getAveRatingSuccess = $getAveRatingStmt->execute($getAveRatingArgs);
+
+                if ($getAveRatingSuccess){
+                    $newRow = $getAveRatingStmt->fetch(PDO::FETCH_ASSOC);
+                    $userAverageRating = isset($newRow["average_rating"]) ? $newRow["average_rating"] : 0.0;
+                    $response["userAverageRating"] = $userAverageRating;
+                }
+
+                else{
+                    die("ERROR: Failed to get the user's average rating from database!");
                 }
             } else {
                 die("ERROR: Invalid macID!");
@@ -44,4 +59,6 @@
     } else {
         die("ERROR: There is no active session!");
     }
+
+    echo json_encode($response);
 ?>
