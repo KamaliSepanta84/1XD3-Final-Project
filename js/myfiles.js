@@ -5,7 +5,16 @@ window.addEventListener("load", async function (event) {
 
   let uploaded_files_display = document.getElementById("files-list");
   let filename = "";
-  let coursecodes = ["1XC3","1JC3","1MD3","1DM3","1B03","1XD3","1ZB3","1ZA3"];
+  let coursecodes = [
+    "1XC3",
+    "1JC3",
+    "1MD3",
+    "1DM3",
+    "1B03",
+    "1XD3",
+    "1ZB3",
+    "1ZA3",
+  ];
   let orderbyoption = "`download-number`";
   let macID = "";
 
@@ -37,10 +46,25 @@ window.addEventListener("load", async function (event) {
 
         let view_button = document.createElement("a");
         view_button.classList.add("btn", "btn-primary", "view-btn");
-        view_button.setAttribute("href", "filedetails.html");
-        view_button.setAttribute("target", "");
+
         view_button.setAttribute("id", "view_button");
         view_button.innerHTML = "View";
+
+        async function getFileDetails() {
+          const response = await fetch("server/filedetails.php");
+          const data = await response.json(); // Wait for JSON parsing
+          console.log(data.message);
+
+          let urlwithparams = `searchfiledetails.html?filename=${encodeURIComponent(
+            data.message.path.slice(11)
+          )}&filetitle=${encodeURIComponent(
+            data.message.title
+          )}&filedescription=${encodeURIComponent(
+            data.message.description
+          )}&coursecode=${encodeURIComponent(data.message.coursecode)}`;
+
+          window.location.href = urlwithparams;
+        }
 
         view_button.addEventListener("click", async function (event) {
           const formData = new FormData();
@@ -52,10 +76,9 @@ window.addEventListener("load", async function (event) {
             body: formData,
           });
 
-          const data = await response.json(); // Wait for JSON parsing
-
-          console.log(data.message);
+          getFileDetails();
         });
+        // makes file user clicked on set to true
 
         file_card.appendChild(h3_file_title);
         file_card.appendChild(file_info);
@@ -93,6 +116,8 @@ window.addEventListener("load", async function (event) {
       (await searchDatabase(formData, "server/searchmyfiles.php")).message
     );
   }
+
+  //search inputs
 
   document
     .getElementById("uploadedSearchInput")
