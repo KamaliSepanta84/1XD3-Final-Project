@@ -44,7 +44,7 @@ window.addEventListener("load", async function (event) {
         file_info.appendChild(rating_display);
         file_info.appendChild(download_display);
 
-        let view_button = document.createElement("a");
+        let view_button = document.createElement("button");
         view_button.classList.add("btn", "btn-primary", "view-btn");
 
         view_button.setAttribute("id", "view_button");
