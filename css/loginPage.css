@@ -5,6 +5,8 @@
   }
   
   #title-container{
+    display: flex;
+    flex-direction: row;
      position: absolute;
      top: 20px;
      left: 20px;
@@ -13,17 +15,21 @@
      font-size: 1.5rem;
   }
 
+  #title-container img{
+    width: 60px;
+  }
+
   .title-primary{
     color: var(--text-color);
   }
   
   .title-white{
-     color: var(--lighter-background-color);
+     color: black;
   }
   .container {
     height: 100vh;
     position: relative;
-    background-color: var(--lighter-background-color);
+    background-color: var(--stronger-background-color);
     overflow: hidden;
   }
   
@@ -108,12 +114,12 @@
   }
   
   .overlay-wrapper {
-    background: url("../images/andy-holmes-LUpDjlJv4_c-unsplash.jpg");
+    background: url("../images/macscenery.jpg");
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    color: var(--lighter-background-color);
+    color: black;
     left: -150%;
     height: 100%;
     width: 250%;
@@ -161,19 +167,19 @@
     border: none;
     outline: none;
     font-size: 1rem;
-    color: var(--lighter-background-color);
+    color: black;
     border-radius: 2rem;
     background-color: transparent;
   }
   
   #overlay-btn-signup{
-    border: 1px solid white;
+    border: 2px solid black;
     border-radius: 30px;
     cursor: pointer;
   }
 
   #overlay-btn-signin{
-    border: 1px solid white;
+    border: 2px solid black;
     border-radius: 30px;
     cursor: pointer;
   }
@@ -199,6 +205,9 @@
     opacity: 0;
   }
   
+  #signin-email, #signin-password, #signup-password, #signup-email, #signup-username{
+    background-color: transparent;
+  }
   .right-panel-active .signup-container {
     transform: translateX(65%);
     opacity: 1;

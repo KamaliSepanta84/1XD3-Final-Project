@@ -33,19 +33,30 @@ window.addEventListener("load", function () {
 
   // Helper functions
   function applyDarkMode() {
-    document.documentElement.style.setProperty('--text-color', '#b1b1b1');
-    document.documentElement.style.setProperty('--sidebar-color', '#2b2b2b');
-    document.documentElement.style.setProperty('--lighter-background-color', '#434343');
-    document.documentElement.style.setProperty('--stronger-background-color', 'rgb(26, 26, 26)');
+    document.documentElement.style.setProperty("--text-color", "#b1b1b1");
+    document.documentElement.style.setProperty("--sidebar-color", "#2b2b2b");
+    document.documentElement.style.setProperty(
+      "--lighter-background-color",
+      "#434343"
+    );
+    document.documentElement.style.setProperty(
+      "--stronger-background-color",
+      "rgb(26, 26, 26)"
+    );
     document.querySelector(".sun").style.opacity = 1;
     document.querySelector(".moon").style.opacity = 0;
   }
-
   function applyLightMode() {
-    document.documentElement.style.setProperty('--text-color', '#7a003c');
-    document.documentElement.style.setProperty('--sidebar-color', '#fdbf57');
-    document.documentElement.style.setProperty('--lighter-background-color', '#cccccc');
-    document.documentElement.style.setProperty('--stronger-background-color', 'white');
+    document.documentElement.style.setProperty("--text-color", "#7a003c");
+    document.documentElement.style.setProperty("--sidebar-color", "#fdbf57");
+    document.documentElement.style.setProperty(
+      "--lighter-background-color",
+      "#cccccc"
+    );
+    document.documentElement.style.setProperty(
+      "--stronger-background-color",
+      "white"
+    );
     document.querySelector(".sun").style.opacity = 0;
     document.querySelector(".moon").style.opacity = 1;
   }

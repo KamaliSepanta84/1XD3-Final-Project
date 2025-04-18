@@ -163,6 +163,7 @@ img{
 
 .view-btn,
 .download-again-btn {
+  background-color: var(--lighter-background-color);
   border: none;
   width: 100%;
   padding: 0.5rem;
@@ -230,7 +231,7 @@ gap: 5px;
   cursor: pointer;
   padding: 8px 12px;
   margin: 4px 0;
-  background-color:var( --lighter-background-color);
+  background-color:var(--stronger-background-color);
   border-radius: 6px;
   font-weight: 600;
   transition: background-color 0.2s ease;
@@ -242,8 +243,8 @@ gap: 5px;
 
 /* This targets the label when its child checkbox is checked */
 .checkbox-wrapper input[type="checkbox"]:checked + label {
-  background-color:var(--text-color);
-  color: white;
+  background-color:var(--stronger-background-color);
+  color: var(--text-color);
 }
 
 #sortSelect{
