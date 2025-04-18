@@ -9,9 +9,7 @@
   <!-- Note that all elements <i> are icon elements-->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
   <!--Stylesheet + Scipts-->
-  <link rel="stylesheet" href="css/homestyle.css" />
   <link rel="stylesheet" href="css/upload.css" />
-  <link rel="stylesheet" href="css/dashboard.css" />
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
@@ -22,27 +20,14 @@
 
 <body>
   <!--Header-->
-  <header class="header">
-    <div class="logo">
-      <h1>MacNotes</h1>
-    </div>
-    <nav class="nav-links">
-      <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">
-          <i class="ri-settings-3-line"></i>
-        </button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="help.html">Help/FAQ</a>
-          <a href="admin.html">Admin Login</a>
-          <a href="#">Other Settings</a>
-        </div>
-      </div>
-    </nav>
-  </header>
   <!--Containter-->
   <section class="upload-page">
     <!--Sidebar-->
     <aside class="sidebar">
+      <div class="logo">
+        <img src="images/maclogo.png" alt="">
+        <h1>MacNotes</h1>
+      </div>
       <ul>
         <li>
           <a href="dashboard.html">
@@ -83,13 +68,13 @@
             </div>
           </div>        
       </div>
-      <div class="upload-progress" id="uploadProgress">
+      <!-- <div class="upload-progress" id="uploadProgress">
         <div class="progress-bar" id="progressBar" style="width: 0;"></div>
-      </div>
+      </div> -->
       <div class="metadata-form">
         <div class="form-group">
           <label for="titleInput">Title</label>
-          <input type="text" id="titleInput" placeholder="Enter title (max 200 characters)" required />
+          <input type="text" id="titleInput" placeholder="Enter title (max 50 characters)" required />
           <div id="titleFeedback" class="feedback-message"></div>
         </div>
         <div class="form-group">
@@ -99,7 +84,7 @@
         </div>
         <div class="form-group">
           <label for="courseInput">Course Code</label>
-          <input type="text" id="courseInput" placeholder="e.g., 1MD3 (max 5 characters)" />
+          <input type="text" id="courseInput" placeholder="e.g., 1MD3 (max 4 characters)" />
           <div id="courseFeedback" class="feedback-message"></div>
         </div>
         <div class="upload-and-result-container">
@@ -107,17 +92,17 @@
           <p id="uploadMessage" style="display: none; font-weight: bold;"></p>
         </div>
       </div>
+      <div class="footer-links">
+        <a href="#" style="color: var(--white);">About Us</a>
+        <a href="#" style="color: var(--white);">Contact</a>
+        <a href="#" style="color: var(--white);">Privacy Policy</a>
+      </div>
     </div>
+
   </section>
   <!--Footer-->
-  <footer class="footer" style="background-color: var(--primary-color-dark);">
-    <div class="footer-links">
-      <a href="#" style="color: var(--white);">About Us</a>
-      <a href="#" style="color: var(--white);">Contact</a>
-      <a href="#" style="color: var(--white);">Privacy Policy</a>
-    </div>
-    <p style="color: var(--white);">&copy; 2025 MacNotes. All rights reserved.</p>
-  </footer>
+
+
 </body>
 
 </html>

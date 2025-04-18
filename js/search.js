@@ -109,9 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
             row.filetitle
           )}&filedescription=${encodeURIComponent(
             row.description
-          )}&coursecode=${encodeURIComponent(
-            row.coursecode
-          )}`
+          )}&coursecode=${encodeURIComponent(row.coursecode)}`
         );
 
         viewbutton.setAttribute("target", "");
@@ -195,10 +193,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   min_size_slider.addEventListener("input", function (event) {
+    if (parseInt(min_size_slider.value) > parseInt(max_size_slider.value)) {
+      min_size_slider.value = max_size_slider.value;
+    }
     getNotes();
   });
 
   max_size_slider.addEventListener("input", function (event) {
+    if (parseInt(max_size_slider.value) < parseInt(min_size_slider.value)) {
+      max_size_slider.value = min_size_slider.value;
+    }
     getNotes();
   });
 

@@ -4,14 +4,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-
-  --primary-color: #205781;
+  --primary-color: #7A003C;
+  --text-dark: #2a0f0f;
+  --text-light: #2a0f0f;
+  --extra-light: #FDBF57;
+  --white: #cccccc;
+  --primary-color-dark: #FDBF57; 
+  --primary-color-light: #7A003C;
+  /* --primary-color: #205781;
   --text-dark: #0f172a;
   --text-light: #205781;
   --extra-light: #f8fafc;
   --white: #ffffff;
   --primary-color-dark: #1C4E70; 
-  --primary-color-light: #2A6FA3;
+  --primary-color-light: #2A6FA3; */
 }
 
 * {
@@ -31,10 +37,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* background-color: var(--white); */
   background-color: var(--white);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.logo{
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+  /* background: var(--white);
+  border: 2px solid var(--primary-color); */
+  border-radius: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
 .logo h1 {
   font-size: 1.5rem;
   color: var(--primary-color);
@@ -61,8 +80,8 @@ body {
 
 .hero {
   position: relative;
-  height: 80vh;
-  background: url("../images/DALL·E\ 2025-03-25\ 22.54.12\ -\ A\ digital\ wallpaper\ for\ a\ note-sharing\ app\ in\ landscape\ format.\ Centerpiece\ shows\ a\ stylized\ open\ notebook\ interface\ with\ animated\ arrows\ connecting\ i.webp") center/cover no-repeat;
+  height: 85vh;
+  background: url("../images/macbench.jpg") center/cover no-repeat;
 }
 
 .hero-overlay {
@@ -91,12 +110,16 @@ body {
 
 .btn-primary {
   background-color: var(--primary-color);
-  color: var(--white);
+  color: var(--text-dark);
   transition: background-color 0.3s ease;
 }
 
-.btn-primary:hover {
+/* .btn-primary:hover {
   background-color: #144b6a;
+} */
+
+img{
+  width: 30px;
 }
 
 .macnotes-title {
@@ -187,7 +210,7 @@ body {
 .features-section {
   padding: 3rem 2rem;
   text-align: center;
-  background-color: var(--extra-light);
+  background-color: var(--white);
 }
 
 .features-section h2 {
@@ -204,7 +227,7 @@ body {
 }
 
 .feature-box {
-  background-color: var(--white);
+  background-color: var(--extra-light);
   border-radius: 8px;
   padding: 2rem;
   width: 250px;
@@ -239,7 +262,12 @@ body {
 
 /* Carosel */
 .featured-trending {
-  margin-bottom: 2rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:var(--white);
 }
 
 .featured-trending h3 {

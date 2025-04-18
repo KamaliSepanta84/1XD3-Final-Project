@@ -1,207 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MacNotes | My Files</title>
+    <!--Icon Pack Link-->
+    <!-- Note that all elements <i> are icon elements-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!--Stylesheet + Scipts-->
+    <link rel="stylesheet" href="css/myfiles.css" />
+    <script src="js/myfiles.js"></script>
+    <script src="js/settings.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MacNotes | My Files</title>
-  <!--Icon Pack Link-->
-  <!-- Note that all elements <i> are icon elements-->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
-  <!--Stylesheet + Scipts-->
-  <link rel="stylesheet" href="css/homestyle.css" />
-  <link rel="stylesheet" href="css/myfiles.css" />
-  <link rel="stylesheet" href="css/dashboard.css" />
-  <script src="js/myfiles.js"></script>
-  <script src="js/settings.js"></script>
-</head>
+  <body>
+    <!--Header-->
 
-<body>
-  <!--Header-->
-  <header class="header">
-    <div class="logo">
-      <h1>MacNotes</h1>
-    </div>
-    <nav class="nav-links">
-      <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">
-          <i class="ri-settings-3-line"></i>
-        </button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="help.html">Help/FAQ</a>
-          <a href="admin.html">Admin Login</a>
-          <a href="#">Other Settings</a>
+    <!--Containter-->
+    <div class="dashboard-container">
+      <!--Sidebar-->
+      <aside class="sidebar">
+        <div class="logo">
+          <img src="images/maclogo.png" alt="" />
+          <h1>MacNotes</h1>
         </div>
-      </div>
-    </nav>
-  </header>
-  <!--Containter-->
-  <div class="dashboard-container">
-    <!--Sidebar-->
-    <aside class="sidebar">
-      <ul>
-        <li>
-          <a href="dashboard.html">
-            <i class="ri-dashboard-line"></i> Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="upload.html">
-            <i class="ri-upload-cloud-2-line"></i> Upload
-          </a>
-        </li>
-        <li>
-          <a href="myfiles.html" class="active">
-            <i class="ri-folder-line"></i> My Files
-          </a>
-        </li>
-        <li>
-          <a href="searchpage.html">
-            <i class="ri-search-line"></i> Search
-          </a>
-        </li>
-        <li>
-          <a href="index.html">
-            <i class="ri-logout-box-r-line"></i> Logout
-          </a>
-        </li>
-      </ul>
-    </aside>
-    <!--Main Content-->
-    <main class="myfiles-page">
-      <div class="files-container">
-        <!-- Uploaded Files Section -->
-        <div class="files-section uploaded-files" id="uploadedFiles">
-          <h2>My Uploaded Files</h2>
-          <div class="file-controls">
-            <div id = "search-and-sort-area">
-              <input type="text" id="uploadedSearchInput" placeholder="Search uploaded files..." />
-              <select id="sortSelect">
-                <option value="Newest">Sort by Date</option>
-                <option value="Highest Rated">Sort by Rating</option>
-                <option value="Most Downloaded">Sort by Downloads</option>
-                <option value="Name">Sort Alphabetically</option>
-              </select>
-            </div>
+        <ul>
+          <li>
+            <a href="dashboard.html">
+              <i class="ri-dashboard-line"></i> Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="upload.html">
+              <i class="ri-upload-cloud-2-line"></i> Upload
+            </a>
+          </li>
+          <li>
+            <a href="myfiles.html" class="active">
+              <i class="ri-folder-line"></i> My Files
+            </a>
+          </li>
+          <li>
+            <a href="searchpage.html">
+              <i class="ri-search-line"></i> Search
+            </a>
+          </li>
+          <li>
+            <a href="index.html">
+              <i class="ri-logout-box-r-line"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!--Main Content-->
+      <main class="myfiles-page">
+        <div class="files-container">
+          <!-- Uploaded Files Section -->
+          <div class="files-section uploaded-files" id="uploadedFiles">
+            <h2>My Uploaded Files</h2>
+            <div class="file-controls">
+              <div id="search-and-sort-area">
+                <input
+                  type="text"
+                  id="uploadedSearchInput"
+                  placeholder="Search uploaded files..."
+                />
+                <select id="sortSelect">
+                  <option value="Newest">Sort by Date</option>
+                  <option value="Highest Rated">Sort by Rating</option>
+                  <option value="Most Downloaded">Sort by Downloads</option>
+                  <option value="Name">Sort Alphabetically</option>
+                </select>
+              </div>
 
-            <div id="coursecode_filter">
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="1MD3" checked value="1MD3" class="coursecodecheckboxes" />
-                <label for="1MD3">1MD3</label>
-              </div>
-              
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="1JC3"  checked value="1JC3" class="coursecodecheckboxes" />
-                <label for="1JC3">1JC3</label>
-              </div>
-              
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="1ZA3" checked value="1ZA3" class="coursecodecheckboxes" />
-                <label for="1ZA3">1ZA3</label>
-              </div>
-              
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="1B03" checked value="1B03" class="coursecodecheckboxes" />
-                <label for="1B03">1B03</label>
-              </div>
-              
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="1DM3" checked value="1DM3" class="coursecodecheckboxes" />
-                <label for="1DM3">1DM3</label>
-              </div>
-              
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="1XC3" checked value="1XC3" class="coursecodecheckboxes" />
-                <label for="1XC3">1XC3</label>
-              </div>
-              
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="1XD3" checked value="1XD3" class="coursecodecheckboxes" />
-                <label for="1XD3">1XD3</label>
-              </div>
-              
-              <div class="checkbox-wrapper">
-                <input type="checkbox" id="1ZB3" checked value="1ZB3" class="coursecodecheckboxes" />
-                <label for="1ZB3">1ZB3</label>
-              </div>
-            </div>
+              <div id="coursecode_filter">
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="1MD3"
+                    checked
+                    value="1MD3"
+                    class="coursecodecheckboxes"
+                  />
+                  <label for="1MD3">1MD3</label>
+                </div>
 
-            <!--
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="1JC3"
+                    checked
+                    value="1JC3"
+                    class="coursecodecheckboxes"
+                  />
+                  <label for="1JC3">1JC3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="1ZA3"
+                    checked
+                    value="1ZA3"
+                    class="coursecodecheckboxes"
+                  />
+                  <label for="1ZA3">1ZA3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="1B03"
+                    checked
+                    value="1B03"
+                    class="coursecodecheckboxes"
+                  />
+                  <label for="1B03">1B03</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="1DM3"
+                    checked
+                    value="1DM3"
+                    class="coursecodecheckboxes"
+                  />
+                  <label for="1DM3">1DM3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="1XC3"
+                    checked
+                    value="1XC3"
+                    class="coursecodecheckboxes"
+                  />
+                  <label for="1XC3">1XC3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="1XD3"
+                    checked
+                    value="1XD3"
+                    class="coursecodecheckboxes"
+                  />
+                  <label for="1XD3">1XD3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="1ZB3"
+                    checked
+                    value="1ZB3"
+                    class="coursecodecheckboxes"
+                  />
+                  <label for="1ZB3">1ZB3</label>
+                </div>
+              </div>
+
+              <!--
 
             
-            -->
-            
+            --></div>
+            <!-- Uploaded Files List-->
+            <div id="files-list"></div>
           </div>
-          <!-- Uploaded Files List-->
-          <div id="files-list">
 
+          <!-- Downloaded Files Section -->
+          <div class="files-section downloaded-files" id="downloadedFiles">
+            <h2>My Downloaded Files</h2>
+            <div class="file-controls">
+              <input
+                type="text"
+                id="downloadedSearchInput"
+                placeholder="Search downloaded files..."
+              />
+            </div>
+            <!-- Downloaded Files List (Add more as you pls) -->
+            <div class="files-list">
+              <div class="file-card" data-name="Syllabus - Computer Science">
+                <h3>Syllabus - Computer Science</h3>
+                <button class="btn btn-primary download-again-btn">
+                  <i class="ri-download-2-line"></i> Download Again
+                </button>
+              </div>
+              <div class="file-card" data-name="Revision Notes - Mathematics">
+                <h3>Revision Notes - Mathematics</h3>
+                <button class="btn btn-primary download-again-btn">
+                  <i class="ri-download-2-line"></i> Download Again
+                </button>
+              </div>
+              <div class="file-card" data-name="Lab Manual - Physics">
+                <h3>Lab Manual - Physics</h3>
+                <button class="btn btn-primary download-again-btn">
+                  <i class="ri-download-2-line"></i> Download Again
+                </button>
+              </div>
+              <div class="file-card" data-name="Research Paper - Economics">
+                <h3>Research Paper - Economics</h3>
+                <button class="btn btn-primary download-again-btn">
+                  <i class="ri-download-2-line"></i> Download Again
+                </button>
+              </div>
+              <div class="file-card" data-name="Tutorial - Programming">
+                <h3>Tutorial - Programming</h3>
+                <button class="btn btn-primary download-again-btn">
+                  <i class="ri-download-2-line"></i> Download Again
+                </button>
+              </div>
+              <div class="file-card" data-name="Exam Prep - Biology">
+                <h3>Exam Prep - Biology</h3>
+                <button class="btn btn-primary download-again-btn">
+                  <i class="ri-download-2-line"></i> Download Again
+                </button>
+              </div>
+              <!--Add more -->
+              <!-- No results message for Downloaded Files -->
+              <div id="noResultsMessageDownloaded" class="no-results">
+                Sorry, no files found.
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- Downloaded Files Section -->
-        <div class="files-section downloaded-files" id="downloadedFiles">
-          <h2>My Downloaded Files</h2>
-          <div class="file-controls">
-            <input type="text" id="downloadedSearchInput" placeholder="Search downloaded files..." />
-          </div>
-          <!-- Downloaded Files List (Add more as you pls) -->
-          <div class="files-list">
-            <div class="file-card" data-name="Syllabus - Computer Science">
-              <h3>Syllabus - Computer Science</h3>
-              <button class="btn btn-primary download-again-btn">
-                <i class="ri-download-2-line"></i> Download Again
-              </button>
-            </div>
-            <div class="file-card" data-name="Revision Notes - Mathematics">
-              <h3>Revision Notes - Mathematics</h3>
-              <button class="btn btn-primary download-again-btn">
-                <i class="ri-download-2-line"></i> Download Again
-              </button>
-            </div>
-            <div class="file-card" data-name="Lab Manual - Physics">
-              <h3>Lab Manual - Physics</h3>
-              <button class="btn btn-primary download-again-btn">
-                <i class="ri-download-2-line"></i> Download Again
-              </button>
-            </div>
-            <div class="file-card" data-name="Research Paper - Economics">
-              <h3>Research Paper - Economics</h3>
-              <button class="btn btn-primary download-again-btn">
-                <i class="ri-download-2-line"></i> Download Again
-              </button>
-            </div>
-            <div class="file-card" data-name="Tutorial - Programming">
-              <h3>Tutorial - Programming</h3>
-              <button class="btn btn-primary download-again-btn">
-                <i class="ri-download-2-line"></i> Download Again
-              </button>
-            </div>
-            <div class="file-card" data-name="Exam Prep - Biology">
-              <h3>Exam Prep - Biology</h3>
-              <button class="btn btn-primary download-again-btn">
-                <i class="ri-download-2-line"></i> Download Again
-              </button>
-            </div>
-            <!--Add more -->
-            <!-- No results message for Downloaded Files -->
-            <div id="noResultsMessageDownloaded" class="no-results">
-              Sorry, no files found.
-            </div>
-          </div>
+        <div class="footer-links">
+          <a href="#" style="color: var(--white)">About Us</a>
+          <a href="#" style="color: var(--white)">Contact</a>
+          <a href="#" style="color: var(--white)">Privacy Policy</a>
         </div>
-      </div>
-    </main>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer" style="background-color: var(--primary-color-dark);">
-    <div class="footer-links">
-      <a href="#" style="color: var(--white);">About Us</a>
-      <a href="#" style="color: var(--white);">Contact</a>
-      <a href="#" style="color: var(--white);">Privacy Policy</a>
+      </main>
     </div>
-    <p style="color: var(--white);">&copy; 2025 MacNotes. All rights reserved.</p>
-  </footer>
-</body>
-
+  </body>
 </html>
