@@ -1,38 +1,10 @@
-/*Search Page Styles*/
-/*Main content styles*/
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-:root {
-  --primary-color: #7a003c;
-  --text-dark: #2a0f0f;
-  --text-light: #2a0f0f;
-  --extra-light: #fdbf57;
-  --white: #cccccc;
-  --primary-color-dark: #fdbf57;
-  --primary-color-light: #7a003c;
-  /* --primary-color: #205781;
-  --text-dark: #0f172a;
-  --text-light: #205781;
-  --extra-light: #f8fafc;
-  --white: #ffffff;
-  --primary-color-dark: #1C4E70; 
-  --primary-color-light: #2A6FA3; */
-}
-
-* {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 html,
 body {
   height: 100%;
 }
 body {
-  background-color: var(--extra-light);
+  background-color: var(--sidebar-color);
   overflow: hidden;
 }
 /*Sidebar (Used in all Pages)*/
@@ -42,7 +14,7 @@ body {
   align-items: center;
   width: 20%;
   height: 100vh;
-  background-color: var(--extra-light);
+  background-color: var(--sidebar-color);
   padding: 2rem 1rem;
 }
 
@@ -65,7 +37,7 @@ body {
 
 .logo h1 {
   font-size: 30px;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .sidebar ul li {
@@ -75,7 +47,7 @@ body {
 
 .sidebar ul li a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--text-color);
   font-weight: 500;
   display: block;
   padding: 0.5rem 1rem;
@@ -85,8 +57,8 @@ body {
 
 .sidebar ul li a.active,
 .sidebar ul li a:hover {
-  background-color: var(--primary-color-light);
-  color: var(--white);
+  background-color: var(--text-color);
+  color: var( --lighter-background-color);
 }
 
 .sidebar ul li a i {
@@ -109,7 +81,7 @@ img {
   display: flex;
   flex-direction: column;
   width: 80%;
-  background-color: white;
+  background-color: var(--stronger-background-color);
 }
 /*Search Sidebar*/
 .search-sidebar {
@@ -120,7 +92,7 @@ img {
 
 .search-sidebar h2 {
   margin-bottom: 1rem;
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 1.25rem;
 }
 
@@ -132,22 +104,22 @@ img {
   display: block;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--text-dark);
+  color: var(--text-color);
 }
 
 .filter-group select {
   width: 100%;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--text-color);
   border-radius: 2rem;
-  background-color: var(--white);
+  background-color: var( --lighter-background-color);
   font-size: 1rem;
   outline: none;
   transition: border-color 0.3s ease;
 }
 
 .filter-group select:focus {
-  border-color: var(--primary-color-dark);
+  border-color: var(--sidebar-color);
 }
 
 .filter-list {
@@ -182,7 +154,7 @@ input[type="range"] {
 /* Track Styles */
 input[type="range"]::-webkit-slider-runnable-track {
   height: 20px;
-  background: var(--white); /* white bar background */
+  background: var( --lighter-background-color); /* white bar background */
 }
 
 .range-container {
@@ -202,7 +174,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .range-slider::-webkit-slider-thumb {
-  background: var(--primary-color);
+  background: var(--text-color);
   -webkit-appearance: none;
   appearance: none;
   height: 20px;
@@ -239,8 +211,8 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .view-toggle {
-  background-color: var(--white);
-  color: var(--primary-color);
+  background-color: var( --lighter-background-color);
+  color: var(--text-color);
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -253,13 +225,13 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .view-toggle:hover {
-  background-color: var(--primary-color);
-  color: var(--white);
+  background-color: var(--text-color);
+  color: var( --lighter-background-color);
 }
 
 .view-toggle.active {
-  background-color: var(--primary-color);
-  color: var(--white);
+  background-color: var(--text-color);
+  color: var( --lighter-background-color);
 }
 /*Results Container*/
 .results-container {
@@ -277,19 +249,19 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .result-card {
-  background-color: var(--white);
+  background-color: var( --lighter-background-color);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 1rem;
 }
 
 .result-card h3 {
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: 0.5rem;
 }
 
 .result-card p {
-  color: var(--text-dark);
+  color: var(--text-color);
   margin-bottom: 1rem;
 }
 
@@ -299,7 +271,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   align-items: center;
   margin-bottom: 1rem;
   font-size: 0.9rem;
-  color: var(--text-dark);
+  color: var(--text-color);
 }
 
 .result-info .rating,
@@ -310,13 +282,13 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .result-info i {
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 1.1rem;
 }
 
 .download-btn {
   cursor: pointer;
-  background-color: var(--primary-color);
+  background-color: var(--text-color);
   padding: 10px 15px;
   border-radius: 20px;
   color: white;
@@ -371,7 +343,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 /* This targets the label when its child checkbox is checked */
 .checkbox-wrapper input[type="checkbox"]:checked + label {
-  background-color: var(--primary-color);
+  background-color: var(--text-color);
   color: white;
 }
 
@@ -384,3 +356,72 @@ input[type="range"]::-webkit-slider-runnable-track {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
+.mode {
+  /*container of dark mode light mode swtich and text*/
+  background: var(--text-color);
+  position: relative;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.mode .moon-sun {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 50px;
+  margin-left: 8%;
+}
+.mode i {
+  position: absolute;
+}
+
+.sun {
+  opacity: 0;
+}
+
+
+.toggle-switch {
+  right: 20px;
+  position: absolute;
+  display: flex;
+  height: 100%;
+  min-width: 60px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.switch {
+  position: relative;
+  height: 22px;
+  width: 44px;
+  border-radius: 25px;
+  background: var(--lighter-background-color);
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  height: 15px;
+  width: 15px;
+  background: var(--sidebar-color);
+  transition: 0.3s ease;
+}
+
+.mode.dark .switch::before {
+  left: 25px;
+}
+
+.mode-text {
+  width: 50%;
+  margin-right: 40%;
+}
+

@@ -1,22 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --primary-color: #7A003C;
-  --text-dark: #2a0f0f;
-  --text-light: #2a0f0f;
-  --extra-light: #FDBF57;
-  --white: #cccccc;
-  --primary-color-dark: #FDBF57; 
-  --primary-color-light: #7A003C;
-  /* --primary-color: #205781;
-  --text-dark: #0f172a;
-  --text-light: #205781;
-  --extra-light: #f8fafc;
-  --white: #ffffff;
-  --primary-color-dark: #1C4E70; 
-  --primary-color-light: #2A6FA3; */
+  --text-color: #7a003c;
+  --sidebar-color: #fdbf57;
+  --lighter-background-color: #cccccc;
+  --stronger-background-color: white;
+  /* --text-color: #b1b1b1;
+  --sidebar-color: #2b2b2b;
+  --lighter-background-color: #434343;
+  --stronger-background-color: rgb(26, 26, 26); */
+}
+
+body,
+.mode,
+.card,
+.switch,
+button,
+div,
+aside,
+section {
+  transition: all 0.3s ease;
 }
 
 * {

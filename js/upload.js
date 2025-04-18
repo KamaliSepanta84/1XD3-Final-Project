@@ -1,4 +1,5 @@
 window.addEventListener("load", function(event){
+
     let fileTitleInput = document.getElementById("titleInput");
     let courseCodeInput = document.getElementById("courseInput");
     let descriptionInput = document.getElementById("descriptionInput");

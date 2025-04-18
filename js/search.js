@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   // GRID/LIST VIEW CODE
   let gridViewBtn = document.getElementById("gridView");
   let listViewBtn = document.getElementById("listView");

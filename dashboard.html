@@ -2,37 +2,34 @@
 <html lang="en">
 
 <head>
+  <script>
+    if (sessionStorage.getItem("isDark") === "Yes") {
+      document.documentElement.style.setProperty('--text-color', '#b1b1b1');
+      document.documentElement.style.setProperty('--sidebar-color', '#2b2b2b');
+      document.documentElement.style.setProperty('--lighter-background-color', '#434343');
+      document.documentElement.style.setProperty('--stronger-background-color', 'rgb(26, 26, 26)');
+      document.documentElement.classList.add('dark');
+    }
+  </script>    
   <meta charset="UTF-8" />
   <title>MacNotes | Dashboard</title>
   <!--Icon Pack Link-->
   <!-- Note that all elements <i> are icon elements-->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
   <!--Stylesheet + Scipts-->
-  <link rel="stylesheet" href="css/dashboard.css" />
   <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css" />
   <script src="js/dashboard.js"></script>
   <script src="js/settings.js"></script>
+  <script src="js/toggle.js"></script>
+  <script
+  src="https://kit.fontawesome.com/24ff6cf73e.js"
+  crossorigin="anonymous"
+></script>
 </head>
 
 <body>
-  <!--Header-->
-  <!-- <header class="header">
-    <div class="logo">
-      <h1>MacNotes</h1>
-    </div>
-    <nav class="nav-links">
-      <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">
-          <i class="ri-settings-3-line"></i>
-        </button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="help.html">Help/FAQ</a>
-          <a href="admin.html">Admin Login</a>
-          <a href="#">Other Settings</a>
-        </div>
-      </div>
-    </nav>
-  </header> -->
+
   <!--Containter-->
   <div class="dashboard-container">
     <!--Sidebar-->
@@ -67,6 +64,21 @@
             <i class="ri-logout-box-r-line"></i> Logout
           </a>
         </li>
+
+        <li class="mode">
+          <div class="moon-sun">
+              <i class="fa-solid fa-moon icon moon"></i>
+              <i class="fa-solid fa-sun icon sun"></i>
+          </div>
+          <span class="mode-text text">Dark Mode</span>
+
+          <div class="toggle-switch">
+               <span class="switch">
+
+               </span>
+          </div>
+        </li>
+
       </ul>
     </aside>
     <!--Main Content-->

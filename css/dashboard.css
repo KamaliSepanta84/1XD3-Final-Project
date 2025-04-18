@@ -1,12 +1,10 @@
-
-
 /*Sidebar (Used in all Pages)*/
 .sidebar {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 20%;
-  background-color: var(--extra-light);
+  background-color: var(--sidebar-color);
   padding: 2rem 1rem;
   min-height: calc(100vh - 60px);
 }
@@ -28,9 +26,9 @@
   width: 100%;
 }
 
-.logo h1{
+.logo h1 {
   font-size: 30px;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .sidebar ul li {
@@ -40,7 +38,7 @@
 
 .sidebar ul li a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--text-color);
   font-weight: 500;
   display: block;
   padding: 0.5rem 1rem;
@@ -50,8 +48,8 @@
 
 .sidebar ul li a.active,
 .sidebar ul li a:hover {
-  background-color: var(--primary-color-light);
-  color: var(--white);
+  background-color: var(--text-color);
+  color: var(--lighter-background-color);
 }
 
 .sidebar ul li a i {
@@ -64,8 +62,7 @@
   display: flex;
 }
 
-
-img{
+img {
   width: 30px;
 }
 
@@ -73,12 +70,11 @@ img{
 .main-content {
   flex: 1;
   padding: 2rem;
-  background-color: var(--white);
-  background: white;
+  background-color: var(--stronger-background-color);
 }
 
 .welcome-section {
-  background-color: var(--white);
+  background-color: var(--lighter-background-color);
   padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 2rem;
@@ -87,7 +83,7 @@ img{
 
 .welcome-section h2 {
   margin-bottom: 0.5rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .dashboard-overview {
@@ -96,7 +92,7 @@ img{
 
 .dashboard-overview h3 {
   margin-bottom: 1rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .overview-cards {
@@ -107,7 +103,7 @@ img{
 
 .overview-card {
   flex: 1;
-  background-color: var(--white);
+  background-color: var(--lighter-background-color);
   padding: 1rem;
   border-radius: 8px;
   text-align: center;
@@ -123,18 +119,18 @@ img{
 }
 
 .overview-card h4 {
-  color: var(--primary-color);
+  color: var(--text-color);
   margin: 0.5rem 0;
 }
 
 .overview-card p {
   font-size: 1.2rem;
-  color: var(--text-dark);
+  color: var(--text-color);
 }
 
 .overview-icon {
   font-size: 2rem;
-  color: var(--primary-color-light);
+  color: var(--text-color);
 }
 
 .search-bar {
@@ -164,7 +160,7 @@ img{
 
 /*Carosel CSS*/
 .featured-trending h3 {
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: 1rem;
 }
 
@@ -173,7 +169,7 @@ img{
   margin-bottom: 2rem;
   text-align: center;
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--stronger-background-color);
 }
 
 .featured-trending-content {
@@ -183,7 +179,7 @@ img{
 
 .featured-trending h3 {
   margin-bottom: 1.5rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .multi-item-carousel {
@@ -192,7 +188,7 @@ img{
   margin: 0 auto;
   max-width: 900px;
   overflow: hidden;
-  background: var(--white);
+  background: var(--lighter-background-color);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -212,14 +208,14 @@ img{
 }
 
 .multi-item-carousel .card {
-  border: 1px solid var(--primary-color-light);
+  border: 1px solid var(--text-color);
   border-radius: 8px;
   padding: 20px;
-  background-color: var(--white);
+  background-color: var(--lighter-background-color);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-size: 1.25rem;
   font-weight: bold;
-  color: var(--text-dark);
+  color: var(--text-color);
   height: 100%;
 }
 
@@ -228,8 +224,8 @@ img{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: var(--primary-color);
-  color: var(--white);
+  background-color: var(--text-color);
+  color: var(--lighter-background-color);
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -250,7 +246,7 @@ img{
 
 .multi-item-carousel .prev:hover,
 .multi-item-carousel .next:hover {
-  background-color: var(--primary-color-dark);
+  background-color: var(--sidebar-color);
 }
 /*Dropdown CSS*/
 .dropdown-band {
@@ -258,7 +254,7 @@ img{
   justify-content: center;
   align-items: center;
   gap: 16rem;
-  background-color: var(--primary-color);
+  background-color: var(--text-color);
   border-radius: 8px;
   padding: 1rem 0;
   width: 100%;
@@ -269,7 +265,7 @@ img{
 .dropdown-band .toggle-panel {
   background: transparent;
   border: none;
-  color: var(--white);
+  color: var(--lighter-background-color);
   font-size: 1.25rem;
   padding: 0.75rem 1.5rem;
   border-radius: 2rem;
@@ -281,7 +277,7 @@ img{
 }
 
 .dropdown-band .toggle-panel:hover {
-  background-color: var(--primary-color-dark);
+  background-color: var(--sidebar-color);
   transform: scale(1.05);
 }
 
@@ -294,7 +290,7 @@ img{
 
 .dropdown-panel {
   width: 50%;
-  background-color: var(--white);
+  background-color: var(--lighter-background-color);
   overflow: hidden;
   height: 0;
   transition: height 0.4s ease;
@@ -303,7 +299,7 @@ img{
 
 .dropdown-panel h3 {
   margin: 1rem 0 0.5rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .dropdown-panel ul {
@@ -320,7 +316,7 @@ img{
 }
 
 .dropdown-panel li:hover {
-  background-color: var(--white);
+  background-color: var(--lighter-background-color);
 }
 
 .dropdown-panel li:last-child {
@@ -332,7 +328,7 @@ img{
 }
 
 .dropbtn {
-  background-color: var(--primary-color-light);
+  background-color: var(--text-color);
   color: white;
   padding: 8px;
   font-size: 16px;
@@ -342,7 +338,7 @@ img{
 
 .dropbtn:hover,
 .dropbtn:focus {
-  background-color: var(--primary-color-dark);
+  background-color: var(--sidebar-color);
 }
 
 .dropdown {
@@ -382,8 +378,77 @@ img{
   opacity: 1;
 }
 
-.footer-links{
+.footer-links {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+.mode {
+  /*container of dark mode light mode swtich and text*/
+  background: var(--text-color);
+  position: relative;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.mode .moon-sun {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 50px;
+  margin-left: 8%;
+}
+.mode i {
+  position: absolute;
+}
+
+.sun {
+  opacity: 0;
+}
+
+
+.toggle-switch {
+  right: 20px;
+  position: absolute;
+  display: flex;
+  height: 100%;
+  min-width: 60px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.switch {
+  position: relative;
+  height: 22px;
+  width: 44px;
+  border-radius: 25px;
+  background: var(--lighter-background-color);
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  height: 15px;
+  width: 15px;
+  background: var(--sidebar-color);
+  transition: 0.3s ease;
+}
+
+.mode.dark .switch::before {
+  left: 25px;
+}
+
+.mode-text {
+  width: 50%;
+  margin-right: 40%;
 }

@@ -1,5 +1,6 @@
 //Dashboard JS
 window.addEventListener("load", function(event) {
+
   // CAROSEL CODE
   //Set DOM elements and variables
   let slidesContainer = document.querySelector('.multi-item-carousel .slides');

@@ -14,16 +14,16 @@
   }
 
   .title-primary{
-    color: var(--primary-color);
+    color: var(--text-color);
   }
   
   .title-white{
-     color: var(--white);
+     color: var(--lighter-background-color);
   }
   .container {
     height: 100vh;
     position: relative;
-    background-color: var(--white);
+    background-color: var(--lighter-background-color);
     overflow: hidden;
   }
   
@@ -56,7 +56,7 @@
   
   form h1 {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: var(--text-color);
   }
   
   .form-group {
@@ -71,15 +71,15 @@
     border: none;
     outline: none;
     font-size: 1rem;
-    background-color: var(--extra-light);
-    border-bottom: 1px solid var(--primary-color);
+    background-color: var(--sidebar-color);
+    border-bottom: 1px solid var(--text-color);
   }
   
   .forgot-password {
     text-decoration: none;
     font-size: 0.9rem;
-    color: var(--text-light);
-    border-bottom: 1px solid var(--text-light);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--text-color);
     margin-top: 10px;
   }
   
@@ -89,9 +89,9 @@
     border: none;
     outline: none;
     font-size: 1rem;
-    color: var(--white);
+    color: var(--lighter-background-color);
     border-radius: 2rem;
-    background-color: var(--primary-color);
+    background-color: var(--text-color);
     cursor: pointer;
   }
   
@@ -113,7 +113,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    color: var(--white);
+    color: var(--lighter-background-color);
     left: -150%;
     height: 100%;
     width: 250%;
@@ -161,7 +161,7 @@
     border: none;
     outline: none;
     font-size: 1rem;
-    color: var(--white);
+    color: var(--lighter-background-color);
     border-radius: 2rem;
     background-color: transparent;
   }
