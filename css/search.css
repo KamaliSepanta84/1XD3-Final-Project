@@ -228,6 +228,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 .search-bar input{
   width: 100%;
+  padding: 5px;
 }
 
 .view-controls {
@@ -238,7 +239,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .view-toggle {
-  background-color: var(--extra-light);
+  background-color: var(--white);
   color: var(--primary-color);
   border: none;
   padding: 0.5rem 1rem;
@@ -315,7 +316,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 .download-btn {
   cursor: pointer;
-  background-color: #205781;
+  background-color: var(--primary-color);
   padding: 10px 15px;
   border-radius: 20px;
   color: white;

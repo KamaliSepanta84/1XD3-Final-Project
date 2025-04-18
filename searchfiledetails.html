@@ -8,22 +8,13 @@
   <!-- Note that all elements <i> are icon elements-->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
   <!--Stylesheet + Scipts-->
-  <link rel="stylesheet" href="css/homestyle.css" />
   <link rel="stylesheet" href="css/filedetails.css" />
-  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/theme.css">
   <script src="js/searchfiledetails.js"></script>
 </head>
 
 <body>
   <!--Header-->
-  <header class="header">
-    <div class="logo">
-      <h1>MacNotes</h1>
-    </div>
-    <nav class="nav-links">
-      <a href="dashboard.html" class="btn-login">Back</a>
-    </nav>
-  </header>
   <!--Container-->
   <div class="filedetails-container">
     <div class="file-preview">
@@ -32,6 +23,15 @@
 
     <!-- Sidebar -->
     <aside class="file-info-sidebar">
+      <div class="sidebartitle">
+        <div class="logo">
+          <img src="images/maclogo.png" alt="">
+          <h1>MacNotes</h1>
+        </div>
+        <nav class="nav-links">
+          <a href="dashboard.html" class="btn-login">Back</a>
+        </nav>
+      </div>
       <section class="file-details">
         <h2>Document Details</h2>
         <ul>
@@ -112,18 +112,13 @@
         <button id = "report-btn" class="btn btn-primary download-btn">
           <i class="ri-flag-2-line"></i> <span>Report</span>
         </button>
+        <div class="footer-links">
+          <a href="#" style="color: var(--white);">About Us</a>
+          <a href="#" style="color: var(--white);">Contact</a>
+          <a href="#" style="color: var(--white);">Privacy Policy</a>
+        </div>
     </aside>
   </div>
-
-  <!-- Footer -->
-  <footer class="footer" style="background-color: var(--primary-color-dark);">
-    <div class="footer-links">
-      <a href="#" style="color: var(--white);">About Us</a>
-      <a href="#" style="color: var(--white);">Contact</a>
-      <a href="#" style="color: var(--white);">Privacy Policy</a>
-    </div>
-    <p style="color: var(--white);">&copy; 2025 MacNotes. All rights reserved.</p>
-  </footer>
 </body>
 
 </html>

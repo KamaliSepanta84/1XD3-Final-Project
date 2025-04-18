@@ -1,8 +1,20 @@
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  overflow: hidden;
+}
+
 /*FileDetails Page Styles*/
 .filedetails-container {
   display: flex;
-  height: calc(100vh - 60px);
+  height: 100%;
   /* Adjust if header is different height */
+}
+
+iframe{
+  height: 100%;
 }
 
 /* File Preview */
@@ -15,7 +27,8 @@
 /* Right sidebar */
 .file-info-sidebar {
   flex: 1.2;
-  background-color: var(--extra-light);
+  background-color: white;
+  overflow-y: scroll;
   padding: 1.5rem;
   overflow-y: auto;
   display: flex;
@@ -121,6 +134,7 @@
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
   width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -182,11 +196,51 @@
 }
 
 #report-btn{
-  background-color: white;
-  color: #205781;
+  background-color: var(--white);
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 5px;
 }
 
 #report-btn:hover{
-  background-color: #205781;
-  color: white;
+  background-color:var(--primary-color);
+  color: var(--white);
+}
+
+.sidebartitle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo{
+display: flex;
+align-items: center;
+justify-content: center;
+color: #7A003C;
+}
+
+img{
+  width: 30px;
+}
+
+.btn-login{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding-left: 15%;
+  padding-right: 15%;
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 15px;
+  margin-right: 10%;
+}
+
+.footer-links{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
