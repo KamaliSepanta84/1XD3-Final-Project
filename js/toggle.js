@@ -1,6 +1,7 @@
 window.addEventListener("load", function () {
   let modeContainer = document.querySelector(".mode");
   let nodeSwitch = document.querySelector(".toggle-switch");
+  let text = document.querySelector(".mode-text");
 
   // Set default value if not already set
   if (!sessionStorage.getItem("isDark")) {
@@ -45,6 +46,7 @@ window.addEventListener("load", function () {
     );
     document.querySelector(".sun").style.opacity = 1;
     document.querySelector(".moon").style.opacity = 0;
+    text.innerHTML = "Dark Mode";
   }
   function applyLightMode() {
     document.documentElement.style.setProperty("--text-color", "#7a003c");
@@ -59,5 +61,6 @@ window.addEventListener("load", function () {
     );
     document.querySelector(".sun").style.opacity = 0;
     document.querySelector(".moon").style.opacity = 1;
+    text.innerHTML = "Light Mode";
   }
 });
