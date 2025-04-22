@@ -3,13 +3,22 @@
   <head>
     <script>
       if (sessionStorage.getItem("isDark") === "Yes") {
-        document.documentElement.style.setProperty('--text-color', '#b1b1b1');
-        document.documentElement.style.setProperty('--sidebar-color', '#2b2b2b');
-        document.documentElement.style.setProperty('--lighter-background-color', '#434343');
-        document.documentElement.style.setProperty('--stronger-background-color', 'rgb(26, 26, 26)');
-        document.documentElement.classList.add('dark');
+        document.documentElement.style.setProperty("--text-color", "#b1b1b1");
+        document.documentElement.style.setProperty(
+          "--sidebar-color",
+          "#2b2b2b"
+        );
+        document.documentElement.style.setProperty(
+          "--lighter-background-color",
+          "#434343"
+        );
+        document.documentElement.style.setProperty(
+          "--stronger-background-color",
+          "rgb(26, 26, 26)"
+        );
+        document.documentElement.classList.add("dark");
       }
-    </script>    
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MacNotes | My Files</title>
@@ -20,15 +29,15 @@
       rel="stylesheet"
     />
     <!--Stylesheet + Scipts-->
-    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/myfiles.css" />
     <script src="js/myfiles.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/toggle.js"></script>
     <script
-    src="https://kit.fontawesome.com/24ff6cf73e.js"
-    crossorigin="anonymous"
-  ></script>
+      src="https://kit.fontawesome.com/24ff6cf73e.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
@@ -71,15 +80,13 @@
 
           <li class="mode">
             <div class="moon-sun">
-                <i class="fa-solid fa-moon icon moon"></i>
-                <i class="fa-solid fa-sun icon sun"></i>
+              <i class="fa-solid fa-moon icon moon"></i>
+              <i class="fa-solid fa-sun icon sun"></i>
             </div>
             <span class="mode-text text">Dark Mode</span>
-  
+
             <div class="toggle-switch">
-                 <span class="switch">
-  
-                 </span>
+              <span class="switch"> </span>
             </div>
           </li>
         </ul>
@@ -97,24 +104,136 @@
                   id="uploadedSearchInput"
                   placeholder="Search uploaded files..."
                 />
-                <select id="sortSelect">
-                  <option value="Newest">Sort by Date</option>
-                  <option value="Highest Rated">Sort by Rating</option>
-                  <option value="Most Downloaded">Sort by Downloads</option>
-                  <option value="Name">Sort Alphabetically</option>
+                <select id="uploadedSortSelect">
+                  <option value="Newest">Date</option>
+                  <option value="Highest Rated">Rating</option>
+                  <option value="Most Downloaded">Downloads</option>
+                  <option value="Name">Alphabetically</option>
                 </select>
               </div>
 
-              <div id="coursecode_filter">
+              <div id="uploaded_coursecode_filter">
                 <div class="checkbox-wrapper">
                   <input
                     type="checkbox"
-                    id="1MD3"
+                    id="u1MD3"
                     checked
                     value="1MD3"
-                    class="coursecodecheckboxes"
+                    class="uploadedcoursecodecheckboxes"
                   />
-                  <label for="1MD3">1MD3</label>
+                  <label for="u1MD3">1MD3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="u1JC3"
+                    checked
+                    value="1JC3"
+                    class="uploadedcoursecodecheckboxes"
+                  />
+                  <label for="u1JC3">1JC3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="u1ZA3"
+                    checked
+                    value="1ZA3"
+                    class="uploadedcoursecodecheckboxes"
+                  />
+                  <label for="u1ZA3">1ZA3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="u1B03"
+                    checked
+                    value="1B03"
+                    class="uploadedcoursecodecheckboxes"
+                  />
+                  <label for="u1B03">1B03</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="u1DM3"
+                    checked
+                    value="1DM3"
+                    class="uploadedcoursecodecheckboxes"
+                  />
+                  <label for="u1DM3">1DM3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="u1XC3"
+                    checked
+                    value="1XC3"
+                    class="uploadedcoursecodecheckboxes"
+                  />
+                  <label for="u1XC3">1XC3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="u1XD3"
+                    checked
+                    value="1XD3"
+                    class="uploadedcoursecodecheckboxes"
+                  />
+                  <label for="u1XD3">1XD3</label>
+                </div>
+
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="u1ZB3"
+                    checked
+                    value="1ZB3"
+                    class="uploadedcoursecodecheckboxes"
+                  />
+                  <label for="u1ZB3">1ZB3</label>
+                </div>
+              </div>
+            </div>
+            <!-- Uploaded Files List-->
+            <div id="uploaded-files-list"></div>
+          </div>
+
+          <!-- Downloaded Files Section -->
+          <div class="files-section downloaded-files" id="downloadedFiles">
+            <h2>My Downloaded Files</h2>
+            <div class="file-controls">
+              <div id="search-and-sort-area">
+                <input
+                  type="text"
+                  id="downloadedSearchInput"
+                  placeholder="Search Downloaded Files..."
+                />
+                <select id="downloadedSortSelect">
+                  <option value="Newest">Date</option>
+                  <option value="Highest Rated">Rating</option>
+                  <option value="Most Downloaded">Downloads</option>
+                  <option value="Name">Alphabetically</option>
+                </select>
+              </div>
+
+              <div id="downloaded_coursecode_filter">
+                <div class="checkbox-wrapper">
+                  <input
+                    type="checkbox"
+                    id="d1MD3"
+                    checked
+                    value="1MD3"
+                    class="downloadedcoursecodecheckboxes"
+                  />
+                  <label for="d1MD3">1MD3</label>
                 </div>
 
                 <div class="checkbox-wrapper">
@@ -123,7 +242,7 @@
                     id="1JC3"
                     checked
                     value="1JC3"
-                    class="coursecodecheckboxes"
+                    class="downloadedcoursecodecheckboxes"
                   />
                   <label for="1JC3">1JC3</label>
                 </div>
@@ -134,7 +253,7 @@
                     id="1ZA3"
                     checked
                     value="1ZA3"
-                    class="coursecodecheckboxes"
+                    class="downloadedcoursecodecheckboxes"
                   />
                   <label for="1ZA3">1ZA3</label>
                 </div>
@@ -145,7 +264,7 @@
                     id="1B03"
                     checked
                     value="1B03"
-                    class="coursecodecheckboxes"
+                    class="downloadedcoursecodecheckboxes"
                   />
                   <label for="1B03">1B03</label>
                 </div>
@@ -156,7 +275,7 @@
                     id="1DM3"
                     checked
                     value="1DM3"
-                    class="coursecodecheckboxes"
+                    class="downloadedcoursecodecheckboxes"
                   />
                   <label for="1DM3">1DM3</label>
                 </div>
@@ -167,7 +286,7 @@
                     id="1XC3"
                     checked
                     value="1XC3"
-                    class="coursecodecheckboxes"
+                    class="downloadedcoursecodecheckboxes"
                   />
                   <label for="1XC3">1XC3</label>
                 </div>
@@ -178,7 +297,7 @@
                     id="1XD3"
                     checked
                     value="1XD3"
-                    class="coursecodecheckboxes"
+                    class="downloadedcoursecodecheckboxes"
                   />
                   <label for="1XD3">1XD3</label>
                 </div>
@@ -189,74 +308,14 @@
                     id="1ZB3"
                     checked
                     value="1ZB3"
-                    class="coursecodecheckboxes"
+                    class="downloadedcoursecodecheckboxes"
                   />
                   <label for="1ZB3">1ZB3</label>
                 </div>
               </div>
-
-              <!--
-
-            
-            --></div>
-            <!-- Uploaded Files List-->
-            <div id="files-list"></div>
-          </div>
-
-          <!-- Downloaded Files Section -->
-          <div class="files-section downloaded-files" id="downloadedFiles">
-            <h2>My Downloaded Files</h2>
-            <div class="file-controls">
-              <input
-                type="text"
-                id="downloadedSearchInput"
-                placeholder="Search downloaded files..."
-              />
             </div>
             <!-- Downloaded Files List (Add more as you pls) -->
-            <div class="files-list">
-              <div class="file-card" data-name="Syllabus - Computer Science">
-                <h3>Syllabus - Computer Science</h3>
-                <button class="btn btn-primary download-again-btn">
-                  <i class="ri-download-2-line"></i> Download Again
-                </button>
-              </div>
-              <div class="file-card" data-name="Revision Notes - Mathematics">
-                <h3>Revision Notes - Mathematics</h3>
-                <button class="btn btn-primary download-again-btn">
-                  <i class="ri-download-2-line"></i> Download Again
-                </button>
-              </div>
-              <div class="file-card" data-name="Lab Manual - Physics">
-                <h3>Lab Manual - Physics</h3>
-                <button class="btn btn-primary download-again-btn">
-                  <i class="ri-download-2-line"></i> Download Again
-                </button>
-              </div>
-              <div class="file-card" data-name="Research Paper - Economics">
-                <h3>Research Paper - Economics</h3>
-                <button class="btn btn-primary download-again-btn">
-                  <i class="ri-download-2-line"></i> Download Again
-                </button>
-              </div>
-              <div class="file-card" data-name="Tutorial - Programming">
-                <h3>Tutorial - Programming</h3>
-                <button class="btn btn-primary download-again-btn">
-                  <i class="ri-download-2-line"></i> Download Again
-                </button>
-              </div>
-              <div class="file-card" data-name="Exam Prep - Biology">
-                <h3>Exam Prep - Biology</h3>
-                <button class="btn btn-primary download-again-btn">
-                  <i class="ri-download-2-line"></i> Download Again
-                </button>
-              </div>
-              <!--Add more -->
-              <!-- No results message for Downloaded Files -->
-              <div id="noResultsMessageDownloaded" class="no-results">
-                Sorry, no files found.
-              </div>
-            </div>
+            <div id="downloaded-files-list"></div>
           </div>
         </div>
         <div class="footer-links">

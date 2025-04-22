@@ -1,6 +1,19 @@
-
-.dashboard-container{
+.dashboard-container {
   display: flex;
+}
+
+.dashboard-container,
+.sidebar,
+.myfiles-page {
+  height: 100%;
+}
+.files-container {
+  height: 95%;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 .sidebar {
@@ -53,7 +66,7 @@
 .sidebar ul li a.active,
 .sidebar ul li a:hover {
   background-color: var(--text-color);
-  color: var( --lighter-background-color);
+  color: var(--lighter-background-color);
 }
 
 .sidebar ul li a i {
@@ -61,7 +74,7 @@
   font-size: 1.2rem;
 }
 
-img{
+img {
   width: 30px;
 }
 
@@ -74,6 +87,7 @@ img{
 }
 
 .file-controls {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,7 +110,7 @@ img{
   border-radius: 2rem;
   font-size: 1rem;
   outline: none;
-  background-color: var( --lighter-background-color);
+  background-color: var(--lighter-background-color);
 }
 
 .downloaded-controls input[type="text"] {
@@ -114,20 +128,24 @@ img{
 }
 
 .files-section {
-  flex: 1;
-  background-color: var( --lighter-background-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background-color: var(--lighter-background-color);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .files-section h2 {
+  height: 5%;
   color: var(--text-color);
   margin-bottom: 1rem;
 }
 
 .file-card {
-  background-color: var(--stronger-background-color);
+  background-color: var(--lighter-background-color);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -163,7 +181,8 @@ img{
 
 .view-btn,
 .download-again-btn {
-  background-color: var(--lighter-background-color);
+  background-color: var(--text-color);
+  color: var(--stronger-background-color);
   border: none;
   width: 100%;
   padding: 0.5rem;
@@ -177,7 +196,7 @@ img{
 .download-again-btn:hover {
   transform: translateY(-2px);
   background-color: var(--text-color);
-  color: var( --lighter-background-color);
+  color: var(--lighter-background-color);
 }
 
 .no-results {
@@ -199,39 +218,40 @@ img{
   opacity: 0.7;
 }
 
-#coursecode_filter{
-display: flex;
-gap: 5px;
+#downloaded_coursecode_filter, #uploaded_coursecode_filter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.file-controls{
+.file-controls {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 10%;
 }
 
-#search-and-sort-area{
+#search-and-sort-area {
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-.coursecodecheckboxes {
+.uploadedcoursecodecheckboxes, .downloadedcoursecodecheckboxes {
   display: none;
 }
 
-.coursecodecheckboxes:checked + span {
+.uploadedcoursecodecheckboxes:checked + span, downloadedcoursecodecheckboxes:checked + span {
   background-color: #007bff;
   color: white;
 }
 
 .checkbox-wrapper label {
   color: black;
-  display: block;
   cursor: pointer;
-  padding: 8px 12px;
-  margin: 4px 0;
-  background-color:var(--stronger-background-color);
+  padding: 2px 5px;
+  background-color: var(--stronger-background-color);
   border-radius: 6px;
   font-weight: 600;
   transition: background-color 0.2s ease;
@@ -243,21 +263,39 @@ gap: 5px;
 
 /* This targets the label when its child checkbox is checked */
 .checkbox-wrapper input[type="checkbox"]:checked + label {
-  background-color:var(--stronger-background-color);
+  background-color: var(--stronger-background-color);
   color: var(--text-color);
 }
 
-#sortSelect{
-  background-color: var(--stronger-background-color);
-  color: #686868;
-}
 
-.footer-links{
+
+.footer-links {
+  height: 5%;
   margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5%;
+  color: var(--text-color);
+}
+
+#uploadedSearchInput, #uploadedSortSelect, #downloadedSortSelect{
+  background: var(--stronger-background-color);
+  color: var(--text-color);
+}
+#uploadedSearchInput{
+  width: 70%;
+}
+#sortSelect{
+  width: 30%;
+}
+#uploaded-files-list, #downloaded-files-list {
+  overflow-y: scroll;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  background-color: var(--stronger-background-color);
+  height: 80%;
 }
 
 .mode {
@@ -286,7 +324,6 @@ gap: 5px;
 .sun {
   opacity: 0;
 }
-
 
 .toggle-switch {
   right: 20px;
@@ -329,7 +366,7 @@ gap: 5px;
   margin-right: 40%;
 }
 
-.mode:hover{
+.mode:hover {
   background-color: var(--text-color);
   color: var(--lighter-background-color);
 }
@@ -337,5 +374,3 @@ gap: 5px;
 .mode:hover .switch {
   background-color: var(--lighter-background-color);
 }
-
-

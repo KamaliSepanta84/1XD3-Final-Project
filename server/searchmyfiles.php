@@ -1,50 +1,26 @@
 <?php
+$filetitle = filter_input(INPUT_POST, 'filetitle', filter: FILTER_SANITIZE_SPECIAL_CHARS);
+$macID = filter_input(INPUT_POST, 'macID', filter: FILTER_SANITIZE_SPECIAL_CHARS);
+$category = filter_input(INPUT_POST, 'category', filter: FILTER_SANITIZE_SPECIAL_CHARS);
 
-// Grab the search query safely
+if ($category === "uploads") {
+    decideQuery("SELECT * FROM mfiles WHERE filetitle LIKE ? AND macID = ?", ["%" . $filetitle . "%", $macID], $filetitle);
+} else {
+    decideQuery("SELECT * FROM downloadedfiles WHERE filetitle LIKE ? AND macIDofDownloader = ?", ["%" . $filetitle . "%", $macID], $filetitle);
+}
 
-/**
- * FILTERS:
- * 
- * - Size
- * - CourseCode
- * 
- * 
- */
+//SELECT filename FROM downloadedfiles WHERE macID = ?a
+//$parameters = [$macID]
 
-//example $cmd:"SELECT * FROM mfiles WHERE filetitle LIKE ? AND coursecode = '1XC3'"
-//1KB = 1024 bytes
-// SELECT * FROM mfiles 
-// WHERE filetitle LIKE ? 
-// AND filesize BETWEEN 0 AND 512000;
-
-
-
-
-decideQuery();
-
-function decideQuery()
+function decideQuery($defaultcmd, $parameters, $filetitle)
 {
     include "connect.php";
 
-    $defaultcmd = "SELECT * FROM mfiles WHERE filetitle LIKE ? AND macID = ?";
     $coursecodefiltercmd = "";
-    $query = filter_input(INPUT_POST, 'query', filter: FILTER_SANITIZE_SPECIAL_CHARS);
-    $macID = filter_input(INPUT_POST, 'macID', filter: FILTER_SANITIZE_SPECIAL_CHARS);
     $coursecodefilter = filter_input(INPUT_POST, 'coursecodefilter', FILTER_SANITIZE_SPECIAL_CHARS);
     $coursecodefilter = html_entity_decode($coursecodefilter);  // Decode HTML entities
     $orderbyoption = filter_input(INPUT_POST, 'orderbyoption', FILTER_SANITIZE_SPECIAL_CHARS);
-
-
-    if ($query == null || $query == false) {
-        echo json_encode(value: ["error" => "No file name given"]);
-        exit;
-    }
-
-    $parameters = ["%" . $query . "%", $macID];
-
     $coursecodes = json_decode($coursecodefilter)->coursecodes;
-
-    //
 
     if (!(count($coursecodes) == 0)) {
 

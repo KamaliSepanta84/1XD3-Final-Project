@@ -3,9 +3,14 @@ window.addEventListener("load", async function (event) {
   //   <button class="btn btn-primary view-btn">View</button>
   // </div>
 
-  let uploaded_files_display = document.getElementById("files-list");
-  let filename = "";
-  let coursecodes = [
+  let uploaded_files_display = document.getElementById("uploaded-files-list");
+  let downloaded_files_display = document.getElementById(
+    "downloaded-files-list"
+  );
+
+  let uploadedfiletitle = "";
+  let downloadedfiletitle = "";
+  let uploaded_coursecodes = [
     "1XC3",
     "1JC3",
     "1MD3",
@@ -15,15 +20,29 @@ window.addEventListener("load", async function (event) {
     "1ZB3",
     "1ZA3",
   ];
-  let orderbyoption = "`download-number`";
+  let downloaded_coursecodes = [
+    "1XC3",
+    "1JC3",
+    "1MD3",
+    "1DM3",
+    "1B03",
+    "1XD3",
+    "1ZB3",
+    "1ZA3",
+  ];
+  let uploadedorderbyoption = "`download-number`";
+  let downloadedorderbyoption = "`download-number`";
+
+  // MAKING SEPERATE VARIABLES FOR UPLOAD AND DOWNLOAD
+
   let macID = "";
 
-  function displayResults(rows) {
-    uploaded_files_display.innerHTML = "Doesn't Match Search Bar :/ ";
+  function displayResults(rows, filecontainer) {
+    filecontainer.innerHTML = "No Files Searched";
     if (rows.length === 0 || rows == null || rows == false) {
       console.log("No uploaded files");
     } else {
-      uploaded_files_display.innerHTML = "";
+      filecontainer.innerHTML = "";
       for (let row of rows) {
         let file_card = document.createElement("div");
         file_card.classList.add("file-card");
@@ -44,47 +63,27 @@ window.addEventListener("load", async function (event) {
         file_info.appendChild(rating_display);
         file_info.appendChild(download_display);
 
-        let view_button = document.createElement("button");
+        let view_button = document.createElement("a");
         view_button.classList.add("btn", "btn-primary", "view-btn");
 
         view_button.setAttribute("id", "view_button");
-        view_button.innerHTML = "View";
-
-        async function getFileDetails() {
-          const response = await fetch("server/filedetails.php");
-          const data = await response.json(); // Wait for JSON parsing
-          console.log(data.message);
-
-          let urlwithparams = `searchfiledetails.html?filename=${encodeURIComponent(
-            data.message.path.slice(11)
+        view_button.setAttribute(
+          "href",
+          `searchfiledetails.html?filename=${encodeURIComponent(
+            row.filename
           )}&filetitle=${encodeURIComponent(
-            data.message.title
+            row.filetitle
           )}&filedescription=${encodeURIComponent(
-            data.message.description
-          )}&coursecode=${encodeURIComponent(data.message.coursecode)}`;
-
-          window.location.href = urlwithparams;
-        }
-
-        view_button.addEventListener("click", async function (event) {
-          const formData = new FormData();
-          formData.append("clicked", "true");
-          formData.append("filetitle", row.filetitle);
-
-          const response = await fetch("server/selectfiletoview.php", {
-            method: "POST",
-            body: formData,
-          });
-
-          getFileDetails();
-        });
-        // makes file user clicked on set to true
+            row.description
+          )}&coursecode=${encodeURIComponent(row.coursecode)}`
+        );
+        view_button.innerHTML = "View";
 
         file_card.appendChild(h3_file_title);
         file_card.appendChild(file_info);
         file_card.appendChild(view_button);
 
-        uploaded_files_display.appendChild(file_card);
+        filecontainer.appendChild(file_card);
       }
     }
   }
@@ -99,65 +98,129 @@ window.addEventListener("load", async function (event) {
     return data; // different fields for search.php
   }
 
-  let user_files_plus_macid = (await searchDatabase("", "server/myfiles.php"))
-    .message;
-  macID = user_files_plus_macid[1];
-  displayResults(user_files_plus_macid[0]);
-  console.log(macID);
-
-  async function submitForm(filename, coursecodes, orderbyoption) {
+  async function submitForm(
+    filetitle,
+    coursecodes,
+    orderbyoption,
+    filecontainer,
+    category
+  ) {
     formData = new FormData();
-    formData.append("query", filename);
+    formData.append("filetitle", filetitle);
     formData.append("coursecodefilter", JSON.stringify(coursecodes));
     formData.append("orderbyoption", orderbyoption);
     formData.append("macID", macID);
+    formData.append("category", category);
 
-    displayResults(
-      (await searchDatabase(formData, "server/searchmyfiles.php")).message
-    );
+    let results = await searchDatabase(formData, "server/searchmyfiles.php");
+    if (results.error === "") {
+      displayResults(results.message, filecontainer);
+      console.log(results.message);
+    } else {
+      console.log(results.error);
+    }
   }
+
+  let user_files_plus_macid = (await searchDatabase("", "server/myfiles.php"))
+    .message;
+  macID = user_files_plus_macid[1];
+  // displayResults(user_files_plus_macid[0]);
+  console.log(macID);
 
   //search inputs
 
-  document
-    .getElementById("uploadedSearchInput")
-    .addEventListener("input", function (event) {
-      filename = this.value;
-      submitForm(filename, { coursecodes: coursecodes }, orderbyoption);
-    });
+  function searchEventListeners(
+    searchBarID,
+    filetitle,
+    checkboxclass,
+    sortSelectID,
+    coursecodecategory,
+    orderbyoption,
+    filesdisplay,
+    category
+  ) {
+    document
+      .getElementById(searchBarID)
+      .addEventListener("input", function (event) {
+        filetitle = this.value;
+        submitForm(
+          filetitle,
+          { coursecodes: coursecodecategory },
+          orderbyoption,
+          filesdisplay,
+          category
+        ); // might have to change field name
+      });
 
-  for (let coursecodecheckbox of document.getElementsByClassName(
-    "coursecodecheckboxes"
-  )) {
-    coursecodecheckbox.addEventListener("click", function (event) {
-      if (this.checked) {
-        coursecodes.push(this.value);
-      } else {
-        let copy = [];
-        for (let c of coursecodes) {
-          if (c != this.value) {
-            copy.push(c);
+    for (let coursecodecheckbox of document.getElementsByClassName(
+      checkboxclass
+    )) {
+      coursecodecheckbox.addEventListener("click", function (event) {
+        if (this.checked) {
+          coursecodecategory.push(this.value);
+        } else {
+          let copy = [];
+          for (let c of coursecodecategory) {
+            if (c != this.value) {
+              copy.push(c);
+            }
           }
+          coursecodecategory = copy;
         }
-        coursecodes = copy;
-      }
-      console.log(coursecodes);
-      submitForm(filename, { coursecodes: coursecodes }, orderbyoption);
-    });
+        console.log(this.value);
+        submitForm(
+          filetitle,
+          { coursecodes: coursecodecategory },
+          orderbyoption,
+          filesdisplay,
+          category
+        ); // might have to change field name
+      });
+    }
+
+    document
+      .getElementById(sortSelectID)
+      .addEventListener("change", function () {
+        selectedValue = this.value;
+
+        if (selectedValue === "Highest Rated") {
+          orderbyoption = "rating";
+        } else if (selectedValue === "Most Downloaded") {
+          orderbyoption = "`download-number`";
+        } else if (selectedValue === "Newest") {
+          orderbyoption = "upload_time";
+        } else if (selectedValue === "Name") {
+          orderbyoption = "filetitle";
+        }
+        submitForm(
+          filetitle,
+          { coursecodes: coursecodecategory },
+          orderbyoption,
+          filesdisplay,
+          category
+        ); // might have to change field name
+      });
   }
 
-  document.getElementById("sortSelect").addEventListener("change", function () {
-    selectedValue = this.value;
-
-    if (selectedValue === "Highest Rated") {
-      orderbyoption = "rating";
-    } else if (selectedValue === "Most Downloaded") {
-      orderbyoption = "`download-number`";
-    } else if (selectedValue === "Newest") {
-      orderbyoption = "upload_time";
-    } else if (selectedValue === "Name") {
-      orderbyoption = "filetitle";
-    }
-    submitForm(filename, { coursecodes: coursecodes }, orderbyoption);
-  });
+  searchEventListeners(
+    "uploadedSearchInput",
+    uploadedfiletitle,
+    "uploadedcoursecodecheckboxes",
+    "uploadedSortSelect",
+    uploaded_coursecodes,
+    uploadedorderbyoption,
+    uploaded_files_display,
+    "uploads"
+  );
+  searchEventListeners(
+    "downloadedSearchInput",
+    downloadedfiletitle,
+    "downloadedcoursecodecheckboxes",
+    "downloadedSortSelect",
+    downloaded_coursecodes,
+    downloadedorderbyoption,
+    downloaded_files_display,
+    "downloads"
+  );
 });
+

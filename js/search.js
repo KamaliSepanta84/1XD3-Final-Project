@@ -22,6 +22,18 @@ document.addEventListener("DOMContentLoaded", () => {
     gridViewBtn.classList.remove("active");
   });
 
+
+  let main = document.getElementById("main");
+
+  document.querySelector(".sidebar").addEventListener("click",function(event){
+    console.log("hello");
+    this.style.width = "5%";
+    main.style.width = "95%"
+  })
+
+
+
+
   // SEARCH FUNCTIONALITY
   let search_bar = document.getElementById("search_bar");
   let results = [];
