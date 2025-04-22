@@ -464,4 +464,27 @@ img {
   background-color: var(--lighter-background-color);
 }
 
+.filetitle{
+  font-size: 20px;
+  font-weight: bold;
+}
 
+.coursecode{
+  font-size: 15px;
+}
+
+.view-btn{
+  cursor: pointer;
+  background-color: var(--text-color);
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  border: none;
+  margin-top: auto;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+}

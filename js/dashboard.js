@@ -90,5 +90,42 @@ window.addEventListener("load", function(event) {
           console.error("Error fetching dashboard data:", error);
         });
     }, 100);
-    
+
+    setInterval(function(){
+      fetch("server/trending.php")
+    .then(response => response.json())
+    .then(data => {
+      for (let i = 0; i < data.length; i++) {
+        let fileTitleBox = document.getElementById("filetitle" + (i + 1));
+        let courseCodeBox = document.getElementById("coursecode" + (i + 1));
+        let viewBtn = document.getElementById("view-btn" + (i + 1));
+  
+        fileTitleBox.innerHTML = data[i].filetitle;
+        courseCodeBox.innerHTML = data[i].coursecode;
+  
+        
+        const file = data[i];
+        viewBtn.addEventListener("click", function () {
+          const a = document.createElement("a");
+  
+          a.setAttribute(
+            "href",
+            `searchfiledetails.html?filename=${encodeURIComponent(
+              file.filename
+            )}&filetitle=${encodeURIComponent(
+              file.filetitle
+            )}&filedescription=${encodeURIComponent(
+              file.description
+            )}&coursecode=${encodeURIComponent(file.coursecode)}`
+          );
+  
+          a.setAttribute("target", "");
+          document.body.appendChild(a); 
+          a.click();
+          document.body.removeChild(a);
+        });
+      }
+    })
+    .catch((err) => console.error("Error fetching trending files:", err)); 
+    }, 100)
 });
