@@ -187,6 +187,14 @@ iframe{
 .download-section .download-btn {
   width: 100%;
   margin-bottom: 0.5rem;
+  border-radius: 20px;
+  padding: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: var(--text-color);
+  color: var(--lighter-background-color);
+  transition: all 0.3s ease;
 }
 
 .download-section .download-count {
@@ -195,12 +203,18 @@ iframe{
   text-align: center;
 }
 
+.download-section .download-btn:hover{
+  transform: scale(1.01);
+}
+
 #report-btn{
   background-color: var( --lighter-background-color);
   color: var(--text-color);
   transition: all 0.3s ease;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
+  padding: 10px 0;
+  font-size: 15px;
 }
 
 #report-btn:hover{
@@ -231,16 +245,17 @@ img{
   align-items: center;
   justify-content: center;
   background-color: var(--text-color);
-  padding-left: 15%;
-  padding-right: 15%;
   text-decoration: none;
   color: var(--lighter-background-color);
-  border-radius: 15px;
+  border-radius: 20px;
   margin-right: 10%;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 .footer-links{
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 }
