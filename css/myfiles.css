@@ -82,7 +82,7 @@ img {
   display: flex;
   flex-direction: column;
   width: 83%;
-  padding: .5rem;
+  padding: 1rem;
   background-color: var(--stronger-background-color);
   margin: 10px
 }
@@ -125,13 +125,12 @@ img {
 
 .files-container {
   display: flex;
-  flex-direction: column;
   gap: 1rem;
-  overflow-y: scroll;
+
 }
 
 .files-section {
-  height: 90%;
+  height: 100%;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -280,9 +279,7 @@ img {
 
 
 .footer-links {
-  margin-top: 5px;
-  margin-bottom: 5px;
-
+  padding-top: 5px;
   height: 2%;
   display: flex;
   align-items: center;

@@ -46,6 +46,9 @@ body {
 }
 
 .sidebar ul li a {
+  display: flex;
+  align-items: center;
+  justify-content:center;
   text-decoration: none;
   color: var(--text-color);
   font-weight: 500;

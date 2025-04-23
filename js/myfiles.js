@@ -1,7 +1,4 @@
 window.addEventListener("load", async function (event) {
-  //   <div class="file-card">
-  //   <button class="btn btn-primary view-btn">View</button>
-  // </div>
 
   let uploaded_files_display = document.getElementById("uploaded-files-list");
   let downloaded_files_display = document.getElementById(

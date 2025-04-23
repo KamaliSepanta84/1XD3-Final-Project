@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // let main = document.getElementById("main");
 
   // document.querySelector(".sidebar").addEventListener("click",function(event){
-  //   console.log("hello");
-  //   this.style.width = "5%";
-  //   main.style.width = "95%"
-  // })
+  //   document.getElementById("sidebar-options").style.display = "none";
+  //       this.style.width = "5%";
+  //   main.style.width = "95%";
+  // });
 
 
 
