@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let formData;
   let min_size_slider = document.getElementById("min_size_slider");
   let max_size_slider = document.getElementById("max_size_slider");
+  let minrangelabel = document.getElementById("minrangelabel");
+  let maxrangelabel = document.getElementById("maxrangelabel");
   let coursecodes = [
     "1XC3",
     "1JC3",
@@ -206,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   min_size_slider.addEventListener("input", function (event) {
+    minrangelabel.innerHTML = this.value;
     if (parseInt(min_size_slider.value) > parseInt(max_size_slider.value)) {
       min_size_slider.value = max_size_slider.value;
     }
@@ -213,6 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   max_size_slider.addEventListener("input", function (event) {
+    maxrangelabel.innerHTML = this.value;
     if (parseInt(max_size_slider.value) < parseInt(min_size_slider.value)) {
       max_size_slider.value = min_size_slider.value;
     }
