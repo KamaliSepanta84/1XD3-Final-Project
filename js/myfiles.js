@@ -112,7 +112,7 @@ window.addEventListener("load", async function (event) {
     formData.append("macID", macID);
     formData.append("category", category);
 
-    let results = await searchDatabase(formData, "server/searchmyfiles.php");
+    let results = await searchDatabase(formData, "server/myfiles.php");
     if (results.error === "") {
       displayResults(results.message, filecontainer);
       console.log(results.message);
@@ -120,14 +120,6 @@ window.addEventListener("load", async function (event) {
       console.log(results.error);
     }
   }
-
-  let user_files_plus_macid = (await searchDatabase("", "server/myfiles.php"))
-    .message;
-  macID = user_files_plus_macid[1];
-  // displayResults(user_files_plus_macid[0]);
-  console.log(macID);
-
-  //search inputs
 
   function searchEventListeners(
     searchBarID,
@@ -201,6 +193,13 @@ window.addEventListener("load", async function (event) {
         ); // might have to change field name
       });
   }
+
+  let retreiveMacID = new FormData();
+  retreiveMacID.append("category","macID");
+  macID= (await searchDatabase(retreiveMacID, "server/myfiles.php")).message[0].macID;
+
+  submitForm(uploadedfiletitle,{ coursecodes: uploaded_coursecodes },uploadedorderbyoption,uploaded_files_display,"uploads");
+  submitForm(downloadedfiletitle,{ coursecodes: downloaded_coursecodes },downloadedorderbyoption,downloaded_files_display,"downloads");
 
   searchEventListeners(
     "uploadedSearchInput",
