@@ -240,17 +240,18 @@ input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   padding: 10px;
   border-radius: 30px;
-  font-size: 13px;
+  font-size: 15px;
   border: none;
-  background:var(--text-color);
-  color: var(--stronger-background-color);
+  background: white;
+  color: black;
+  border: 1px solid black;
 }
 
 .search-bar input:focus{
   outline: none;
 }
 .search-bar input::placeholder {
-  color: var(--stronger-background-color);
+  color: gray;
   opacity: 1;
 }
 
