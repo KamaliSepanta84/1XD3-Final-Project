@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   // GRID/LIST VIEW CODE
   let gridViewBtn = document.getElementById("gridView");
   let listViewBtn = document.getElementById("listView");
@@ -22,19 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gridViewBtn.classList.remove("active");
   });
 
-
-  // let main = document.getElementById("main");
-
-  // document.querySelector(".sidebar").addEventListener("click",function(event){
-  //   document.getElementById("sidebar-options").style.display = "none";
-  //       this.style.width = "5%";
-  //   main.style.width = "95%";
-  // });
-
-
-
-
-  // SEARCH FUNCTIONALITY
+  // Elements' IDs and filter variables
   let search_bar = document.getElementById("search_bar");
   let results = [];
   let formData;
@@ -54,6 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   let orderbyoption = "`download-number`";
 
+  /**
+   *
+   * @param {*} rows |  the data sent from the server which is a list of objects
+   */
   function displayResults(rows) {
     results = rows;
 
@@ -63,8 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsContainer.innerHTML = "No Results";
     } else {
       for (let row of results) {
-        // results is a list of objects and each objecrt is a row from the database
-
         let containerDiv = document.createElement("div"); // create container div
 
         containerDiv.classList.add("result-card");
@@ -113,6 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
         downloadButton.setAttribute("download", row.filename); // triggers browser download
         containerDiv.appendChild(downloadButton);
 
+        // The view button gets an href link with some of the details of the file in the URL so
+        // that the page for viewing the file has the approporate data to shoe
         let viewbutton = document.createElement("a");
         viewbutton.innerHTML = "Preview";
         viewbutton.classList.add("download-btn");
@@ -161,6 +152,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  /**
+   * Sends a post request to a server and returns the jsonified data
+   */
   async function searchDatabase() {
     const response = await fetch("server/search.php", {
       method: "POST",
@@ -178,6 +172,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  /**
+   * Creates a form data object that it sends to the server and then displays the results on the screen
+   * @param {*} filename | the value of the searchbar
+   * @param {*} coursecodes | the coursecodes that the user wants to search for
+   * @param {*} orderbyoption | the order that the user wants the files to be displayed (most downloaded, alphabetically, etc)
+   * @param {*} filesizerange | an object of the form {Max: value, Min:value}
+   */
   function submitForm(filename, filesizerange, coursecodes, orderbyoption) {
     formData = new FormData();
     formData.append("query", filename);
@@ -187,6 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
     searchDatabase();
   }
 
+  /**
+   * Calls the submitForm functions only if the value of the max slider is actually greater than the value of the min
+   */
   function getNotes() {
     if (Number(max_size_slider.value) > Number(min_size_slider.value)) {
       submitForm(
@@ -203,6 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Calling getNotes to IDs
   search_bar.addEventListener("input", function (event) {
     getNotes();
   });
@@ -223,6 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getNotes();
   });
 
+  // Edits coursecode array according to what the user selects or not
   for (let coursecodecheckbox of document.getElementsByClassName(
     "coursecodecheckboxes"
   )) {
@@ -242,6 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Sets the option that the user wants to order by
   document.getElementById("sortSelect").addEventListener("change", function () {
     selectedValue = this.value;
     if (selectedValue === "Highest Rated") {

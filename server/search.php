@@ -1,24 +1,10 @@
 <?php
-
-// Grab the search query safely
-
-/**
- * FILTERS:
- * 
- * - Size
- * - CourseCode
- * 
- * 
- */
-
-//example $cmd:"SELECT * FROM mfiles WHERE filetitle LIKE ? AND coursecode = '1XC3'"
-//1KB = 1024 bytes
-// SELECT * FROM mfiles 
-// WHERE filetitle LIKE ? 
-// AND filesize BETWEEN 0 AND 512000;
-
 decideQuery();
 
+/**
+ * Builds Query to be sent to database object
+ * @return void
+ */
 function decideQuery()
 {
     include "connect.php";
@@ -43,6 +29,7 @@ function decideQuery()
         echo json_encode(value: ["error" => "No file name given"]);
         exit;
     }
+    //Builds the filesize between part of the query
     if (!($filesizefilter == null || $filesizefilter == false)) {
         $min = json_decode($filesizefilter)->min * 1024;
         $max = json_decode($filesizefilter)->max * 1024;
@@ -52,8 +39,8 @@ function decideQuery()
 
     $coursecodes = json_decode($coursecodefilter)->coursecodes;
 
+    // Builds the AND coursecode IN (?, ?, ..., ?) part of the queyr
     if (!(count($coursecodes) == 0)) {
-        //  AND coursecode IN (?, ?, ..., ?)
         $coursecodefiltercmd = " AND coursecode IN (";
         for ($i = 0; $i < count($coursecodes); $i++) {
             if ($i == count($coursecodes) - 1) {
@@ -81,11 +68,15 @@ function decideQuery()
     $fullcmd = $defaultcmd . $filesizefiltercmd . $coursecodefiltercmd . $orderbycmd;
     //Parameters are only allowed for values, not SQL identifiers like column names or table names, hence why I put orderbyoption in the string.
 
-
-
     getResults($fullcmd, $parameters);
 }
 
+/**
+ * Prepares the command and executes the query and echoes the repose in the form of an object with keys error and message
+ * @param mixed $cmd | the command created by decideQuery()
+ * @param mixed $query | the $parameters
+ * @return void
+ */
 function getResults($cmd, $query)
 {
     include "connect.php";
@@ -112,37 +103,4 @@ function getResults($cmd, $query)
         echo json_encode(["error" => $e->getMessage()]);
     }
 }
-
-/*
-ORDER_BY operator
-
---for customers, the default column that the table is sorted by is customer_id because
-  it is the primary key columnn (click wrench icon next to customers and youll see key icon next to column name).
-  In relational databases, every table should have a primary key column and the values in that column should all 
-  appear once, so that they can uniqeuly identify the records in each row 
-  
-SELECT *
-FROM customers
-ORDER BY city
-
--above, sorted defatul is by ascending but can make it dewcening by using DESC
-SELECT *
-FROM customers
-ORDER BY city DESC
-
--can also sort with multiple columsn (say you wanted to sort by state and then within each state you sort those ones by first_name)
-SELECT *
-FROM customers
-ORDER BY state, first_name
-
--columns dont have to be selected for you to sort by them, eg
-SELECT first_name, last_name
-FROM customers
-ORDER BY state
-
---can also do aliases
-SELECT first_name, "dummy balue" AS bruh
-FROM customers
-ORDER BY bruh
-*/
 ?>

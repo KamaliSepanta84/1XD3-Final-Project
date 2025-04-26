@@ -1,9 +1,10 @@
 .dashboard-container {
   display: flex;
+  background-color: var(--stronger-background-color);
 }
 
 .dashboard-container,
-.sidebar{
+.sidebar {
   height: 100%;
 }
 .files-container {
@@ -84,7 +85,7 @@ img {
   width: 80%;
   padding: 1rem;
   background-color: var(--stronger-background-color);
-  margin: 10px
+  margin: 10px;
 }
 
 .file-controls {
@@ -126,7 +127,6 @@ img {
 .files-container {
   display: flex;
   gap: 1rem;
-
 }
 
 .files-section {
@@ -135,7 +135,7 @@ img {
   width: 100%;
   flex-direction: column;
   align-items: center;
-  gap:5px;
+  gap: 5px;
   background-color: var(--lighter-background-color);
   padding: 1.5rem;
   border-radius: 8px;
@@ -149,7 +149,7 @@ img {
 }
 
 .file-card {
-  display: flex ;
+  display: flex;
   flex-direction: column;
   background-color: var(--lighter-background-color);
   border-radius: 8px;
@@ -200,7 +200,6 @@ img {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-
 .view-btn:hover,
 .download-again-btn:hover {
   transform: translateY(-2px);
@@ -227,7 +226,8 @@ img {
   opacity: 0.7;
 }
 
-#downloaded_coursecode_filter, #uploaded_coursecode_filter {
+#downloaded_coursecode_filter,
+#uploaded_coursecode_filter {
   width: 100%;
   display: flex;
   align-items: center;
@@ -247,11 +247,13 @@ img {
   flex-direction: row;
 }
 
-.uploadedcoursecodecheckboxes, .downloadedcoursecodecheckboxes {
+.uploadedcoursecodecheckboxes,
+.downloadedcoursecodecheckboxes {
   display: none;
 }
 
-.uploadedcoursecodecheckboxes:checked + span, .downloadedcoursecodecheckboxes:checked + span {
+.uploadedcoursecodecheckboxes:checked + span,
+.downloadedcoursecodecheckboxes:checked + span {
   background-color: #007bff;
   color: white;
 }
@@ -276,8 +278,6 @@ img {
   color: var(--text-color);
 }
 
-
-
 .footer-links {
   padding-top: 5px;
   height: 2%;
@@ -288,18 +288,22 @@ img {
   color: var(--text-color);
 }
 
-#uploadedSearchInput, #uploadedSortSelect, #downloadedSortSelect{
+#uploadedSearchInput,
+#uploadedSortSelect,
+#downloadedSortSelect {
   background: var(--stronger-background-color);
   color: var(--text-color);
 }
-#uploadedSearchInput, #downloadedSearchInput{
+#uploadedSearchInput,
+#downloadedSearchInput {
   width: 70%;
   background-color: var(--stronger-background-color);
 }
-#sortSelect{
+#sortSelect {
   width: 30%;
 }
-#uploaded-files-list, #downloaded-files-list {
+#uploaded-files-list,
+#downloaded-files-list {
   overflow-y: scroll;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;

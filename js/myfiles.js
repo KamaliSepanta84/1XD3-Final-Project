@@ -1,10 +1,13 @@
 window.addEventListener("load", async function (event) {
-
   let uploaded_files_display = document.getElementById("uploaded-files-list");
   let downloaded_files_display = document.getElementById(
     "downloaded-files-list"
   );
 
+  /**
+   * Filters to be sent to the server so that the user can filter what their searching for
+   * Making seperate filters for downloads and uploads as they will be displayed on same page
+   */
   let uploadedfiletitle = "";
   let downloadedfiletitle = "";
   let uploaded_coursecodes = [
@@ -30,10 +33,13 @@ window.addEventListener("load", async function (event) {
   let uploadedorderbyoption = "`download-number`";
   let downloadedorderbyoption = "`download-number`";
 
-  // MAKING SEPERATE VARIABLES FOR UPLOAD AND DOWNLOAD
-
   let macID = "";
 
+  /**
+   * Displays search results to the user
+   * @param {*} rows | the data sent from the server which is a list of objects
+   * @param {*} filecontainer | the div where the file cards, which are made in this function, will be appended to
+   */
   function displayResults(rows, filecontainer) {
     filecontainer.innerHTML = "No Files Searched";
     if (rows.length === 0 || rows == null || rows == false) {
@@ -63,6 +69,8 @@ window.addEventListener("load", async function (event) {
         let view_button = document.createElement("a");
         view_button.classList.add("btn", "btn-primary", "view-btn");
 
+        // The view button gets an href link with some of the details of the file in the URL so 
+        // that the page for viewing the file has the approporate data to shoe
         view_button.setAttribute("id", "view_button");
         view_button.setAttribute(
           "href",
@@ -85,16 +93,30 @@ window.addEventListener("load", async function (event) {
     }
   }
 
+  /**
+   * Sends a post request to a server and returns the jsonified data
+   * @param {*} to_send | form data to be sent
+   * @param {*} url | the php file to be sent to
+   * @returns
+   */
   async function searchDatabase(to_send, url) {
     const response = await fetch(url, {
       method: "POST",
       body: to_send,
     });
 
-    const data = await response.json(); // Wait for JSON parsing
-    return data; // different fields for search.php
+    const data = await response.json();
+    return data;
   }
 
+  /**
+   * Creates a form data object that it sends to the server and then displays the results on the screen
+   * @param {*} filetitle | the value of the searchbar
+   * @param {*} coursecodes | the coursecodes that the user wants to search for
+   * @param {*} orderbyoption | the order that the user wants the files to be displayed (most downloaded, alphabetically, etc)
+   * @param {*} filecontainer | the div that the files cards will be appended to, is either download diplay or upload display
+   * @param {*} category | tells the server if the client wants their uploads, their downloads, or their mac ID
+   */
   async function submitForm(
     filetitle,
     coursecodes,
@@ -118,6 +140,17 @@ window.addEventListener("load", async function (event) {
     }
   }
 
+  /**
+   * Adds event listeners to download or upload section
+   * @param {*} searchBarID | ID of the search bar, either upload or download
+   * @param {*} filetitle | value of the search bar, either upload or download
+   * @param {*} checkboxclass | courses that the user wants to search for, either upload or download
+   * @param {*} sortSelectID | the ID of the select event listener, either upload or download
+   * @param {*} coursecodecategory | the list of courses that will be filtered, either upload or download
+   * @param {*} orderbyoption | the option of which the file cards will be ordered by
+   * @param {*} filesdisplay | the div that the file card divs will be appended too, either upload or download
+   * @param {*} category | the category to tell the server file, either upload or download or macID (to retrive it)
+   */
   function searchEventListeners(
     searchBarID,
     filetitle,
@@ -191,13 +224,29 @@ window.addEventListener("load", async function (event) {
       });
   }
 
+  // Retrieves mac ID by sending a post request with a body of a formdata object with name category and value "macID"
   let retreiveMacID = new FormData();
-  retreiveMacID.append("category","macID");
-  macID= (await searchDatabase(retreiveMacID, "server/myfiles.php")).message[0].macID;
+  retreiveMacID.append("category", "macID");
+  macID = (await searchDatabase(retreiveMacID, "server/myfiles.php")).message[0]
+    .macID;
 
-  submitForm(uploadedfiletitle,{ coursecodes: uploaded_coursecodes },uploadedorderbyoption,uploaded_files_display,"uploads");
-  submitForm(downloadedfiletitle,{ coursecodes: downloaded_coursecodes },downloadedorderbyoption,downloaded_files_display,"downloads");
+  // appends all the user's downloaded and uploaded files to the cards before the user does anything so they can see all of them before
+  submitForm(
+    uploadedfiletitle,
+    { coursecodes: uploaded_coursecodes },
+    uploadedorderbyoption,
+    uploaded_files_display,
+    "uploads"
+  );
+  submitForm(
+    downloadedfiletitle,
+    { coursecodes: downloaded_coursecodes },
+    downloadedorderbyoption,
+    downloaded_files_display,
+    "downloads"
+  );
 
+  // Adds all the event listenres
   searchEventListeners(
     "uploadedSearchInput",
     uploadedfiletitle,
@@ -219,4 +268,3 @@ window.addEventListener("load", async function (event) {
     "downloads"
   );
 });
-

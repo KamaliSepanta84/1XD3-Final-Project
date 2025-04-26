@@ -1,13 +1,12 @@
 //Dashboard JS
-window.addEventListener("load", function(event) {
-
+window.addEventListener("load", function (event) {
   // CAROSEL CODE
   //Set DOM elements and variables
-  let slidesContainer = document.querySelector('.multi-item-carousel .slides');
-  let slideItems = document.querySelectorAll('.multi-item-carousel .slide');
-  let totalSlides = slideItems.length; 
-  let visibleSlides = 3;               
-  let maxIndex = totalSlides - visibleSlides; 
+  let slidesContainer = document.querySelector(".multi-item-carousel .slides");
+  let slideItems = document.querySelectorAll(".multi-item-carousel .slide");
+  let totalSlides = slideItems.length;
+  let visibleSlides = 3;
+  let maxIndex = totalSlides - visibleSlides;
   let currentIndex = 0;
 
   // Set the width of the slides container
@@ -18,8 +17,9 @@ window.addEventListener("load", function(event) {
   }
 
   // Next button
-  document.querySelector('.multi-item-carousel .next')
-    .addEventListener('click', () => {
+  document
+    .querySelector(".multi-item-carousel .next")
+    .addEventListener("click", () => {
       currentIndex++;
       if (currentIndex > maxIndex) {
         currentIndex = 0;
@@ -28,8 +28,9 @@ window.addEventListener("load", function(event) {
     });
 
   // Prev button
-  document.querySelector('.multi-item-carousel .prev')
-    .addEventListener('click', () => {
+  document
+    .querySelector(".multi-item-carousel .prev")
+    .addEventListener("click", () => {
       currentIndex--;
       if (currentIndex < 0) {
         currentIndex = maxIndex;
@@ -45,9 +46,11 @@ window.addEventListener("load", function(event) {
 
   // DROPDOWN PANEL CODE
   // Set DOM Elements
-  const toggleButtons = document.querySelectorAll(".dropdown-band .toggle-panel");
+  const toggleButtons = document.querySelectorAll(
+    ".dropdown-band .toggle-panel"
+  );
   // Set events for toggle buttons
-  toggleButtons.forEach(button => {
+  toggleButtons.forEach((button) => {
     button.addEventListener("click", function (e) {
       e.stopPropagation(); // Prevent the click event from bubbling up
       let target = button.getAttribute("data-target");
@@ -57,8 +60,11 @@ window.addEventListener("load", function(event) {
   });
   //Close both panels when clicked outside
   document.addEventListener("click", function (e) {
-    if (!e.target.closest(".dropdown-band") && !e.target.closest(".dropdown-panels")) {
-      document.querySelectorAll(".dropdown-panel").forEach(panel => {
+    if (
+      !e.target.closest(".dropdown-band") &&
+      !e.target.closest(".dropdown-panels")
+    ) {
+      document.querySelectorAll(".dropdown-panel").forEach((panel) => {
         panel.classList.remove("open");
       });
     }
@@ -66,66 +72,65 @@ window.addEventListener("load", function(event) {
 
   let userWelcomeHeader = document.getElementById("user-welcome-header");
   fetch("./server/getUser.php")
-    .then(response => response.json())
-    .then((data) =>{
-      if (data.access){
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.access) {
         let username = data.username;
         userWelcomeHeader.innerHTML = `Hello, ${username}`;
       }
-    })
+    });
 
-    let userTotalUploads = document.getElementById("user-total-uploads");
-    let userTotalDownloads = document.getElementById("user-total-downloads");
-    let userAverageRatings = document.getElementById("user-total-ratings");
+  let userTotalUploads = document.getElementById("user-total-uploads");
+  let userTotalDownloads = document.getElementById("user-total-downloads");
+  let userAverageRatings = document.getElementById("user-total-ratings");
 
-    setInterval(function () {
-      fetch("./server/dashboard.php")
-        .then(response => response.json())
-        .then(data => {
-          userTotalUploads.innerHTML = data.numberOfUploads;
-          userTotalDownloads.innerHTML = data.numberOfDownloads;
-          userAverageRatings.innerHTML = data.userAverageRating;
-        })
-        .catch(error => {
-          console.error("Error fetching dashboard data:", error);
-        });
-    }, 100);
+  setInterval(function () {
+    fetch("./server/dashboard.php")
+      .then((response) => response.json())
+      .then((data) => {
+        userTotalUploads.innerHTML = data.numberOfUploads;
+        userTotalDownloads.innerHTML = data.numberOfDownloads;
+        userAverageRatings.innerHTML = data.userAverageRating;
+      })
+      .catch((error) => {
+        console.error("Error fetching dashboard data:", error);
+      });
+  }, 100);
 
-    setInterval(function(){
-      fetch("server/trending.php")
-    .then(response => response.json())
-    .then(data => {
-      for (let i = 0; i < data.length; i++) {
-        let fileTitleBox = document.getElementById("filetitle" + (i + 1));
-        let courseCodeBox = document.getElementById("coursecode" + (i + 1));
-        let viewBtn = document.getElementById("view-btn" + (i + 1));
-  
-        fileTitleBox.innerHTML = data[i].filetitle;
-        courseCodeBox.innerHTML = data[i].coursecode;
-  
-        
-        const file = data[i];
-        viewBtn.addEventListener("click", function () {
-          const a = document.createElement("a");
-  
-          a.setAttribute(
-            "href",
-            `searchfiledetails.html?filename=${encodeURIComponent(
-              file.filename
-            )}&filetitle=${encodeURIComponent(
-              file.filetitle
-            )}&filedescription=${encodeURIComponent(
-              file.description
-            )}&coursecode=${encodeURIComponent(file.coursecode)}`
-          );
-  
-          a.setAttribute("target", "");
-          document.body.appendChild(a); 
-          a.click();
-          document.body.removeChild(a);
-        });
-      }
-    })
-    .catch((err) => console.error("Error fetching trending files:", err)); 
-    }, 100)
+  setInterval(function () {
+    fetch("server/trending.php")
+      .then((response) => response.json())
+      .then((data) => {
+        for (let i = 0; i < data.length; i++) {
+          let fileTitleBox = document.getElementById("filetitle" + (i + 1));
+          let courseCodeBox = document.getElementById("coursecode" + (i + 1));
+          let viewBtn = document.getElementById("view-btn" + (i + 1));
+
+          fileTitleBox.innerHTML = data[i].filetitle;
+          courseCodeBox.innerHTML = data[i].coursecode;
+
+          const file = data[i];
+          viewBtn.addEventListener("click", function () {
+            const a = document.createElement("a");
+
+            a.setAttribute(
+              "href",
+              `searchfiledetails.html?filename=${encodeURIComponent(
+                file.filename
+              )}&filetitle=${encodeURIComponent(
+                file.filetitle
+              )}&filedescription=${encodeURIComponent(
+                file.description
+              )}&coursecode=${encodeURIComponent(file.coursecode)}`
+            );
+
+            a.setAttribute("target", "");
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          });
+        }
+      })
+      .catch((err) => console.error("Error fetching trending files:", err));
+  }, 100);
 });
