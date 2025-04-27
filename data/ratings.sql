@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2-1.el9
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2025 at 05:57 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Apr 27, 2025 at 05:27 AM
+-- Server version: 9.1.0-commercial
+-- PHP Version: 8.2.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ratings` (
-  `filename` varchar(200) NOT NULL,
-  `macID` varchar(200) NOT NULL
+  `filename` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `macID` varchar(200) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -38,17 +38,20 @@ CREATE TABLE `ratings` (
 
 INSERT INTO `ratings` (`filename`, `macID`) VALUES
 ('A4.pdf', 'kamals19'),
-('A4.pdf', 'maden'),
-('AI and Data_kamals19.pdf', 'maden'),
+('AI and Data_kamals19.pdf', 'kamals19'),
 ('Assignment-3-Discrete-Math.pdf', 'kamals19'),
 ('Assignment1.pdf', 'kamals19'),
-('Assignment3.pdf', 'maden'),
+('Assignment3.pdf', 'kamals19'),
 ('Chapter3.pdf', 'kamals19'),
-('Chapter3.pdf', 'maden'),
 ('childsmath.png', 'kamals19'),
 ('Discrete-Math-Assignment-5.pdf', 'kamals19'),
-('Discrete-Math-Assignment-5.pdf', 'maden'),
 ('file1.txt', 'kamals19'),
+('Lecture02 Part1 - Copy.pdf', 'kamals19'),
+('A4.pdf', 'maden'),
+('AI and Data_kamals19.pdf', 'maden'),
+('Assignment3.pdf', 'maden'),
+('Chapter3.pdf', 'maden'),
+('Discrete-Math-Assignment-5.pdf', 'maden'),
 ('file1.txt', 'maden'),
 ('[Book] Discrete mathematics and its applications (2019)_0.pdf', 'maden');
 
