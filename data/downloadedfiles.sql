@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2025 at 11:27 PM
+-- Generation Time: Apr 27, 2025 at 05:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,10 +44,13 @@ CREATE TABLE `downloadedfiles` (
 --
 
 INSERT INTO `downloadedfiles` (`filename`, `macIDofDownloader`, `macIDofUploader`, `filetitle`, `coursecode`, `description`, `download-number`, `rating`, `upload_time`) VALUES
-('Assignment-3-Discrete-Math.pdf', 'quresu9', 'kamals19', 'Assignment 3', '1DM3', 'This is my assignment 3 for discrete math', 8, 4, '2025-04-16'),
-('Assignment1 (1).pdf', 'quresu9', 'quresu9', 'first asignment for yang', '1XC3', 'covers command lines', 5, 5, '2025-04-17'),
-('maclogo.png', 'quresu9', 'quresu9', 'Mac logo', '1MD3', 'idek', 3, 0, '2025-04-18'),
-('Assignment1 (1).pdf', 'quresu9', 'quresu9', 'first asignment for yang', '1XC3', 'covers command lines', 6, 5, '2025-04-17');
+('A4.pdf', 'kamals19', 'kamals19', 'Assignment 4 1XC3', '1XC3', 'This is my assignment 4 for the course CompSci 1XC3, which I got a 60% on.', 1, 3, '2025-04-27'),
+('Discrete-Math-Assignment-5.pdf', 'kamals19', 'kamals19', 'Assignment 5 Discrete', '1DM3', 'This is my assignment 5 for the course discrete math, which I got a 100% on.', 1, 5, '2025-04-27'),
+('Chapter3.pdf', 'maden', 'maden', 'Chapter 3 Discrete', '1DM3', 'This is a pdf of the chapter 3 of the discrete math textbook. I found it pretty useful.', 1, 5, '2025-04-27'),
+('A4.pdf', 'maden', 'kamals19', 'Assignment 4 1XC3', '1XC3', 'This is my assignment 4 for the course CompSci 1XC3, which I got a 60% on.', 2, 3, '2025-04-27'),
+('Discrete-Math-Assignment-5.pdf', 'maden', 'kamals19', 'Assignment 5 Discrete', '1DM3', 'This is my assignment 5 for the course discrete math, which I got a 100% on.', 2, 5, '2025-04-27'),
+('file1.txt', 'maden', 'kamals19', 'Javascript Text File', '1XD3', 'This is just text of my javascript code, which I did for one of my assignments in winter 2025.', 1, 4, '2025-04-27'),
+('Chapter3.pdf', 'kamals19', 'maden', 'Chapter 3 Discrete', '1DM3', 'This is a pdf of the chapter 3 of the discrete math textbook. I found it useful.', 2, 4, '2025-04-27');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

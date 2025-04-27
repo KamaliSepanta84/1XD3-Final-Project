@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 16, 2025 at 11:02 PM
+-- Generation Time: Apr 27, 2025 at 05:56 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,8 +43,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`macID`, `username`, `email`, `password`, `role`, `number_uploads`, `num_downloads`, `average_rating`) VALUES
-('kamals19', 'Sepanta Kamali', 'kamals19@mcmaster.ca', '$2y$10$8WIuXhvmFhbY6mqqHfK9zefk/g/o3HzGi/sffivCbbM8.EbJ8dDNC', 'STUDENT', 2, 2, 0),
-('maden', 'Maden Chopra', 'maden@mcmaster.ca', '$2y$10$ZjasVEtm7mpXH5Tp2fPz8.YKdMF5.tkgEz14LTPOR/XDpEV09hILy', 'STUDENT', 0, 1, 0);
+('kamals19', 'Sepanta Kamali', 'kamals19@mcmaster.ca', '$2y$10$p8/NfnSUAiezeQmtpItDQO8JhRDAKvqM3V4tVrdIDooZQHOJQEEvy', 'STUDENT', 6, 3, 0),
+('maden', 'Maden Chopra', 'maden@mcmaster.ca', '$2y$10$UY0.loBtM079WddV4o6X/OkLmg814OUcm7kWsbjtVdpmmtk9aX8ZK', 'STUDENT', 4, 4, 0);
 
 --
 -- Indexes for dumped tables

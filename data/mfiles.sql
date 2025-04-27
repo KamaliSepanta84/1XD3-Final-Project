@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 16, 2025 at 11:02 PM
+-- Generation Time: Apr 27, 2025 at 05:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -51,7 +51,16 @@ CREATE TABLE `mfiles` (
 --
 
 INSERT INTO `mfiles` (`macID`, `filename`, `filetitle`, `coursecode`, `filesize`, `filetype`, `description`, `download-number`, `upload_time`, `rating1`, `rating2`, `rating3`, `rating4`, `rating5`, `count`, `rating`) VALUES
-('kamals19', 'Assignment-3-Discrete-Math.pdf', 'Assignment 3', '1DM3', 2349040, 'application/pdf', 'This is my assignment 3 for discrete math', 2, '2025-04-17 02:58:22', 0, 0, 1, 1, 0, 2, 3.5);
+('kamals19', 'A4.pdf', 'Assignment 4 1XC3', '1XC3', 173763, 'application/pdf', 'This is my assignment 4 for the course CompSci 1XC3, which I got a 60% on.', 2, '2025-04-27 09:18:10', 0, 0, 1, 0, 1, 2, 4),
+('maden', 'AI and Data_kamals19.pdf', 'AI and Data', '1JC3', 130943, 'application/pdf', 'This is an essay for the course CompSci 1JC3, about AI and Data, which I got 80% on.', 0, '2025-04-27 09:26:08', 0, 0, 0, 1, 0, 1, 4),
+('kamals19', 'Assignment-3-Discrete-Math.pdf', 'Assignment 3 Discrete', '1DM3', 2349040, 'application/pdf', 'This is my assignment 3 for the course discrete math, which I got a 90% on.', 0, '2025-04-27 09:18:47', 0, 0, 0, 1, 0, 1, 4),
+('kamals19', 'Assignment1.pdf', 'Assignment 1 1XC3', '1XC3', 156967, 'application/pdf', 'This is the assignment 1 for the course CompSci 1XC3, which I got a 87% on.', 0, '2025-04-27 09:34:24', 0, 0, 0, 1, 0, 1, 4),
+('maden', 'Assignment3.pdf', 'Assignment 3 1XC3', '1XC3', 306747, 'application/pdf', 'This is my assignment 3 for the course CompSci 1XC3, which I got a 59% on.', 0, '2025-04-27 09:28:30', 0, 0, 1, 0, 0, 1, 3),
+('maden', 'Chapter3.pdf', 'Chapter 3 Discrete', '1DM3', 2286641, 'application/pdf', 'This is a pdf of the chapter 3 of the discrete math textbook. I found it useful.', 2, '2025-04-27 09:29:37', 0, 0, 1, 0, 1, 2, 4),
+('kamals19', 'childsmath.png', 'Calculus Assignment ', '1ZB3', 122657, 'image/png', 'This is a question on this week\'s calc assignment on childsmath, which was hard.', 0, '2025-04-27 09:21:54', 0, 0, 0, 0, 1, 1, 5),
+('kamals19', 'Discrete-Math-Assignment-5.pdf', 'Assignment 5 Discrete', '1DM3', 4973645, 'application/pdf', 'This is my assignment 5 for the course discrete math, which I got a 100% on.', 2, '2025-04-27 09:19:47', 0, 0, 0, 1, 1, 2, 4.5),
+('kamals19', 'file1.txt', 'Javascript Text File', '1XD3', 3257, 'text/plain', 'This is just text of my javascript code, which I did for one of my assignments.', 1, '2025-04-27 09:21:08', 0, 0, 0, 2, 0, 2, 4),
+('maden', '[Book] Discrete mathematics and its applications (2019)_0.pdf', 'Discrete Math Book', '1DM3', 8729085, 'application/pdf', 'This is a pdf version of the discrete math textbook for this semester, which I found online.', 0, '2025-04-27 09:25:01', 0, 0, 0, 1, 0, 1, 4);
 
 --
 -- Indexes for dumped tables

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 16, 2025 at 11:01 PM
+-- Generation Time: Apr 27, 2025 at 05:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,8 +37,20 @@ CREATE TABLE `ratings` (
 --
 
 INSERT INTO `ratings` (`filename`, `macID`) VALUES
+('A4.pdf', 'kamals19'),
+('A4.pdf', 'maden'),
+('AI and Data_kamals19.pdf', 'maden'),
 ('Assignment-3-Discrete-Math.pdf', 'kamals19'),
-('Assignment-3-Discrete-Math.pdf', 'maden');
+('Assignment1.pdf', 'kamals19'),
+('Assignment3.pdf', 'maden'),
+('Chapter3.pdf', 'kamals19'),
+('Chapter3.pdf', 'maden'),
+('childsmath.png', 'kamals19'),
+('Discrete-Math-Assignment-5.pdf', 'kamals19'),
+('Discrete-Math-Assignment-5.pdf', 'maden'),
+('file1.txt', 'kamals19'),
+('file1.txt', 'maden'),
+('[Book] Discrete mathematics and its applications (2019)_0.pdf', 'maden');
 
 --
 -- Indexes for dumped tables
