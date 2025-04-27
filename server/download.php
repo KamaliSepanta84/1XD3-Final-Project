@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * This file updates the number of downloads in the database when user downloads a file
+ * Author: Sepanta Kamali
+ */
 include "./connect.php";
 session_start();
 

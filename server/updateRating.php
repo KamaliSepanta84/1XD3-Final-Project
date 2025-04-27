@@ -1,4 +1,9 @@
 <?php
+/**
+ * this file updates the average rating of file in the database
+ * Author: Sepanta Kamali
+ */
+
 header('Content-Type: application/json');
 include "./connect.php";
 session_start(); 
@@ -52,7 +57,7 @@ if ($rating !== null && $rating !== false && $filename !== null && $filename !==
             $stmt3 = $dbh->prepare($command3);
             $stmt3->execute([$average, $filename]);
 
-            // we nned to get the users macID to update the ratings table
+            // we need to get the users macID to update the ratings table
             $command4 = "SELECT macID FROM users WHERE username = ?";
             $stmt4 = $dbh->prepare($command4);
             $stmt4->execute([$username]);

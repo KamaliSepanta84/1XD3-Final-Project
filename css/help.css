@@ -1,4 +1,8 @@
-/* Help page styles*/
+/*
+ - This is the css file of the help page
+ - Authors: Alhan Walli & Aryan Minhas
+*/
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--sidebar-color);

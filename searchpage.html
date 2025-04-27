@@ -1,6 +1,11 @@
 <!DOCTYPE html>
+<!--
+- This is the html file of the search page
+- Author: Alhan Walli & Aryan Minhas
+-->
 <html lang="en">
   <head>
+    <!-- Set Dark Mode Theme Early If Enabled -->
     <script>
       if (sessionStorage.getItem("isDark") === "Yes") {
         document.documentElement.style.setProperty("--text-color", "#b1b1b1");
@@ -198,7 +203,7 @@
                 <input
                   type="range"
                   min="0"
-                  max="15000"
+                  max="5000"
                   value="0"
                   id="min_size_slider"
                   class="range-slider"
@@ -206,8 +211,8 @@
                 <input
                   type="range"
                   min="0"
-                  max="15000"
-                  value="15000"
+                  max="5000"
+                  value="5000"
                   id="max_size_slider"
                   class="range-slider"
                 />
@@ -261,7 +266,7 @@
                   <span id="downloadNumber">(1,234)</span>
                 </span>
               </div>
-              <button class="btn btn-primary download-btn">Download</button>
+              <button class="btn btn-primary">Download</button>
             </div>
             <div class="result-card">
               <h3>Course Title / Note Name</h3>

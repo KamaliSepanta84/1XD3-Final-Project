@@ -1,4 +1,7 @@
-//SETTINGS DROPDOWN JS
+/**
+ * This is the js file of the setting drop down
+ * Authors: Alhan Walli & Aryan Minhas
+ */
 function myFunction() {
   //Get Dom Elements
   let dropbtn = document.querySelector('.dropbtn');

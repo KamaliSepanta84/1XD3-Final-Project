@@ -1,4 +1,10 @@
 <?php
+/**
+ * This file gets the average rating of file from the database
+ * to show in the file preview page
+ * Author: Sepanta Kamali
+ */
+
 // DEBUGGING
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -9,7 +15,7 @@ include "./connect.php";
 
 $filename = filter_input(INPUT_POST, "filename", FILTER_SANITIZE_SPECIAL_CHARS);
 $response = ["rating" => 0];
-
+//gets the rating from the file from the mfiles table
 if ($filename !== null && $filename !== ""){
     $command = "SELECT rating FROM mfiles WHERE `filename` = ?";
     $stmt = $dbh->prepare($command);

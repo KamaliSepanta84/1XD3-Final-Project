@@ -1,6 +1,11 @@
 <!DOCTYPE html>
+<!--
+- This is the html file of the login page
+- Author: Sepanta Kamali
+-->
 <html lang="en">
   <head>
+    <!-- Set Dark Mode Theme Early If Enabled -->
     <script>
       if (sessionStorage.getItem("isDark") === "Yes") {
         document.documentElement.style.setProperty('--text-color', '#b1b1b1');
@@ -21,12 +26,15 @@
     <title>Login | MacNotes</title>
   </head>
   <body>
+    <!-- Main Container -->
     <div class="container" id="container">
+      <!-- Title Section -->
       <div id="title-container" class="title-primary">
         <img src="images/maclogo.png" alt="">
         <h1>MacNotes</h1>
       </div>
 
+      <!-- Signup Form -->
       <div class="form-container signup-container">
         <form>
           <h1>Create Account</h1>
@@ -40,13 +48,14 @@
             <input type="password" placeholder="Enter your password" id="signup-password"/>
           </div>
 
+          <!-- Signup Result Message -->
           <div id="signup-result">
 
           </div>
           <button id="signup-btn">SIGN UP</button>
         </form>
       </div>
-
+      <!-- Signin Form -->
       <div class="form-container signin-container">
         <form>
           <h1>Sign In</h1>
@@ -56,6 +65,7 @@
           <div class="form-group">
             <input type="password" placeholder="Enter your password" id="signin-password"/>
           </div>
+          <!-- Signin Result Message -->
           <div id="signin-result">
 
           </div>
@@ -64,8 +74,10 @@
         </form>
       </div>
 
+      <!-- Overlay for Switching Between Signin and Signup -->
       <div class="overlay-container" id="overlayContainer">
         <div class="overlay-wrapper">
+          <!-- Overlay Left Panel (For Signin) -->
           <div class="overlay-panel overlay-panel-left">
             <h1>Welcome Back!</h1>
             <p>
@@ -73,6 +85,7 @@
             </p>
             <button id="overlay-btn-signin">SIGN IN</button>
           </div> 
+          <!-- Overlay Right Panel (For Signup) -->
           <div class="overlay-panel overlay-panel-right">
             <h1>Hello, Classmate!</h1>
             <p>Enter your McMaster info and start journey with us</p>
@@ -82,6 +95,7 @@
       </div>
     </div>
 
+    <!-- Login JavaScript -->
     <script src="js/login.js"></script>
   </body>
 </html>

@@ -1,4 +1,8 @@
-/*Sidebar (Used in all Pages)*/
+/*
+ - This is the css file of the dashboard page
+ - Authors: Alhan Walli & Aryan Minhas
+*/
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -382,7 +386,6 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
 }
 
 

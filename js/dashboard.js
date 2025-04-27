@@ -1,4 +1,7 @@
-//Dashboard JS
+/**
+ * This is the js file of the dashboard page
+ * Authors: Sepanta Kamali & Alhan Walli & Aryan Minhas
+ */
 window.addEventListener("load", function (event) {
   // CAROSEL CODE
   //Set DOM elements and variables
@@ -70,7 +73,9 @@ window.addEventListener("load", function (event) {
     }
   });
 
+  //set user welcome header
   let userWelcomeHeader = document.getElementById("user-welcome-header");
+  // Fetch user data to set welcome message
   fetch("./server/getUser.php")
     .then((response) => response.json())
     .then((data) => {
@@ -79,11 +84,14 @@ window.addEventListener("load", function (event) {
         userWelcomeHeader.innerHTML = `Hello, ${username}`;
       }
     });
-
+  
+  //set User Dasboard Stats
+  //Initialize variables
   let userTotalUploads = document.getElementById("user-total-uploads");
   let userTotalDownloads = document.getElementById("user-total-downloads");
   let userAverageRatings = document.getElementById("user-total-ratings");
 
+  // Update user dashboard stats every 100ms
   setInterval(function () {
     fetch("./server/dashboard.php")
       .then((response) => response.json())
@@ -97,6 +105,8 @@ window.addEventListener("load", function (event) {
       });
   }, 100);
 
+  //Set Trending Files Section
+  //Fetch trending files and display them every 100ms
   setInterval(function () {
     fetch("server/trending.php")
       .then((response) => response.json())
@@ -106,10 +116,12 @@ window.addEventListener("load", function (event) {
           let courseCodeBox = document.getElementById("coursecode" + (i + 1));
           let viewBtn = document.getElementById("view-btn" + (i + 1));
 
+          // Update trending file title and course code
           fileTitleBox.innerHTML = data[i].filetitle;
           courseCodeBox.innerHTML = data[i].coursecode;
 
           const file = data[i];
+          // Set click event on view button to redirect with file details
           viewBtn.addEventListener("click", function () {
             const a = document.createElement("a");
 
@@ -130,7 +142,7 @@ window.addEventListener("load", function (event) {
             document.body.removeChild(a);
           });
         }
-      })
+      }) //catch error
       .catch((err) => console.error("Error fetching trending files:", err));
   }, 100);
 });

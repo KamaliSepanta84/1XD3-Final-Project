@@ -1,4 +1,9 @@
+/**
+ * This is the js file of the login page
+ * Author: Sepanta Kamali
+ */
 window.addEventListener("load", function(event) {
+    // Set DOM elements
     const container = document.getElementById("container");
     const overlayBtnSignUp = document.getElementById("overlay-btn-signup");
     const overlayBtnSignIn = document.getElementById("overlay-btn-signin");
@@ -6,6 +11,7 @@ window.addEventListener("load", function(event) {
     const signUpResultContainer = document.getElementById("signup-result");
     const signInResultContainer = document.getElementById("signin-result");
 
+    // Overlay button (Switch Panels)
     overlayBtnSignUp.addEventListener("click", () => {
         container.classList.toggle("right-panel-active");
         companyName.classList.toggle("title-primary");
@@ -18,24 +24,29 @@ window.addEventListener("load", function(event) {
         companyName.classList.toggle("title-white");
     });
 
+    // Sign up form
     let signUpEmailEntryBox = document.getElementById("signup-email");
     let signUpNameEntryBox = document.getElementById("signup-username");
     let signUpPasswordEntryBox = document.getElementById("signup-password");
     let signUpBtn = document.getElementById("signup-btn");
 
+    // Sign up button click event listener
     signUpBtn.addEventListener("click", function(event) {
         event.preventDefault();
 
+        // Collect and validate input fields
         let username = signUpNameEntryBox.value.trim();
         let userEmail = signUpEmailEntryBox.value.trim();
         let userPassword = signUpPasswordEntryBox.value.trim();
 
+        //Chek if paramters are valid, if not throw error
         if (username === "" || userEmail === "" || userPassword === "") {
             signUpResultContainer.textContent = "All fields are required!";
             signUpResultContainer.style.color = "red";
             return;
         }
 
+        // Prepare request data
         let params = "username=" + username + "&email=" + userEmail + "&password=" + userPassword;
         let config = {
             method: 'POST',
@@ -43,6 +54,7 @@ window.addEventListener("load", function(event) {
             body: params
         };
 
+        // Send signup request to server
         fetch("./server/signup.php", config)
             .then(response => response.json())
             .then(data => {
@@ -66,19 +78,22 @@ window.addEventListener("load", function(event) {
                 }
             })
             .catch(error => {
+                // Catch errors
                 signUpResultContainer.innerHTML = "An error occurred. Please try again.";
                 signUpResultContainer.style.color = "red";
                 console.error("Error:", error);
             });
     });
 
+    // Sign in form
     let signInEmailEntryBox = document.getElementById("signin-email");
     let signInPasswordEntryBox = document.getElementById("signin-password");
     let signInBtn = document.getElementById("signin-btn");
 
+    // Sign in button click
     signInBtn.addEventListener("click", function(event){
         event.preventDefault();
-
+        // Collect and validate input fields
         let userEmail = signInEmailEntryBox.value.trim();
         let userPassword = signInPasswordEntryBox.value.trim();
 
@@ -87,7 +102,7 @@ window.addEventListener("load", function(event) {
             signInResultContainer.style.color = "red";
             return;
         }
-
+        
         let params = "email=" + userEmail + "&password=" + userPassword;
         let config = {
             method: 'POST',
@@ -109,6 +124,7 @@ window.addEventListener("load", function(event) {
                 }
             })
             .catch(error => {
+                //catch error
                 signInResultContainer.innerHTML = "An error occurred. Please try again.";
                 signInResultContainer.style.color = "red";
                 console.error("Error:", error);

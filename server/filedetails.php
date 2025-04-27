@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * This file gets the information of the file from the database
+ * when the user previews a file
+ * Author: Umer Qureshi
+ */
 include "connect.php";
 
 session_start();

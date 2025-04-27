@@ -1,3 +1,7 @@
+/**
+ * This is the js file of the dark mode feature
+ * Author: Umer Qureshi
+ */
 window.addEventListener("load", function () {
   let modeContainer = document.querySelector(".mode");
   let nodeSwitch = document.querySelector(".toggle-switch");

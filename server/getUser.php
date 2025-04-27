@@ -2,6 +2,10 @@
 // This file gets the username from the session key and passes to other files \
 // when users log in.
 
+/**
+ * This file gets the user from the active session
+ * Author: Umer Qureshi
+ */
 // start the session
 session_start();
 

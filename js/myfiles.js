@@ -1,3 +1,7 @@
+/**
+ * This is the js file of the myfiles page
+ * Umer Qureshi & Marko Kosoric
+ */
 window.addEventListener("load", async function (event) {
   let uploaded_files_display = document.getElementById("uploaded-files-list");
   let downloaded_files_display = document.getElementById(

@@ -1,4 +1,7 @@
-//HELP PAGE JS
+/**
+ * This is the js file of the help page
+ * Authors: Alhan Walli & Aryan Minhas
+ */
 document.addEventListener("DOMContentLoaded", () => {
   //FAQ ACCORDION CODE
   document.querySelectorAll('.faq-question').forEach(question => {

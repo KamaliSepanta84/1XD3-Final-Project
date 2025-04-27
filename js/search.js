@@ -1,3 +1,7 @@
+/**
+ * This is the js file of the search page
+ * Authors: Umer Qureshi & Alhan Walli & Aryan Minhas
+ */
 document.addEventListener("DOMContentLoaded", () => {
   // GRID/LIST VIEW CODE
   let gridViewBtn = document.getElementById("gridView");

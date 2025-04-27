@@ -1,4 +1,9 @@
 <?php
+    /**
+     * This file gets the username from the uploaded file
+     * Author: Sepanta Kamali
+     */
+    
     // This PHP file gets the username from the filename
     header("Content-Type: application/json");
     include "./connect.php";

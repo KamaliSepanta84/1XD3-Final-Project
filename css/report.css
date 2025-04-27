@@ -1,3 +1,7 @@
+/*
+ - This is the css file of the report page
+ - Authors: Sepanta Kamali
+*/
 
 body {
     background-color: var( --lighter-background-color);
@@ -70,12 +74,12 @@ button:hover {
 
 #go-back-btn{
     background-color: var(--stronger-background-color);
-    color: var(--text-color);
-    border-radius: 25px;
-    border: 2px solid var(--text-color);
+    color: #205781;
+    border-radius: 20px;
+    border: 2px solid #205781;
 }
 
 #go-back-btn:hover{
-    background-color: var(--text-color);
+    background-color: #205781;
     color: white;
 }

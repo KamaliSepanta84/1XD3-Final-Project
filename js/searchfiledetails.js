@@ -1,3 +1,7 @@
+/**
+ * This is the js file of the file preview page
+ * Authors: Umer Qureshi & Sepanta Kamali
+ */
 window.addEventListener("load", function (event) {
   const params = new URLSearchParams(window.location.search);
   const filename = params.get("filename");

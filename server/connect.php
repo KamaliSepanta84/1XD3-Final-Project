@@ -1,5 +1,8 @@
 <?php
-// create a connection to the database
+/**
+ * This file makes connection to the database
+ * Author: Sepanta Kamali
+ */
 try {
     $dbh = new PDO(
         "mysql:host=localhost;dbname=kamals19_db", 

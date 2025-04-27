@@ -1,4 +1,9 @@
 <?php
+    /**
+     * This file updates the dashboard page with user activity history
+     * It gets the number of downloads and uploads and rating of the user
+     * Author: Sepanta Kamali
+     */
     header('Content-Type: application/json');
     include "./connect.php";
     session_start();

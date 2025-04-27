@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * This file updates the myfiles page
+ * Authors: Umer Qureshi & Marko Kosoric
+ */
 session_start();
 
 $filetitle = filter_input(INPUT_POST, 'filetitle', filter: FILTER_SANITIZE_SPECIAL_CHARS); // Whatever the user put in search bar

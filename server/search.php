@@ -1,4 +1,9 @@
 <?php
+/**
+ * This is the php script for the search file feature
+ * Author: Umer Qureshi
+ */
+
 decideQuery();
 
 /**
