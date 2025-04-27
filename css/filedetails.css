@@ -215,6 +215,7 @@ iframe{
   border-radius: 20px;
   padding: 10px 0;
   font-size: 15px;
+  cursor: pointer;
 }
 
 #report-btn:hover{

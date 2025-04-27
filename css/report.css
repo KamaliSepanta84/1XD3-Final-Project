@@ -70,12 +70,12 @@ button:hover {
 
 #go-back-btn{
     background-color: var(--stronger-background-color);
-    color: #205781;
-    border-radius: 20px;
-    border: 2px solid #205781;
+    color: var(--text-color);
+    border-radius: 25px;
+    border: 2px solid var(--text-color);
 }
 
 #go-back-btn:hover{
-    background-color: #205781;
+    background-color: var(--text-color);
     color: white;
 }
