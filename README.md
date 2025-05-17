@@ -15,14 +15,14 @@ MacNotes lets users:
 
 ## 🌟 Features
 
-1) User Uploads
- • Students can upload notes with course info, file names, and descriptions.
-2) Download and Ratings
- • Notes can be browsed, rated, and downloaded by anyone in the community.
-3) Reporting System
- • A simple way to flag inappropriate or irrelevant uploads.
-4) Course-Based Browsing
- • Notes are organized by course codes to keep everything clean and easy to find.
+1) User Uploads <br/>
+ • Students can upload notes with course info, file names, and descriptions. <br/>
+2) Download and Ratings <br/>
+ • Notes can be browsed, rated, and downloaded by anyone in the community. <br/>
+3) Reporting System <br/>
+ • A simple way to flag inappropriate or irrelevant uploads. <br/>
+4) Course-Based Browsing <br/>
+ • Notes are organized by course codes to keep everything clean and easy to find. <br/>
 
 ## 🧰 Technologies Used
 
