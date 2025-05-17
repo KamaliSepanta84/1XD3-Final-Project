@@ -4,14 +4,14 @@ MacNotes is a course-based note-sharing platform built for McMaster students. It
 This project is still in progress and we’ve hosted a basic prototype to showcase the core functionality. The design isn’t final yet, but it gives a good idea of what we’ve been working on recently.
 
 ## 🔨 About the Project
-As students, we’ve all had moments where we needed notes but couldn’t find any, or had really great notes and nowhere to share them. That’s what inspired us to build MacNotes — a place where students can help each other by uploading, rating, and reviewing course notes.
+As students, we’ve all had moments where we needed notes but couldn’t find any, or had really great notes and nowhere to share them. That’s what inspired us to build MacNotes, a place where students can help each other by uploading, rating, and reviewing course notes.
 
 MacNotes lets users:
 
-• 📤 Upload their notes for specific courses
-• 📥 Browse and download notes from other students
-• ⭐ Rate and review uploaded notes
-• 🚩 Report inappropriate or low-quality content for review
+• 📤 Upload their notes for specific courses <br/>
+• 📥 Browse and download notes from other students <br/>
+• ⭐ Rate and review uploaded notes <br/>
+• 🚩 Report inappropriate or low-quality content for review <br/>
 
 ## 🌟 Features
 
