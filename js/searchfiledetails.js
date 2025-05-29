@@ -11,7 +11,7 @@ window.addEventListener("load", function (event) {
   const macID = params.get("macID");
   const downloadBtn = document.getElementById("preview-download-btn");
 
-
+  
   document.getElementById("filedisplay").src = "uploads/" + filename;
   document.getElementById("filetitle").innerHTML = "Title: " + filetitle;
   document.getElementById("filedescription").innerHTML =
