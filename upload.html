@@ -37,6 +37,7 @@
   src="https://kit.fontawesome.com/24ff6cf73e.js"
   crossorigin="anonymous"
 ></script>
+
 </head>
 
 <body>
@@ -49,28 +50,27 @@
         <img src="images/maclogo.png" alt="">
         <h1>MacNotes</h1>
       </div>
-      <ul>
-        <li>
+      <ul class="sidebar-menu">
+        <li class = "dashboard-button">
           <a href="dashboard.html">
-            <i class="ri-dashboard-line"></i> Dashboard
+            <i class="ri-dashboard-line"></i>
+            <span id="sidebar-options">Dashboard</span>
           </a>
         </li>
-        <li>
+        <li class = "upload-button">
           <a href="upload.html" class="active">
             <i class="ri-upload-cloud-2-line"></i> Upload
           </a>
         </li>
-        <li>
-          <a href="myfiles.html">
-            <i class="ri-folder-line"></i> My Files
-          </a>
+        <li class = "myfiles-button">
+          <a href="myfiles.html"> <i class="ri-folder-line"></i> My Files </a>
         </li>
-        <li>
+        <li class = "searchpage-button">
           <a href="searchpage.html">
             <i class="ri-search-line"></i> Search
           </a>
         </li>
-        <li>
+        <li class = "logout-button">
           <a href="index.html">
             <i class="ri-logout-box-r-line"></i> Logout
           </a>

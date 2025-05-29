@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let downloadSpan = document.createElement("span");
         downloadSpan.classList.add("downloads");
         let downloadSymbol = document.createElement("i");
-        starSymbol.classList.add("ri-download-2-line");
+        downloadSymbol.classList.add("ri-download-2-line");
         downloadSpan.appendChild(downloadSymbol);
         let downloadNumber = document.createElement("span");
         downloadNumber.setAttribute("id", "downloadNumber");

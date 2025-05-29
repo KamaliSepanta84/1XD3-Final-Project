@@ -12,6 +12,7 @@ body {
   overflow: hidden;
 }
 /*Sidebar (Used in all Pages)*/
+
 .sidebar {
   display: flex;
   flex-direction: column;

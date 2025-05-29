@@ -40,20 +40,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $description = $_POST["description"] ?? "";
                 $upload_time = date("Y-m-d H:i:s");
 
-                try {
-                    // Get macID of the currently logged-in user
-                    // Prepare the SQL command with proper LIKE syntax
-                    $stmt = $dbh->prepare("SELECT macID from users WHERE username = ?");
-                    // Bind the query with wildcard characters for pattern matching
-                    $success = $stmt->execute([$_SESSION["username"]]);
-                    if (!$success) {
-                        $response["message"] = "Random error bro i couldnt even tell you";
-                    } else {
-                        $results = $stmt->fetch();
-                        $macID = $results["macID"];
-                    }
-                } catch (Exception $e) {
-                    $response["message"] = $e->getMessage();
+                // try {
+                //     // Get macID of the currently logged-in user
+                //     // Prepare the SQL command with proper LIKE syntax
+                //     $stmt = $dbh->prepare("SELECT macID from users WHERE username = ?");
+                //     // Bind the query with wildcard characters for pattern matching
+                //     $success = $stmt->execute([$_SESSION["username"]]);
+                //     if (!$success) {
+                //         $response["message"] = "Random error bro i couldnt even tell you";
+                //     } else {
+                //         $results = $stmt->fetch();
+                //         $macID = $results["macID"];
+                //     }
+                // } catch (Exception $e) {
+                //     $response["message"] = $e->getMessage();
+                // }
+                
+                if (!isset($_SESSION["macID"])){
+                    die ("ERROR: MACID is not set imn the session");
+                }
+                else{
+                    $macID = $_SESSION["macID"];
                 }
 
                 // Insert file details into the mfiles table

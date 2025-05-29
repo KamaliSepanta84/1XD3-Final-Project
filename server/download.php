@@ -1,7 +1,7 @@
 <?php
 /**
  * This file updates the number of downloads in the database when user downloads a file
- * Author: Sepanta Kamali
+ * Author: Sepanta Kamali & Marko Kosoric
  */
 include "./connect.php";
 session_start();

@@ -58,7 +58,9 @@ function decideQuery()
         $coursecodefiltercmd .= ")";
 
     } else {
-        $coursecodefiltercmd = "";
+        // $coursecodefiltercmd = ""; - Change it to this id you want it to apply no filter when coursecodes array is empty
+        echo json_encode(["error" => "", "result" => []]);
+        exit;
     }
 
     $orderbycmd = "";

@@ -46,7 +46,9 @@
                     $response["status"] = "success";
                     $response["message"] = "Logged in successfully";
                     $response["username"] = $row["username"]; // we add this when login is successful
+                    $_SESSION["is_admin"] = false;
                     $_SESSION["username"] = $row["username"];
+                    $_SESSION["macID"] = explode("@", $email)[0];
                 } else {
                     //password does not match
                     $response["message"] = "Wrong password!";

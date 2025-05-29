@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/help.css" />
   <script src="js/settings.js"></script>
   <script src="js/help.js"></script>
+  <script src="js/adminbutton.js"></script>
 </head>
 
 <body>
@@ -45,29 +46,28 @@
   <div class="dashboard-container">
     <!--Sidebar-->
     <aside class="sidebar">
-      <ul>
-        <li>
+      <ul class="sidebar-menu">
+        <li class = "dashboard-button">
           <a href="dashboard.html">
-            <i class="ri-dashboard-line"></i> Dashboard
+            <i class="ri-dashboard-line"></i>
+            <span id="sidebar-options">Dashboard</span>
           </a>
         </li>
-        <li>
+        <li class = "upload-button">
           <a href="upload.html">
             <i class="ri-upload-cloud-2-line"></i> Upload
           </a>
         </li>
-        <li>
-          <a href="myfiles.html">
-            <i class="ri-folder-line"></i> My Files
-          </a>
+        <li class = "myfiles-button">
+          <a href="myfiles.html"> <i class="ri-folder-line"></i> My Files </a>
         </li>
-        <li>
+        <li class = "searchpage-button">
           <a href="searchpage.html">
             <i class="ri-search-line"></i> Search
           </a>
         </li>
-        <li>
-          <a href="logout.html">
+        <li class = "logout-button">
+          <a href="index.html">
             <i class="ri-logout-box-r-line"></i> Logout
           </a>
         </li>

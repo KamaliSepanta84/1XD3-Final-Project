@@ -227,6 +227,22 @@ iframe{
   color: var(--lighter-background-color);
 }
 
+#delete-btn{
+  background-color: var( --lighter-background-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 0;
+  font-size: 15px;
+  width: 100%;
+}
+
+#delete-btn:hover{
+  background-color:var(--text-color);
+  color: var(--lighter-background-color);
+}
+
 .sidebartitle{
   display: flex;
   align-items: center;
